@@ -10,12 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    connect(ui->generateButton, &QPushButton::clicked, this, &MainWindow::on_generateButton_clicked);
-    connect(ui->showButton, &QPushButton::clicked, this, &MainWindow::on_showButton_clicked);
-    connect(ui->findButton, &QPushButton::clicked, this, &MainWindow::on_findButton_clicked);
-    connect(ui->deleteButton, &QPushButton::clicked, this, &MainWindow::on_deleteButton_clicked);
-    connect(ui->addButton, &QPushButton::clicked, this, &MainWindow::on_addButton_clicked);
-
     loadPasswords();
     srand(static_cast<unsigned>(time(0)));
 }
@@ -66,9 +60,12 @@ void MainWindow::on_generateButton_clicked()
 
 void MainWindow::on_showButton_clicked()
 {
+    loadPasswords();
+
     if (savedPasswords.empty())
     {
         QMessageBox::information(this, "Saved Passwords", "No saved passwords.");
+        ui->passwordOutput->clear();
         return;
     }
 
@@ -80,6 +77,7 @@ void MainWindow::on_showButton_clicked()
 
     ui->passwordOutput->setPlainText(allPasswords);
 }
+
 
 void MainWindow::on_findButton_clicked()
 {
@@ -134,6 +132,7 @@ void MainWindow::on_addButton_clicked()
 
 void MainWindow::loadPasswords()
 {
+    savedPasswords.clear();
     QFile file(QString::fromStdString(filename));
     if (file.open(QIODevice::ReadOnly))
     {
@@ -142,14 +141,13 @@ void MainWindow::loadPasswords()
         {
             QString key = in.readLine();
             QString value = in.readLine();
-            savedPasswords[key.toStdString()] = value.toStdString();
+            if(!key.isEmpty() && ! value.isEmpty()){
+                savedPasswords[key.toStdString()] = value.toStdString();
+            }
         }
         file.close();
     }
-    else
-    {
-        QMessageBox::information(this, "Info", "No saved passwords found. Starting fresh.");
-    }
+
 }
 
 void MainWindow::savePasswords()
