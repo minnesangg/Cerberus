@@ -18,7 +18,7 @@ Already added features:
 2. Display all passwords or search for one specific one.
 3. Removing the password.
 4. Adding your own password.
-5. 
+
 When you first open the program, it will create a text file in which passwords will be stored.
 In the future I would like to add:
 
