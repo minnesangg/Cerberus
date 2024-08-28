@@ -4,8 +4,10 @@
 2. Вывод всех паролей или поиск одного определенного.
 3. Удаление пароля.
 4. Добавление своего собственного пароля.
+
 При первом открытии программа создаст текстовый файл в котором будут храниться пароли.
 В будущем хочу добавить:
+
 1. Шифрование паролей при записи в текстовик и расшифровка при работе с ними.
 2. Улучшение интерфейса в плане графики.
 3. Вход в приложение с паролем заданным пользователем при первом входе(также возможность замены).
@@ -16,6 +18,7 @@ Already added features:
 2. Display all passwords or search for one specific one.
 3. Removing the password.
 4. Adding your own password.
+5. 
 When you first open the program, it will create a text file in which passwords will be stored.
 In the future I would like to add:
 
