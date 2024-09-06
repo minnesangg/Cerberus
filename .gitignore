@@ -35,6 +35,8 @@ Makefile*
 *.qm
 *.prl
 
+/qt/passGen/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/
+
 # Qt unit tests
 target_wrapper.*
 
