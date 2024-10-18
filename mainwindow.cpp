@@ -4,6 +4,8 @@
 #include <QInputDialog>
 #include <QFile>
 #include <QTextStream>
+#include <QRandomGenerator>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -38,7 +40,7 @@ void MainWindow::on_generateButton_clicked()
 
     for (int i = 0; i < passwordSize; i++)
     {
-        int randomIndex = rand() % symbolsSize;
+        int randomIndex = QRandomGenerator::global()->bounded(symbolsSize);
         password += symbols[randomIndex];
     }
 
