@@ -23,6 +23,8 @@ private slots:
     void on_deleteButton_clicked();
     void on_addButton_clicked();
 
+    void on_clearButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     std::unordered_map<std::string, std::string> savedPasswords;

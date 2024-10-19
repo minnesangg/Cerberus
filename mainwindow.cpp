@@ -5,9 +5,8 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
-#include <QResizeEvent>
 
-
+// добавить выбор сложности пароля
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -23,7 +22,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_generateButton_clicked()
 {
     bool ok;
-    int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), 8, 1, 50, 1, &ok);
+    int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), 12, 8, 50, 1, &ok);
     if (!ok)
         return;
 
@@ -167,3 +166,9 @@ void MainWindow::savePasswords()
         QMessageBox::critical(this, "Error", "Unable to save passwords to file.");
     }
 }
+
+void MainWindow::on_clearButton_clicked()
+{
+     ui->passwordOutput->clear();
+}
+
