@@ -5,15 +5,14 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
+#include <QResizeEvent>
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     loadPasswords();
-    srand(static_cast<unsigned>(time(0)));
 }
 
 MainWindow::~MainWindow()
