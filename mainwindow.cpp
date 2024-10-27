@@ -6,7 +6,6 @@
 #include <QTextStream>
 #include <QRandomGenerator>
 
-// добавить выбор сложности пароля
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -21,8 +20,13 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_generateButton_clicked()
 {
+    int begin = 0, min = 0, max = 0;
     bool ok;
-    int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), 12, 8, 50, 1, &ok);
+
+    chooseDiff(begin, min, max, ok);
+    if (!ok) return;
+
+    int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), begin, min, max, 1, &ok);
     if (!ok)
         return;
 
@@ -54,6 +58,28 @@ void MainWindow::on_generateButton_clicked()
             savePasswords();
             QMessageBox::information(this, "Password Saved", "Password saved successfully.");
         }
+    }
+}
+
+void MainWindow::chooseDiff(int &begin, int &min, int &max, bool &ok){
+    QStringList difficulties = {"Easy", "Medium", "Hard"};
+    QString passwordDiff = QInputDialog::getItem(this, tr("Password Difficulty"), tr("Choose difficulty:"), difficulties, 0, false, &ok);
+    if(!ok || passwordDiff.isEmpty()){
+        return;
+    }
+
+    if(passwordDiff == "Easy"){
+        begin = 8;
+        min = 6;
+        max = 12;
+    } else if(passwordDiff == "Medium"){
+        begin = 12;
+        min = 8;
+        max = 18;
+    } else {
+        begin = 16;
+        min = 12;
+        max = 24;
     }
 }
 

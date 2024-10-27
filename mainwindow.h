@@ -22,6 +22,7 @@ private slots:
     void on_findButton_clicked();
     void on_deleteButton_clicked();
     void on_addButton_clicked();
+    void chooseDiff(int &begin, int &min, int &max, bool &ok);
 
     void on_clearButton_clicked();
 
