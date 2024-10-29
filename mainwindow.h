@@ -29,7 +29,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     std::unordered_map<std::string, std::string> savedPasswords;
-    const std::string filename = "password.txt";
 
     void loadPasswords();
     void savePassword(const QString &name, const QString &password);
