@@ -32,7 +32,8 @@ private:
     const std::string filename = "password.txt";
 
     void loadPasswords();
-    void savePasswords();
+    void savePassword(const QString &name, const QString &password);
+    void initDatabase();
 };
 
 #endif // MAINWINDOW_H
