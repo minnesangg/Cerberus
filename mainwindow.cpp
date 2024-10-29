@@ -24,15 +24,10 @@ void MainWindow::initDatabase(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(QCoreApplication::applicationDirPath() + "/passwords.db");
 
-
     if (!db.open()) {
-        qDebug() << "Unable to open database. Error:" << db.lastError().text();
         QMessageBox::critical(this, "Database Error", db.lastError().text());
         return;
-    } else {
-        qDebug() << "Database opened successfully.";
     }
-
 
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS passwords ("
