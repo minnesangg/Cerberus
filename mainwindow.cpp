@@ -21,7 +21,6 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::initDatabase(){
-    // Подключение к базе данных SQLite
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName("passwords.db");
 
@@ -30,12 +29,22 @@ void MainWindow::initDatabase(){
         return;
     }
 
-    // Создание таблицы, если она не существует
     QSqlQuery query;
     query.exec("CREATE TABLE IF NOT EXISTS passwords ("
                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                "name TEXT UNIQUE, "
                "password TEXT)");
+}
+
+void MainWindow::loadPasswords(){
+    savedPasswords.clear();
+    QSqlQuery query("SELECT name, password FROM passwords");
+
+    while (query.next()) {
+        QString key = query.value(0).toString();
+        QString value = query.value(1).toString();
+        savedPasswords[key.toStdString()] = value.toStdString();
+    }
 }
 
 void MainWindow::on_generateButton_clicked(){
@@ -105,17 +114,6 @@ void MainWindow::savePassword(const QString &name, const QString &password){
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
-    }
-}
-
-void MainWindow::loadPasswords(){
-    savedPasswords.clear();
-    QSqlQuery query("SELECT name, password FROM passwords");
-
-    while (query.next()) {
-        QString key = query.value(0).toString();
-        QString value = query.value(1).toString();
-        savedPasswords[key.toStdString()] = value.toStdString();
     }
 }
 
