@@ -80,7 +80,7 @@
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: #4CAF50; /* Зеленый фон */
+    background-color: #5DADE2; /* Зеленый фон */
     border: none; /* Без рамки */
     color: white; /* Белый текст */
     padding: 15px 32px; /* Отступы */
@@ -96,11 +96,11 @@
 }
 
 QPushButton:hover {
-    background-color: #45a049; /* Более темный зеленый при наведении */
+    background-color: #4d90bd; /* Более темный зеленый при наведении */
 }
 
 QPushButton:pressed {
-    background-color: #388e3c; /* Еще более темный зеленый при нажатии */
+    background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
 }</string>
         </property>
@@ -130,7 +130,7 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">  QPushButton {
-        background-color: #4CAF50; /* Зеленый фон */
+        background-color: #5DADE2; /* Зеленый фон */
         border: none; /* Без рамки */
         color: white; /* Белый текст */
         padding: 15px 32px; /* Отступы */
@@ -144,10 +144,10 @@ QPushButton:pressed {
         transition: background-color 0.3s; /* Плавный переход цвета фона */
     }
     QPushButton:hover {
-        background-color: #45a049; /* Более темный зеленый при наведении */
+        background-color: #4d90bd; /* Более темный зеленый при наведении */
     }
     QPushButton:pressed {
-        background-color: #388e3c; /* Еще более темный зеленый при нажатии */
+        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
     }
 
 </string>
@@ -175,7 +175,7 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">  QPushButton {
-        background-color: #4CAF50; /* Зеленый фон */
+        background-color: #5DADE2; /* Зеленый фон */
         border: none; /* Без рамки */
         color: white; /* Белый текст */
         padding: 15px 32px; /* Отступы */
@@ -189,10 +189,10 @@ QPushButton:pressed {
         transition: background-color 0.3s; /* Плавный переход цвета фона */
     }
     QPushButton:hover {
-        background-color: #45a049; /* Более темный зеленый при наведении */
+        background-color: #4d90bd; /* Более темный зеленый при наведении */
     }
     QPushButton:pressed {
-        background-color: #388e3c; /* Еще более темный зеленый при нажатии */
+        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
     }
 
 </string>
@@ -220,7 +220,7 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">  QPushButton {
-        background-color: #4CAF50; /* Зеленый фон */
+        background-color: #5DADE2; /* Зеленый фон */
         border: none; /* Без рамки */
         color: white; /* Белый текст */
         padding: 15px 32px; /* Отступы */
@@ -234,10 +234,10 @@ QPushButton:pressed {
         transition: background-color 0.3s; /* Плавный переход цвета фона */
     }
     QPushButton:hover {
-        background-color: #45a049; /* Более темный зеленый при наведении */
+        background-color: #4d90bd; /* Более темный зеленый при наведении */
     }
     QPushButton:pressed {
-        background-color: #388e3c; /* Еще более темный зеленый при нажатии */
+        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
     }
 
 </string>
@@ -265,7 +265,7 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">  QPushButton {
-        background-color: #4CAF50; /* Зеленый фон */
+        background-color: #5DADE2; /* Зеленый фон */
         border: none; /* Без рамки */
         color: white; /* Белый текст */
         padding: 15px 32px; /* Отступы */
@@ -279,10 +279,10 @@ QPushButton:pressed {
         transition: background-color 0.3s; /* Плавный переход цвета фона */
     }
     QPushButton:hover {
-        background-color: #45a049; /* Более темный зеленый при наведении */
+        background-color: #4d90bd; /* Более темный зеленый при наведении */
     }
     QPushButton:pressed {
-        background-color: #388e3c; /* Еще более темный зеленый при нажатии */
+        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
     }
 
 </string>
@@ -304,16 +304,13 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true"> QTextEdit {
-        background-color: #f5f5f5; /* Светло-серый фон */
-        border: 1px solid #ccc; /* Светло-серая граница */
+        background-color: #e0dede; /* Светло-серый фон */
         border-radius: 10px; /* Скругление углов */
         padding: 10px; /* Внутренние отступы */
         font-size: 14px; /* Размер шрифта */
         color: #333; /* Цвет текста */
     }
-    QTextEdit:focus {
-        border: 1px solid #4CAF50; /* Зеленая граница при фокусе */
-    }
+
 
 </string>
       </property>
@@ -340,7 +337,7 @@ QPushButton:pressed {
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-    background-color: #8c1616; /* Зеленый фон */
+    background-color: #d96c6c; /* Красный фон */
     border: none; /* Без рамки */
     color: white; /* Белый текст */
     padding: 15px 32px; /* Отступы */
@@ -356,11 +353,11 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: #6b1111; /* Более темный зеленый при наведении */
+    background-color: #c26161; /* Более темный красный при наведении */
 }
 
 QPushButton:pressed {
-    background-color: #5c1010; /* Еще более темный зеленый при нажатии */
+    background-color: #944b4b; /* Еще более темный красный при нажатии */
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
 }
 </string>
