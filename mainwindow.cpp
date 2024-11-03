@@ -6,6 +6,9 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QRandomGenerator>
+#include <QCryptographicHash>
+#include <QFile>
+#include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -18,6 +21,68 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::masterPassword(){
+    bool ok;
+    QStringList passwords = {"Add your password", "Generate password"};
+    QString masterPass = QInputDialog::getItem(this, tr("Set Master Password"), tr("Choose: "), passwords, 0, false, &ok);
+    if(!ok || masterPass.isEmpty()){
+        return;
+    }
+
+    QString password;
+    if(masterPass == "Generate password"){
+        password = passGeneration(18);
+        QMessageBox::information(this, "Generated Password", "Generated password: " + password);
+    } else {
+        password = QInputDialog::getText(this, "Add Password", "Enter password:");
+    }
+
+    QByteArray hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
+
+    QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
+    settings.setValue("MasterPasswordHash", QString(hashedPass.toHex()));
+    QMessageBox::information(this, "Successful", "Master password set.");
+}
+
+
+bool MainWindow::verifyMasterPass(const QString &inputPass) {
+    QByteArray inputHashed = QCryptographicHash::hash(inputPass.toUtf8(), QCryptographicHash::Sha256);
+
+    QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
+    QString savedHashedHex = settings.value("MasterPasswordHash", "").toString();
+    if(savedHashedHex.isEmpty()){
+        return false;
+    }
+
+    QByteArray savedHashed = QByteArray::fromHex(savedHashedHex.toUtf8());
+
+    return inputHashed == savedHashed;
+}
+
+bool MainWindow::checkMasterPass(){
+    QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
+    if(!settings.contains("MasterPasswordHash")){
+        masterPassword();
+    }
+
+    while (true) {
+        bool ok;
+        QString masterPass = QInputDialog::getText(this, tr("Input Master Password"), tr("Master Password:"), QLineEdit::Password, "", &ok);
+
+        if (!ok) {
+             QApplication::quit();
+            return false;
+        }
+
+        if (masterPass.isEmpty() || !verifyMasterPass(masterPass)) {
+            QMessageBox::critical(this, "Error", "Wrong Master Password. Please try again.");
+            continue;
+        }
+        break;
+    }
+    return true;
 }
 
 void MainWindow::initDatabase(){
@@ -57,6 +122,20 @@ void MainWindow::on_generateButton_clicked(){
     int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), begin, min, max, 1, &ok);
     if (!ok) return;
 
+    QString password = passGeneration(passwordSize);
+    QMessageBox::information(this, "Generated Password", "Generated password: " + password);
+
+    bool save = QMessageBox::question(this, "Save Password", "Do you want to save the password?") == QMessageBox::Yes;
+    if (save){
+        QString savedPass = QInputDialog::getText(this, "Save Password", "What is this password for?");
+        if (!savedPass.isEmpty()){
+            savePassword(savedPass, password);
+            QMessageBox::information(this, "Password Saved", "Password saved successfully.");
+        }
+    }
+}
+
+QString MainWindow::passGeneration(int passwordSize){
     char symbols[] = {
                       'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                       'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
@@ -72,16 +151,7 @@ void MainWindow::on_generateButton_clicked(){
         password += symbols[randomIndex];
     }
 
-    QMessageBox::information(this, "Generated Password", "Generated password: " + password);
-
-    bool save = QMessageBox::question(this, "Save Password", "Do you want to save the password?") == QMessageBox::Yes;
-    if (save){
-        QString savedPass = QInputDialog::getText(this, "Save Password", "What is this password for?");
-        if (!savedPass.isEmpty()){
-            savePassword(savedPass, password);
-            QMessageBox::information(this, "Password Saved", "Password saved successfully.");
-        }
-    }
+    return password;
 }
 
 void MainWindow::chooseDiff(int &begin, int &min, int &max, bool &ok){

@@ -15,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    bool checkMasterPass();
 
 private slots:
     void on_generateButton_clicked();
@@ -33,6 +34,9 @@ private:
     void loadPasswords();
     void savePassword(const QString &name, const QString &password);
     void initDatabase();
+    void masterPassword();
+    bool verifyMasterPass(const QString &inputPass);
+    QString passGeneration(int passwordSize);
 };
 
 #endif // MAINWINDOW_H
