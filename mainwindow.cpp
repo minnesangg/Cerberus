@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "qaesencryption.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QSqlDatabase>
@@ -23,7 +24,10 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
 void MainWindow::masterPassword(){
+    // добавить "соль"
     bool ok;
     QStringList passwords = {"Add your password", "Generate password"};
     QString masterPass = QInputDialog::getItem(this, tr("Set Master Password"), tr("Choose: "), passwords, 0, false, &ok);
@@ -48,15 +52,8 @@ void MainWindow::masterPassword(){
 
 
 bool MainWindow::verifyMasterPass(const QString &inputPass) {
-    QByteArray inputHashed = QCryptographicHash::hash(inputPass.toUtf8(), QCryptographicHash::Sha256);
-
-    QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
-    QString savedHashedHex = settings.value("MasterPasswordHash", "").toString();
-    if(savedHashedHex.isEmpty()){
-        return false;
-    }
-
-    QByteArray savedHashed = QByteArray::fromHex(savedHashedHex.toUtf8());
+    QByteArray inputHashed = QCryptographicHash::hash(inputPass.toUtf8(), QCryptographicHash::Sha256);   
+    QByteArray savedHashed = getMasterPasswordHash();
 
     return inputHashed == savedHashed;
 }
@@ -85,6 +82,17 @@ bool MainWindow::checkMasterPass(){
     return true;
 }
 
+QByteArray MainWindow::getMasterPasswordHash() {
+    QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
+    QString savedHashedHex = settings.value("MasterPasswordHash", "").toString();
+
+    if(savedHashedHex.isEmpty()){
+        return QByteArray();
+    }
+    return QByteArray::fromHex(savedHashedHex.toUtf8());
+}
+
+
 void MainWindow::initDatabase(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(QCoreApplication::applicationDirPath() + "/passwords.db");
@@ -99,17 +107,6 @@ void MainWindow::initDatabase(){
                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                "name TEXT UNIQUE, "
                "password TEXT)");
-}
-
-void MainWindow::loadPasswords(){
-    savedPasswords.clear();
-    QSqlQuery query("SELECT name, password FROM passwords");
-
-    while (query.next()) {
-        QString key = query.value(0).toString();
-        QString value = query.value(1).toString();
-        savedPasswords[key.toStdString()] = value.toStdString();
-    }
 }
 
 void MainWindow::on_generateButton_clicked(){
@@ -176,47 +173,124 @@ void MainWindow::chooseDiff(int &begin, int &min, int &max, bool &ok){
     }
 }
 
-void MainWindow::savePassword(const QString &name, const QString &password){
+void MainWindow::loadPasswords() {
+    savedPasswords.clear();
+
+    QSqlQuery query;
+    query.prepare("SELECT name, password FROM passwords");
+
+    if (!query.exec()) {
+        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        return;
+    }
+
+    while (query.next()) {
+        QString name = query.value(0).toString();
+        QByteArray encryptedData = query.value(1).toByteArray();
+
+        QByteArray iv = encryptedData.left(16);
+
+        QByteArray encryptedPassword = encryptedData.mid(16);
+
+        QByteArray masterKey = getMasterPasswordHash();
+
+        QByteArray decryptedPassword;
+        if (masterKey.size() == 16) {
+            decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_128, QAESEncryption::CBC,
+                                                        encryptedPassword, masterKey, iv);
+        } else {
+            decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC,
+                                                        encryptedPassword, masterKey, iv);
+        }
+
+        int endIndex = decryptedPassword.indexOf('\0');
+        if (endIndex != -1) {
+            decryptedPassword.truncate(endIndex);
+        }
+
+        QByteArray cleanedPassword;
+        for (char c : decryptedPassword) {
+            if (c >= 32 && c <= 126) {
+                cleanedPassword.append(c);
+            }
+        }
+
+        QString password = QString::fromUtf8(cleanedPassword);
+
+        savedPasswords[name] = password;
+    }
+}
+
+void MainWindow::savePassword(const QString &name, const QString &password) {
+    QByteArray masterKey = getMasterPasswordHash();
+    QByteArray IV = generateIV(16);
+    QByteArray encryptedPassword;
+    if(masterKey.size()== 16){
+    encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_128, QAESEncryption::CBC,
+                                                         password.toUtf8(), masterKey, IV);
+    } else {
+        encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC,
+                                                             password.toUtf8(), masterKey, IV);
+    }
+
+    if (encryptedPassword.isEmpty()) {
+        QMessageBox::critical(this, "Encryption Error", "Failed to encrypt the password.");
+        return;
+    }
+
+    QByteArray encryptedWithIV = IV + encryptedPassword;
+
     QSqlQuery query;
     query.prepare("INSERT OR REPLACE INTO passwords (name, password) VALUES (:name, :password)");
     query.bindValue(":name", name);
-    query.bindValue(":password", password);
+    query.bindValue(":password", encryptedWithIV);
 
     if (!query.exec()) {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
     }
 }
 
-void MainWindow::on_showButton_clicked(){
+QByteArray MainWindow::generateIV(int size){
+    QByteArray IV;
+    IV.resize(size);
+    for (int i = 0; i < size; ++i) {
+        IV[i] = static_cast<char>(QRandomGenerator::global()->bounded(256)); // Генерация байта в диапазоне 0-255
+    }
+
+    return IV;
+}
+
+void MainWindow::on_showButton_clicked() {
     loadPasswords();
 
-    if (savedPasswords.empty()){
+    if (savedPasswords.isEmpty()) {
         QMessageBox::information(this, "Saved Passwords", "No saved passwords.");
         ui->passwordOutput->clear();
         return;
     }
 
     QString allPasswords;
-    for (const auto &pair : savedPasswords){
-        allPasswords += QString::fromStdString("For " + pair.first + ": " + pair.second + "\n");
+    for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it) {
+         qDebug() << "Displaying password for " << it.key() << ": " << it.value();
+        allPasswords += "For " + it.key() + ": " + it.value() + "\n";
     }
 
     ui->passwordOutput->setPlainText(allPasswords);
 }
 
-void MainWindow::on_findButton_clicked(){
+void MainWindow::on_findButton_clicked() {
     QString key = QInputDialog::getText(this, "Find Password", "Which password do you need?");
     if (key.isEmpty()) return;
 
-    auto it = savedPasswords.find(key.toStdString());
-    if (it != savedPasswords.end()){
-        QMessageBox::information(this, "Password Found", "Password for " + key + ": " + QString::fromStdString(it->second));
-    } else{
+    auto it = savedPasswords.find(key);
+    if (it != savedPasswords.end()) {
+        QMessageBox::information(this, "Password Found", "Password for " + key + ": " + it.value());
+    } else {
         QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
     }
 }
 
-void MainWindow::on_deleteButton_clicked(){
+void MainWindow::on_deleteButton_clicked() {
     QString key = QInputDialog::getText(this, "Delete Password", "Which password do you want to delete?");
     if (key.isEmpty()) return;
 
@@ -224,16 +298,16 @@ void MainWindow::on_deleteButton_clicked(){
     query.prepare("DELETE FROM passwords WHERE name = :name");
     query.bindValue(":name", key);
 
-    if (query.exec()){
-        savedPasswords.erase(key.toStdString());
+    if (query.exec()) {
+        savedPasswords.remove(key);
         QMessageBox::information(this, "Password Deleted", "Password for " + key + " has been deleted.");
-    } else{
+    } else {
         QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
     }
     on_showButton_clicked();
 }
 
-void MainWindow::on_addButton_clicked(){
+void MainWindow::on_addButton_clicked() {
     QString whichPassword = QInputDialog::getText(this, "Add Password", "Which password do you want to add?");
     if (whichPassword.isEmpty()) return;
 

@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <unordered_map>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,7 +28,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    std::unordered_map<std::string, std::string> savedPasswords;
+    QMap<QString, QString> savedPasswords;
 
     void loadPasswords();
     void savePassword(const QString &name, const QString &password);
@@ -37,6 +36,8 @@ private:
     void masterPassword();
     bool verifyMasterPass(const QString &inputPass);
     QString passGeneration(int passwordSize);
+    QByteArray getMasterPasswordHash();
+    QByteArray generateIV(int size);
 };
 
 #endif // MAINWINDOW_H

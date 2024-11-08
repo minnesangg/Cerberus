@@ -1,7 +1,7 @@
-QT       += core gui sql
+QT += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+LIBS += -L"D:/passwordGenerator/qt/Password Manager"-lQAESEncryption
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    qaesencryption.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    qaesencryption.h
 
 FORMS += \
     mainwindow.ui
