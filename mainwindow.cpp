@@ -226,11 +226,11 @@ void MainWindow::savePassword(const QString &name, const QString &password) {
     QByteArray IV = generateIV(16);
     QByteArray encryptedPassword;
     if(masterKey.size()== 16){
-    encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_128, QAESEncryption::CBC,
-                                                         password.toUtf8(), masterKey, IV);
+        encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_128, QAESEncryption::CBC,
+                                                  password.toUtf8(), masterKey, IV);
     } else {
         encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC,
-                                                             password.toUtf8(), masterKey, IV);
+                                                  password.toUtf8(), masterKey, IV);
     }
 
     if (encryptedPassword.isEmpty()) {
@@ -271,7 +271,6 @@ void MainWindow::on_showButton_clicked() {
 
     QString allPasswords;
     for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it) {
-         qDebug() << "Displaying password for " << it.key() << ": " << it.value();
         allPasswords += "For " + it.key() + ": " + it.value() + "\n";
     }
 
