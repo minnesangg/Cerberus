@@ -36,7 +36,7 @@ Makefile*
 *.prl
 
 /build
-/Qt-Secret
+Qt-Secret/
 
 # Qt unit tests
 target_wrapper.*
