@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "masterpassword.h"
+#include "database.h"
+#include "password_generator.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,7 +17,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    bool checkMasterPass();
 
 private slots:
     void on_generateButton_clicked();
@@ -22,22 +24,13 @@ private slots:
     void on_findButton_clicked();
     void on_deleteButton_clicked();
     void on_addButton_clicked();
-    void chooseDiff(int &begin, int &min, int &max, bool &ok);
-
     void on_clearButton_clicked();
 
 private:
     Ui::MainWindow *ui;
-    QMap<QString, QString> savedPasswords;
-
-    void loadPasswords();
-    void savePassword(const QString &name, const QString &password);
-    void initDatabase();
-    void masterPassword();
-    bool verifyMasterPass(const QString &inputPass);
-    QString passGeneration(int passwordSize);
-    QByteArray getMasterPasswordHash();
-    QByteArray generateIV(int size);
+    MasterPassword masterPasswordHandler;
+    DatabaseManager databaseManager;
+    PasswordGenerator passwordGenerator;
 };
 
 #endif // MAINWINDOW_H
