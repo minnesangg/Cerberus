@@ -37,6 +37,7 @@ void MainWindow::on_generateButton_clicked(){
             QMessageBox::information(this, "Password Saved", "Password saved successfully.");
         }
     }
+    on_showButton_clicked();
 }
 
 void MainWindow::on_showButton_clicked() {
@@ -94,6 +95,7 @@ void MainWindow::on_addButton_clicked() {
 
     databaseManager.savePassword(whichPassword, password);
     QMessageBox::information(this, "Password Added", "Password added successfully.");
+    on_showButton_clicked();
 }
 
 void MainWindow::on_clearButton_clicked(){
