@@ -2,13 +2,6 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QInputDialog>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QRandomGenerator>
-#include <QCryptographicHash>
-#include <QFile>
-#include <QSettings>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
