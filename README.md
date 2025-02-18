@@ -6,6 +6,8 @@ All passwords are **stored only on your device and never sent anywhere**, ensuri
 
 Future updates will include **password categories, improved UI/UX, Have I Been Pwned API integration, and more.**
 
+![logotype](https://github.com/user-attachments/assets/483e8aa4-2f96-4f6b-b0d8-d57dd951ca4f)
+
 ## 📌 Features
 
 ✅ Generate random passwords with customizable length and complexity.
@@ -20,7 +22,7 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 
 ✅ Minimalistic and user-friendly interface.
 
-## 🚀 Future Improvements
+## 🚀Future Improvements
 
 🔹 Organizing passwords into categories (e.g., "Work", "Social Media").
 
@@ -58,7 +60,7 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 2. Open the project in Qt Creator.
 3. Build and run.
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 
@@ -122,6 +124,6 @@ This project is licensed under the MIT License.
 2. Откройте проект в Qt Creator.
 3. Соберите и запустите.
 
-📜 Лицензия
+## 📜 Лицензия
 
 Проект распространяется под MIT License.
