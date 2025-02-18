@@ -3,6 +3,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QByteArray>
+#include <QString>
 #include <QCoreApplication>
 #include <QMessageBox>
 #include <QSqlError>
@@ -10,6 +11,19 @@
 #include "masterpassword.h"
 
 DatabaseManager::DatabaseManager() {}
+
+bool DatabaseManager::deletePassword(const QString &name){
+    QSqlQuery query;
+    query.prepare("DELETE FROM passwords WHERE name = :name");
+    query.bindValue(":name", name);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
+        return false;
+    }
+    savedPasswords.remove(name);
+    return true;
+}
 
 QMap<QString, QString> DatabaseManager::getSavedPasswords() const {
     return savedPasswords;
@@ -54,13 +68,8 @@ void DatabaseManager::loadPasswords() {
         QByteArray masterKey = master_password.getMasterPasswordHash();
 
         QByteArray decryptedPassword;
-        if (masterKey.size() == 16) {
-            decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_128, QAESEncryption::CBC,
-                                                        encryptedPassword, masterKey, iv);
-        } else {
-            decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC,
-                                                        encryptedPassword, masterKey, iv);
-        }
+
+        decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC, encryptedPassword, masterKey, iv);
 
         int endIndex = decryptedPassword.indexOf('\0');
         if (endIndex != -1) {
@@ -85,13 +94,8 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     QByteArray masterKey =  master_password.getMasterPasswordHash();
     QByteArray IV =  master_password.generateIV(16);
     QByteArray encryptedPassword;
-    if(masterKey.size()== 16){
-        encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_128, QAESEncryption::CBC,
-                                                  password.toUtf8(), masterKey, IV);
-    } else {
-        encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC,
-                                                  password.toUtf8(), masterKey, IV);
-    }
+
+    encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC, password.toUtf8(), masterKey, IV);
 
     if (encryptedPassword.isEmpty()) {
         QMessageBox::critical(this, "Encryption Error", "Failed to encrypt the password.");
