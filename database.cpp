@@ -17,7 +17,7 @@ bool DatabaseManager::deletePassword(const QString &name) {
     query.prepare("SELECT COUNT(*) FROM passwords WHERE name = :name");
     query.bindValue(":name", name);
 
-    if (!query.exec()) {
+    if (!query.exec()) { 
         QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
         return false;
     }
