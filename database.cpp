@@ -12,8 +12,22 @@
 
 DatabaseManager::DatabaseManager() {}
 
-bool DatabaseManager::deletePassword(const QString &name){
+bool DatabaseManager::deletePassword(const QString &name) {
     QSqlQuery query;
+    query.prepare("SELECT COUNT(*) FROM passwords WHERE name = :name");
+    query.bindValue(":name", name);
+
+    if (!query.exec()) {
+        QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
+        return false;
+    }
+
+    query.next();
+    if (query.value(0).toInt() == 0) {
+        QMessageBox::warning(nullptr, "Not Found", "Password for " + name + " not found.");
+        return false;
+    }
+
     query.prepare("DELETE FROM passwords WHERE name = :name");
     query.bindValue(":name", name);
 
@@ -21,6 +35,7 @@ bool DatabaseManager::deletePassword(const QString &name){
         QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
         return false;
     }
+
     savedPasswords.remove(name);
     return true;
 }
@@ -51,7 +66,6 @@ void DatabaseManager::loadPasswords() {
 
     QSqlQuery query;
     query.prepare("SELECT name, password FROM passwords");
-
     if (!query.exec()) {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
         return;
@@ -60,16 +74,10 @@ void DatabaseManager::loadPasswords() {
     while (query.next()) {
         QString name = query.value(0).toString();
         QByteArray encryptedData = query.value(1).toByteArray();
-
         QByteArray iv = encryptedData.left(16);
-
         QByteArray encryptedPassword = encryptedData.mid(16);
-
         QByteArray masterKey = master_password.getMasterPasswordHash();
-
-        QByteArray decryptedPassword;
-
-        decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC, encryptedPassword, masterKey, iv);
+        QByteArray decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC, encryptedPassword, masterKey, iv);
 
         int endIndex = decryptedPassword.indexOf('\0');
         if (endIndex != -1) {
@@ -84,18 +92,15 @@ void DatabaseManager::loadPasswords() {
         }
 
         QString password = QString::fromUtf8(cleanedPassword);
-
         savedPasswords[name] = password;
     }
 }
 
 void DatabaseManager::savePassword(const QString &name, const QString &password) {
     MasterPassword master_password;
-    QByteArray masterKey =  master_password.getMasterPasswordHash();
-    QByteArray IV =  master_password.generateIV(16);
-    QByteArray encryptedPassword;
-
-    encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC, password.toUtf8(), masterKey, IV);
+    QByteArray masterKey = master_password.getMasterPasswordHash();
+    QByteArray IV = master_password.generateIV(16);
+    QByteArray encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC, password.toUtf8(), masterKey, IV);
 
     if (encryptedPassword.isEmpty()) {
         QMessageBox::critical(this, "Encryption Error", "Failed to encrypt the password.");
@@ -103,7 +108,6 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     }
 
     QByteArray encryptedWithIV = IV + encryptedPassword;
-
     QSqlQuery query;
     query.prepare("INSERT OR REPLACE INTO passwords (name, password) VALUES (:name, :password)");
     query.bindValue(":name", name);
@@ -112,4 +116,6 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     if (!query.exec()) {
         QMessageBox::critical(this, "Database Error", query.lastError().text());
     }
+    savedPasswords[name] = password;
 }
+
