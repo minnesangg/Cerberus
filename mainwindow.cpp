@@ -43,17 +43,18 @@ void MainWindow::on_generateButton_clicked(){
 void MainWindow::on_showButton_clicked() {
     databaseManager.loadPasswords();
 
-    const auto& passwords = databaseManager.getSavedPasswords();
-    if (passwords.isEmpty()) {
+    if (databaseManager.getSavedPasswords().isEmpty()) {
         QMessageBox::information(this, "Saved Passwords", "No saved passwords.");
         ui->passwordOutput->clear();
         return;
     }
 
     QString allPasswords;
-    for (auto it = passwords.cbegin(); it != passwords.cend(); ++it) {
+    auto savedPasswords = databaseManager.getSavedPasswords();
+    for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it) {
         allPasswords += "For " + it.key() + ": " + it.value() + "\n";
     }
+
     ui->passwordOutput->setPlainText(allPasswords);
 }
 
@@ -61,9 +62,10 @@ void MainWindow::on_findButton_clicked() {
     QString key = QInputDialog::getText(this, "Find Password", "Which password do you need?");
     if (key.isEmpty()) return;
 
-    const auto& passwords = databaseManager.getSavedPasswords();
-    if (passwords.contains(key)) {
-        QMessageBox::information(this, "Password Found", "Password for " + key + ": " + passwords.value(key));
+    auto savedPasswords = databaseManager.getSavedPasswords();
+    auto it = savedPasswords.find(key);
+    if (it != savedPasswords.end()) {
+        QMessageBox::information(this, "Password Found", "Password for " + key + ": " + it.value());
     } else {
         QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
     }
@@ -73,16 +75,21 @@ void MainWindow::on_deleteButton_clicked() {
     QString key = QInputDialog::getText(this, "Delete Password", "Which password do you want to delete?");
     if (key.isEmpty()) return;
 
-    const auto& passwords = databaseManager.getSavedPasswords();
-    if (!passwords.contains(key)) {
-        QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
-        return;
-    }
+    QSqlQuery query;
+    query.prepare("DELETE FROM passwords WHERE name = :name");
+    query.bindValue(":name", key);
 
-    if (databaseManager.deletePassword(key)) {
-        QMessageBox::information(this, "Password Deleted", "Password for " + key + " has been deleted.");
-        on_showButton_clicked();
+    if (query.exec()) {
+        if (query.numRowsAffected() > 0) {
+            QMessageBox::information(this, "Password Deleted", "Password for " + key + " has been deleted.");
+            databaseManager.getSavedPasswords().remove(key);
+        } else {
+            QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
+        }
+    } else {
+        QMessageBox::critical(this, "Database Error", "Failed to delete password.");
     }
+    on_showButton_clicked();
 }
 
 void MainWindow::on_addButton_clicked() {
