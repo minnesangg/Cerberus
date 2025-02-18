@@ -37,9 +37,12 @@ void MainWindow::on_generateButton_clicked(){
             QMessageBox::information(this, "Password Saved", "Password saved successfully.");
         }
     }
+    on_showButton_clicked();
 }
 
 void MainWindow::on_showButton_clicked() {
+    databaseManager.loadPasswords();
+
     const auto& passwords = databaseManager.getSavedPasswords();
     if (passwords.isEmpty()) {
         QMessageBox::information(this, "Saved Passwords", "No saved passwords.");
@@ -78,7 +81,7 @@ void MainWindow::on_deleteButton_clicked() {
 
     if (databaseManager.deletePassword(key)) {
         QMessageBox::information(this, "Password Deleted", "Password for " + key + " has been deleted.");
-        on_showButton_clicked(); // Обновляем список
+        on_showButton_clicked();
     }
 }
 
@@ -91,6 +94,7 @@ void MainWindow::on_addButton_clicked() {
 
     databaseManager.savePassword(whichPassword, password);
     QMessageBox::information(this, "Password Added", "Password added successfully.");
+    on_showButton_clicked();
 }
 
 void MainWindow::on_clearButton_clicked(){
