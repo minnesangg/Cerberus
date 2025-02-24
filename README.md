@@ -30,10 +30,6 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 
 🔹 Integration with **Have I Been Pwned API** to check for leaked passwords.
 
-🔹 Auto-fill passwords in forms.
-
-🔹 Cross-device synchronization.
-
 🔹 Backup and restore functionality for passwords and settings.
 
 ## 🛠️ Technologies
@@ -55,7 +51,6 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 1. Clone the repository:
    ```sh
    git clone https://gitlab.com/username/cerberus.git
-   cd cerberus
    ```
 2. Open the project in Qt Creator.
 3. Build and run.
@@ -94,10 +89,6 @@ This project is licensed under the MIT License.
 
 🔹 Интеграция с **Have I Been Pwned API** для проверки утечек паролей.
 
-🔹 Автозаполнение паролей в формах.
-
-🔹 Синхронизация между устройствами.
-
 🔹 Создание резервных копий паролей и настроек.
 
 ## 🛠️ Технологии
@@ -119,7 +110,6 @@ This project is licensed under the MIT License.
 1. Клонируйте репозиторий:
    ```sh
    git clone https://gitlab.com/username/cerberus.git
-   cd cerberus
    ```
 2. Откройте проект в Qt Creator.
 3. Соберите и запустите.
