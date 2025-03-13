@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DialogLogin</class>
+ <widget class="QDialog" name="DialogLogin">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>14</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="loginButton">
+   <property name="geometry">
+    <rect>
+     <x>230</x>
+     <y>280</y>
+     <width>141</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+    background-color: #4CAF50; /* Зеленый цвет для кнопки */
+    color: white; /* Белый текст */
+    font-size: 18px; /* Размер шрифта */
+    font-weight: bold; /* Жирный текст */
+    border: none; /* Без рамки */
+    padding: 12px 24px; /* Внутренние отступы */
+    border-radius: 25px; /* Скругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Плавное изменение цвета фона и тени */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Более темный оттенок при наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Более сильная тень */
+}
+
+QPushButton:pressed {
+    background-color: #388e3c; /* Темный оттенок при нажатии */
+    box-shadow: none; /* Убираем тень при нажатии */
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Login</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cerberusLabel">
+   <property name="geometry">
+    <rect>
+     <x>-30</x>
+     <y>10</y>
+     <width>650</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>CERBERUS</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cerberusDesc">
+   <property name="geometry">
+    <rect>
+     <x>-20</x>
+     <y>60</y>
+     <width>650</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Secure storage for your passwords</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="passwordLine">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>180</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+    background-color: #f0f0f0; /* Светлый фон для поля */
+    border: 1px solid #ccc; /* Легкая рамка */
+    color: #333; /* Темный текст */
+    font-size: 16px; /* Размер шрифта */
+    padding: 12px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругленные углы */
+    transition: border-color 0.3s; /* Плавное изменение цвета рамки */
+}
+
+QLineEdit:focus {
+    border-color: #4CAF50; /* Зеленая рамка при фокусе */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Легкая зеленая тень при фокусе */
+}
+</string>
+   </property>
+   <property name="placeholderText">
+    <string>Enter your password</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

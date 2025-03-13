@@ -13,7 +13,7 @@ public:
     MasterPassword();
     void masterPassword();
     bool verifyMasterPass(const QString &inputPass);
-    bool checkMasterPass();
+    bool checkMasterPass(QString password);
     QByteArray getMasterPasswordHash();
     QByteArray generateIV(int size);
 private:
