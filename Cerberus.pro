@@ -12,6 +12,7 @@ CONFIG += c++17
 
 SOURCES += \
     database.cpp \
+    dialoglogin.cpp \
     main.cpp \
     mainwindow.cpp \
     masterpassword.cpp \
@@ -22,12 +23,14 @@ include ($$PWD/Qt-Secret/src/Qt-Secret.pri)
 
 HEADERS += \
     database.h \
+    dialoglogin.h \
     mainwindow.h \
     masterpassword.h \
     password_generator.h
 
 
 FORMS += \
+    dialoglogin.ui \
     mainwindow.ui
 
 # Default rules for deployment.

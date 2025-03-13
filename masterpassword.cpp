@@ -43,29 +43,21 @@ bool MasterPassword::verifyMasterPass(const QString &inputPass) {
     return inputHashed == savedHashed;
 }
 
-bool MasterPassword::checkMasterPass(){
+bool MasterPassword::checkMasterPass(QString password) {
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
-    if(!settings.contains("MasterPasswordHash")){
+    if(!settings.contains("MasterPasswordHash")) {
         masterPassword();
+        return false;
     }
 
-    while (true) {
-        bool ok;
-        QString masterPass = QInputDialog::getText(this, tr("Input Master Password"), tr("Master Password:"), QLineEdit::Password, "", &ok);
-
-        if (!ok) {
-            QApplication::quit();
-            return false;
-        }
-
-        if (masterPass.isEmpty() || !verifyMasterPass(masterPass)) {
-            QMessageBox::critical(this, "Error", "Wrong Master Password. Please try again.");
-            continue;
-        }
-        break;
+    if (!verifyMasterPass(password)) {
+        QMessageBox::critical(this, "Error", "Wrong Master Password. Please try again.");
+        return false;
     }
+
     return true;
 }
+
 
 QByteArray MasterPassword::getMasterPasswordHash() {
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
