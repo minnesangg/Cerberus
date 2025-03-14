@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>categories.png</file>
+        <file>check.png</file>
+        <file>generate.png</file>
+        <file>manage.png</file>
+        <file>settings.png</file>
+    </qresource>
+</RCC>

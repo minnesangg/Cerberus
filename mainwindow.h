@@ -28,6 +28,8 @@ private slots:
 
     void changePage(int index);
 
+    void on_generateButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MasterPassword masterPasswordHandler;

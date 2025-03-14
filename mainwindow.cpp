@@ -13,24 +13,26 @@ MainWindow::MainWindow(QWidget *parent)
     databaseManager.initDatabase();
     databaseManager.loadPasswords();
 
+    ui->listWidget->setIconSize(QSize(32, 32));
+
     QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
-    //generateItem->setIcon(QIcon(":/icons/generate.png"));
+    generateItem->setIcon(QIcon(":/generate.png"));
     ui->listWidget->addItem(generateItem);
 
     QListWidgetItem *manageItem = new QListWidgetItem("Manage Passwords");
-    //manageItem->setIcon(QIcon(":/icons/manage.png"));
+    manageItem->setIcon(QIcon(":/manage.png"));
     ui->listWidget->addItem(manageItem);
 
     QListWidgetItem *categoriesItem = new QListWidgetItem("Categories");
-    //categoriesItem->setIcon(QIcon(":/icons/categories.png"));
+    categoriesItem->setIcon(QIcon(":/categories.png"));
     ui->listWidget->addItem(categoriesItem);
 
     QListWidgetItem *checkItem = new QListWidgetItem("Check Password");
-    //checkItem->setIcon(QIcon(":/icons/check.png"));
+    checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
 
     QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
-    //settingsItem->setIcon(QIcon(":/icons/settings.png"));
+    settingsItem->setIcon(QIcon(":/settings.png"));
     ui->listWidget->addItem(settingsItem);
 
     ui->stackedWidget->setCurrentWidget(ui->generatePage);
@@ -43,6 +45,12 @@ MainWindow::MainWindow(QWidget *parent)
         qApp->setStyleSheet(ts.readAll());
     }
 
+    ui->generatedLine->setReadOnly(true);
+
+    ui->copyBufferButton->setIcon(QIcon(":/bufferCopy.png"));
+    ui->copyBufferButton->setIconSize(QSize(32, 32));
+    ui->copyBufferButton->setFlat(true);
+    ui->copyBufferButton->setText("");
 }
 
 MainWindow::~MainWindow()
@@ -71,6 +79,17 @@ void MainWindow::changePage(int index)
     default:
         break;
     }
+}
+
+void MainWindow::on_generateButton_clicked()
+{
+    int size = ui->lengthBox->value();
+
+    PasswordGenerator password_generator;
+    QString generated_password = password_generator.passGeneration(size);
+    ui->generatedLine->setText(generated_password);
+
+    ui->lengthBox->setValue(8);
 }
 
 // void MainWindow::on_generateButton_clicked(){
@@ -164,3 +183,6 @@ void MainWindow::changePage(int index)
 // void MainWindow::on_clearButton_clicked(){
 //     ui->passwordOutput->clear();
 // }
+
+
+

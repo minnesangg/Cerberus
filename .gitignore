@@ -13,6 +13,9 @@
 *.dll
 *.dylib
 
+*.png
+*.ico
+
 # Qt-es
 object_script.*.Release
 object_script.*.Debug
