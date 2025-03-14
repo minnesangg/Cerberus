@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1000</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,337 +35,126 @@
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="1" column="0">
-     <widget class="QTextEdit" name="passwordOutput">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>1</horstretch>
-        <verstretch>1</verstretch>
-       </sizepolicy>
-      </property>
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QListWidget" name="listWidget">
       <property name="styleSheet">
-       <string notr="true"> QTextEdit {
-        background-color: #e0dede; /* Светло-серый фон */
-        border-radius: 10px; /* Скругление углов */
-        padding: 10px; /* Внутренние отступы */
-        font-size: 14px; /* Размер шрифта */
-        color: #333; /* Цвет текста */
-    }
+       <string notr="true">QListWidget {
+    background-color: #2b2b2b;  /* Темный фон для списка */
+    border: none;
+    border-right: 2px solid #444d58; /* Разделительная линия справа */
+    font-size: 16px;
+}
 
+QListWidget::item {
+    background-color: #2b2b2b;  /* Темный фон для каждого элемента */
+    color: #d1d1d1;              /* Бело-серый текст */
+    border-bottom: 1px solid #444d58; /* Линия между кнопками */
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
 
-</string>
-      </property>
-      <property name="readOnly">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QPushButton" name="clearButton">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="font">
-       <font>
-        <family>Gill Sans MT</family>
-        <pointsize>-1</pointsize>
-        <underline>false</underline>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #d96c6c; /* Красный фон */
-    border: none; /* Без рамки */
-    color: white; /* Белый текст */
-    padding: 15px 32px; /* Отступы */
-    text-align: center; /* Выравнивание текста по центру */
-    text-decoration: none; /* Без подчеркивания текста */
-    display: inline-block; /* Для блоков */
-    font-size: 20px; /* Размер шрифта */
-    margin: 4px 2px; /* Отступы вокруг кнопки */
-    cursor: pointer; /* Курсор-указатель при наведении */
-    border-radius: 15px; /* Скругление углов */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Плавный переход для фона и тени */
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Добавление тени */
+QListWidget::item:selected {
+    background-color: #6fcf97;  /* Зеленый фон для выбранного элемента */
+    color: #1e1e1e;             /* Тёмный текст на зеленом фоне */
+}
+
+QPushButton {
+    background-color: #6fcf97;  /* Мягкий зеленый фон для кнопок */
+    color: #1e1e1e;             /* Тёмный текст */
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 QPushButton:hover {
-    background-color: #c26161; /* Более темный красный при наведении */
+    background-color: #5bbd88;  /* Зеленый цвет на наведении */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:pressed {
-    background-color: #944b4b; /* Еще более темный красный при нажатии */
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
+    background-color: #4aa97a;  /* Темный зеленый при нажатии */
+    box-shadow: none;
+}
+
+QPushButton:disabled {
+    background-color: #3e6b4c;  /* Цвет для отключенной кнопки */
+    color: #6c6c6c;              /* Серый текст для отключенной кнопки */
 }
 </string>
-      </property>
-      <property name="text">
-       <string>CLEAR</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="0" colspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0,0,0">
-      <property name="sizeConstraint">
-       <enum>QLayout::SetNoConstraint</enum>
-      </property>
-      <property name="leftMargin">
-       <number>240</number>
-      </property>
-      <property name="rightMargin">
-       <number>240</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="generateButton">
-        <property name="enabled">
-         <bool>true</bool>
+    <item row="0" column="1">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <widget class="QWidget" name="generatePage">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="generatingButton">
+          <property name="text">
+           <string>Generate</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="managePage">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="text">
+           <string>manage</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="categoriesPage">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>categories</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="checkPage">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="leftMargin">
+         <number>100</number>
         </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
-          <verstretch>6</verstretch>
-         </sizepolicy>
+        <property name="topMargin">
+         <number>100</number>
         </property>
-        <property name="sizeIncrement">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="baseSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #5DADE2; /* Зеленый фон */
-    border: none; /* Без рамки */
-    color: white; /* Белый текст */
-    padding: 15px 32px; /* Отступы */
-    text-align: center; /* Выравнивание текста по центру */
-    text-decoration: none; /* Без подчеркивания текста */
-    display: inline-block; /* Для блоков */
-    font-size: 20px; /* Размер шрифта */
-    margin: 4px 2px; /* Отступы вокруг кнопки */
-    cursor: pointer; /* Курсор-указатель при наведении */
-    border-radius: 15px; /* Скругление углов */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Плавный переход для фона и тени */
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Добавление тени */
-}
-
-QPushButton:hover {
-    background-color: #4d90bd; /* Более темный зеленый при наведении */
-}
-
-QPushButton:pressed {
-    background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Уменьшение тени при нажатии */
-}</string>
-        </property>
-        <property name="text">
-         <string>GENERATE PASSWORD</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="showButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">  QPushButton {
-        background-color: #5DADE2; /* Зеленый фон */
-        border: none; /* Без рамки */
-        color: white; /* Белый текст */
-        padding: 15px 32px; /* Отступы */
-        text-align: center; /* Выравнивание текста по центру */
-        text-decoration: none; /* Без подчеркивания текста */
-        display: inline-block; /* Для блоков */
-        font-size: 20px; /* Размер шрифта */
-        margin: 4px 2px; /* Отступы вокруг кнопки */
-        cursor: pointer; /* Курсор-указатель при наведении */
-        border-radius: 15px; /* Скругление углов */
-        transition: background-color 0.3s; /* Плавный переход цвета фона */
-    }
-    QPushButton:hover {
-        background-color: #4d90bd; /* Более темный зеленый при наведении */
-    }
-    QPushButton:pressed {
-        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
-    }
-
-</string>
-        </property>
-        <property name="text">
-         <string>SHOW ALL PASSWORDS</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="findButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">  QPushButton {
-        background-color: #5DADE2; /* Зеленый фон */
-        border: none; /* Без рамки */
-        color: white; /* Белый текст */
-        padding: 15px 32px; /* Отступы */
-        text-align: center; /* Выравнивание текста по центру */
-        text-decoration: none; /* Без подчеркивания текста */
-        display: inline-block; /* Для блоков */
-        font-size: 20px; /* Размер шрифта */
-        margin: 4px 2px; /* Отступы вокруг кнопки */
-        cursor: pointer; /* Курсор-указатель при наведении */
-        border-radius: 15px; /* Скругление углов */
-        transition: background-color 0.3s; /* Плавный переход цвета фона */
-    }
-    QPushButton:hover {
-        background-color: #4d90bd; /* Более темный зеленый при наведении */
-    }
-    QPushButton:pressed {
-        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
-    }
-
-</string>
-        </property>
-        <property name="text">
-         <string>FIND PASSWORD</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="deleteButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">  QPushButton {
-        background-color: #5DADE2; /* Зеленый фон */
-        border: none; /* Без рамки */
-        color: white; /* Белый текст */
-        padding: 15px 32px; /* Отступы */
-        text-align: center; /* Выравнивание текста по центру */
-        text-decoration: none; /* Без подчеркивания текста */
-        display: inline-block; /* Для блоков */
-        font-size: 20px; /* Размер шрифта */
-        margin: 4px 2px; /* Отступы вокруг кнопки */
-        cursor: pointer; /* Курсор-указатель при наведении */
-        border-radius: 15px; /* Скругление углов */
-        transition: background-color 0.3s; /* Плавный переход цвета фона */
-    }
-    QPushButton:hover {
-        background-color: #4d90bd; /* Более темный зеленый при наведении */
-    }
-    QPushButton:pressed {
-        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
-    }
-
-</string>
-        </property>
-        <property name="text">
-         <string>DELETE PASSWORD</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="addButton">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>1</horstretch>
-          <verstretch>1</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <underline>false</underline>
-          <strikeout>false</strikeout>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">  QPushButton {
-        background-color: #5DADE2; /* Зеленый фон */
-        border: none; /* Без рамки */
-        color: white; /* Белый текст */
-        padding: 15px 32px; /* Отступы */
-        text-align: center; /* Выравнивание текста по центру */
-        text-decoration: none; /* Без подчеркивания текста */
-        display: inline-block; /* Для блоков */
-        font-size: 20px; /* Размер шрифта */
-        margin: 4px 2px; /* Отступы вокруг кнопки */
-        cursor: pointer; /* Курсор-указатель при наведении */
-        border-radius: 15px; /* Скругление углов */
-        transition: background-color 0.3s; /* Плавный переход цвета фона */
-    }
-    QPushButton:hover {
-        background-color: #4d90bd; /* Более темный зеленый при наведении */
-    }
-    QPushButton:pressed {
-        background-color: #3a6e91; /* Еще более темный зеленый при нажатии */
-    }
-
-</string>
-        </property>
-        <property name="text">
-         <string>ADD YOUR PASSWORD</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+        <item>
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>check</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="settingsPage">
+       <layout class="QFormLayout" name="formLayout_2">
+        <item row="0" column="0">
+         <widget class="QPushButton" name="pushButton_4">
+          <property name="text">
+           <string>settings</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -374,7 +163,7 @@ QPushButton:pressed {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1000</width>
      <height>25</height>
     </rect>
    </property>

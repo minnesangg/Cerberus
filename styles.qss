@@ -1,0 +1,74 @@
+/* Общие стили для stackedWidget */
+QStackedWidget {
+    background-color: #2b2b2b; /* Графитовый фон для всего stackedWidget */
+    border-radius: 10px; /* Скругленные углы */
+    padding: 20px; /* Внутренние отступы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для отделения от фона */
+}
+
+/* Стили для страниц внутри stackedWidget */
+QWidget {
+    background-color: #333333; /* Темно-серый фон для каждой страницы */
+    border-radius: 10px; /* Скругленные углы на каждой странице */
+    padding: 15px; /* Отступы для контента */
+    color: #d1d1d1; /* Светлый цвет текста для контраста */
+    font-size: 16px; /* Размер шрифта */
+}
+
+/* Стили для активных страниц (фокус) */
+QWidget:focus {
+    border: 2px solid #6fcf97; /* Зеленая рамка вокруг активной страницы */
+    box-shadow: 0 0 10px rgba(111, 207, 151, 0.5);
+}
+
+/* Стили для текста и кнопок внутри страниц */
+QPushButton {
+    background-color: #6fcf97; /* Мягкий зелёный */
+    color: #1e1e1e; /* Тёмный текст на светлом фоне */
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+QLineEdit {
+    background-color: #2b2b2b; /* Графитовый фон */
+    border: 1px solid #3c3c3c; /* Чуть светлее для выделения */
+    color: #d1d1d1; /* Бело-серый текст */
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; /* Зелёный акцент при фокусе */
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}
+
+/* Стили для текста в блоках */
+QLabel {
+    color: #d1d1d1; /* Бело-серый цвет текста */
+    font-size: 18px;
+    margin-bottom: 10px; /* Отступы между текстом и другими элементами */
+}
+
+/* Стили для вертикальных разделителей между элементами */
+QSplitter::handle {
+    background-color: #3c3c3c; /* Цвет разделителя */
+    border-radius: 5px;
+    width: 10px;
+}

@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include <QStackedWidget>
 
 namespace Ui {
 class DialogLogin;
@@ -18,9 +19,12 @@ public:
 
 private slots:
     void on_loginButton_clicked();
+    void on_newMasterPassButton_clicked();
 
 private:
     Ui::DialogLogin *ui;
+    QStackedWidget *masterPassStacked;
+
 };
 
 #endif // DIALOGLOGIN_H

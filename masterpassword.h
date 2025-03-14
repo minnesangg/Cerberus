@@ -11,7 +11,7 @@ class MasterPassword : public QWidget{
     Q_OBJECT
 public:
     MasterPassword();
-    void masterPassword();
+    void masterPassword(QString password);
     bool verifyMasterPass(const QString &inputPass);
     bool checkMasterPass(QString password);
     QByteArray getMasterPasswordHash();
