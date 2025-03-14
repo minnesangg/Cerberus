@@ -13,6 +13,18 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>1</horstretch>
+    <verstretch>1</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>300</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <pointsize>14</pointsize>
@@ -30,14 +42,20 @@
      <height>374</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_All">
+   <layout class="QVBoxLayout" name="verticalLayout_All" stretch="0">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_Labels">
+     <layout class="QVBoxLayout" name="verticalLayout_Labels" stretch="1,1,1">
       <property name="bottomMargin">
        <number>100</number>
       </property>
       <item>
        <widget class="QLabel" name="cerberusLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>Gill Sans MT</family>
@@ -59,6 +77,12 @@
       </item>
       <item>
        <widget class="QLabel" name="cerberusDesc">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
         <property name="font">
          <font>
           <family>Gill Sans MT</family>
@@ -79,7 +103,7 @@
        </widget>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_Login">
+       <layout class="QVBoxLayout" name="verticalLayout_Login" stretch="1,1">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -94,6 +118,12 @@
         </property>
         <item>
          <widget class="QLineEdit" name="passwordLine">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
           <property name="styleSheet">
            <string notr="true">QLineEdit {
     background-color: #2b2b2b; /* Графитовый фон */
@@ -121,6 +151,15 @@ QLineEdit:focus {
         </item>
         <item>
          <widget class="QPushButton" name="loginButton">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>1</horstretch>
+            <verstretch>1</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
     background-color: #6fcf97; /* Мягкий зелёный */

@@ -14,7 +14,6 @@ DialogLogin::DialogLogin(QWidget *parent)
     this->setStyleSheet("background-color: #1e1e1e;");
     this->setWindowTitle("Cerberus");
     this->setWindowIcon(QIcon(":/mainIcon.png"));
-
 }
 
 DialogLogin::~DialogLogin()
