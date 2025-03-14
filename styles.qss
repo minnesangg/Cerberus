@@ -1,30 +1,25 @@
-/* Общие стили для stackedWidget */
 QStackedWidget {
-    background-color: #2b2b2b; /* Графитовый фон для всего stackedWidget */
-    border-radius: 10px; /* Скругленные углы */
-    padding: 20px; /* Внутренние отступы */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для отделения от фона */
+    background-color: #2b2b2b; 
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Стили для страниц внутри stackedWidget */
 QWidget {
-    background-color: #333333; /* Темно-серый фон для каждой страницы */
-    border-radius: 10px; /* Скругленные углы на каждой странице */
-    padding: 15px; /* Отступы для контента */
-    color: #d1d1d1; /* Светлый цвет текста для контраста */
-    font-size: 16px; /* Размер шрифта */
-}
+    background-color: #333333; 
+    border-radius: 10px; 
+    padding: 15px; 
+    color: #d1d1d1; 
+    font-size: 16px; 
 
-/* Стили для активных страниц (фокус) */
 QWidget:focus {
-    border: 2px solid #6fcf97; /* Зеленая рамка вокруг активной страницы */
+    border: 2px solid #6fcf97;
     box-shadow: 0 0 10px rgba(111, 207, 151, 0.5);
 }
 
-/* Стили для текста и кнопок внутри страниц */
 QPushButton {
-    background-color: #6fcf97; /* Мягкий зелёный */
-    color: #1e1e1e; /* Тёмный текст на светлом фоне */
+    background-color: #6fcf97; 
+    color: #1e1e1e; 
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -45,9 +40,9 @@ QPushButton:pressed {
 }
 
 QLineEdit {
-    background-color: #2b2b2b; /* Графитовый фон */
-    border: 1px solid #3c3c3c; /* Чуть светлее для выделения */
-    color: #d1d1d1; /* Бело-серый текст */
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
     font-size: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -55,20 +50,18 @@ QLineEdit {
 }
 
 QLineEdit:focus {
-    border-color: #6fcf97; /* Зелёный акцент при фокусе */
+    border-color: #6fcf97; 
     box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
 }
 
-/* Стили для текста в блоках */
 QLabel {
-    color: #d1d1d1; /* Бело-серый цвет текста */
+    color: #d1d1d1; 
     font-size: 18px;
-    margin-bottom: 10px; /* Отступы между текстом и другими элементами */
+    margin-bottom: 10px; 
 }
 
-/* Стили для вертикальных разделителей между элементами */
 QSplitter::handle {
-    background-color: #3c3c3c; /* Цвет разделителя */
+    background-color: #3c3c3c; 
     border-radius: 5px;
     width: 10px;
 }
