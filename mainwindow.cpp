@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->mainGenLabel->setAlignment(Qt::AlignCenter);
 
     MAKENAGAGREATAGAIN();
+
 }
 
 MainWindow::~MainWindow()
