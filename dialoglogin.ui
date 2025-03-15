@@ -10,8 +10,20 @@
     <x>0</x>
     <y>0</y>
     <width>600</width>
-    <height>400</height>
+    <height>393</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>1</horstretch>
+    <verstretch>1</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>300</width>
+    <height>300</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -21,84 +33,120 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget_3">
+  <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>30</y>
-     <width>561</width>
-     <height>374</height>
+     <x>0</x>
+     <y>10</y>
+     <width>591</width>
+     <height>371</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_All">
-    <item>
-     <layout class="QVBoxLayout" name="verticalLayout_Labels">
-      <property name="bottomMargin">
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="login">
+    <widget class="QLabel" name="cerberusLabel">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>20</y>
+       <width>330</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>1</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Gill Sans MT</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+     </property>
+     <property name="text">
+      <string>CERBERUS</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="cerberusDesc">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>50</y>
+       <width>330</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Gill Sans MT</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+     </property>
+     <property name="text">
+      <string>Secure storage for your passwords</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>109</y>
+       <width>621</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_Login" stretch="0,0">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>200</number>
+      </property>
+      <property name="topMargin">
        <number>100</number>
       </property>
+      <property name="rightMargin">
+       <number>200</number>
+      </property>
       <item>
-       <widget class="QLabel" name="cerberusLabel">
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>14</pointsize>
-         </font>
+       <widget class="QLineEdit" name="passwordLine">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
         </property>
         <property name="styleSheet">
-         <string notr="true">QLabel {
+         <string notr="true">QLineEdit {
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c; 
     color: #d1d1d1; 
-}</string>
-        </property>
-        <property name="text">
-         <string>CERBERUS</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="cerberusDesc">
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-    color: #d1d1d1; 
-}</string>
-        </property>
-        <property name="text">
-         <string>Secure storage for your passwords</string>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_Login">
-        <property name="spacing">
-         <number>15</number>
-        </property>
-        <property name="leftMargin">
-         <number>160</number>
-        </property>
-        <property name="topMargin">
-         <number>40</number>
-        </property>
-        <property name="rightMargin">
-         <number>160</number>
-        </property>
-        <item>
-         <widget class="QLineEdit" name="passwordLine">
-          <property name="styleSheet">
-           <string notr="true">QLineEdit {
-    background-color: #2b2b2b; /* Графитовый фон */
-    border: 1px solid #3c3c3c; /* Чуть светлее для выделения */
-    color: #d1d1d1; /* Бело-серый текст */
     font-size: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -110,21 +158,27 @@ QLineEdit:focus {
     box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
 }
 </string>
-          </property>
-          <property name="echoMode">
-           <enum>QLineEdit::Password</enum>
-          </property>
-          <property name="placeholderText">
-           <string>Enter your password</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="loginButton">
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: #6fcf97; /* Мягкий зелёный */
-    color: #1e1e1e; /* Тёмный текст на светлом фоне */
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Enter your password</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="loginButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #6fcf97;
+    color: #1e1e1e; 
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -144,17 +198,189 @@ QPushButton:pressed {
     box-shadow: none;
 }
 </string>
-          </property>
-          <property name="text">
-           <string>Login</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+        </property>
+        <property name="text">
+         <string>Login</string>
+        </property>
+       </widget>
       </item>
      </layout>
-    </item>
-   </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>330</y>
+       <width>160</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="attemptsLayout">
+      <item>
+       <widget class="QLabel" name="attemptsLabel">
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+        </property>
+        <property name="text">
+         <string>Attempts left:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="attemptsCounterLabel">
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+        </property>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="generate">
+    <widget class="QLabel" name="createMasterLabel">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>30</y>
+       <width>301</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Gill Sans MT</family>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+     </property>
+     <property name="text">
+      <string>Create Master Password</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>-10</x>
+       <y>70</y>
+       <width>621</width>
+       <height>221</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <property name="leftMargin">
+       <number>200</number>
+      </property>
+      <property name="topMargin">
+       <number>100</number>
+      </property>
+      <property name="rightMargin">
+       <number>200</number>
+      </property>
+      <item>
+       <widget class="QLineEdit" name="newMasterPassLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c;
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}
+</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Enter your password</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="newMasterPassButton">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #6fcf97; 
+    color: #1e1e1e; 
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+</string>
+        </property>
+        <property name="text">
+         <string>Set Password</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

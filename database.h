@@ -6,6 +6,16 @@
 #include <QSqlError>
 #include <QByteArray>
 #include <QWidget>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QByteArray>
+#include <QString>
+#include <QCoreApplication>
+#include <QMessageBox>
+#include <QSqlError>
+#include "masterpassword.h"
+
 
 class DatabaseManager : public QWidget  {
     Q_OBJECT
@@ -19,6 +29,8 @@ public:
 
 private:
     QMap<QString, QString> savedPasswords;
+    MasterPassword master_password;
+
 };
 
 #endif // DATABASE_H

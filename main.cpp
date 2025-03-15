@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
     DialogLogin login;
     if (login.exec() == QDialog::Accepted) {
         MainWindow window;
-        window.resize(800, 600);
-        window.setStyleSheet("QMainWindow { background-color: #2C2C2C; }");
+        window.resize(1000, 700);
+        window.setStyleSheet("QMainWindow { background-color: #121212; }");
         window.setWindowTitle("Cerberus");
         window.setWindowIcon(QIcon(":/mainIcon.png"));
         window.show();

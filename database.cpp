@@ -1,14 +1,5 @@
 #include "database.h"
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QByteArray>
-#include <QString>
-#include <QCoreApplication>
-#include <QMessageBox>
-#include <QSqlError>
 #include "qaesencryption.h"
-#include "masterpassword.h"
 
 DatabaseManager::DatabaseManager() {}
 
@@ -61,7 +52,6 @@ void DatabaseManager::initDatabase(){
 }
 
 void DatabaseManager::loadPasswords() {
-    MasterPassword master_password;
     savedPasswords.clear();
 
     QSqlQuery query;
@@ -97,7 +87,6 @@ void DatabaseManager::loadPasswords() {
 }
 
 void DatabaseManager::savePassword(const QString &name, const QString &password) {
-    MasterPassword master_password;
     QByteArray masterKey = master_password.getMasterPasswordHash();
     QByteArray IV = master_password.generateIV(16);
     QByteArray encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC, password.toUtf8(), masterKey, IV);
