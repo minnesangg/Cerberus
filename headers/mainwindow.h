@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "masterpassword.h"
-#include "database.h"
-#include "password_generator.h"
+#include "headers/masterpassword.h"
+#include "headers/database.h"
+#include "headers/password_generator.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QListWidgetItem>

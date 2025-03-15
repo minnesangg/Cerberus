@@ -1,4 +1,4 @@
-#include "password_generator.h"
+#include "headers/password_generator.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QRandomGenerator>

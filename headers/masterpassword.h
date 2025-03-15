@@ -13,7 +13,7 @@
 #include <QFile>
 #include <QApplication>
 #include <QSettings>
-#include "password_generator.h"
+#include "headers/password_generator.h"
 
 class MasterPassword : public QWidget{
     Q_OBJECT

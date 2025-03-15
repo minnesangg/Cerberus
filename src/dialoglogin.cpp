@@ -1,4 +1,4 @@
-#include "dialoglogin.h"
+#include "headers/dialoglogin.h"
 #include "ui_dialoglogin.h"
 
 DialogLogin::DialogLogin(QWidget *parent)

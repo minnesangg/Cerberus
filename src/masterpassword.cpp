@@ -1,4 +1,4 @@
-#include "masterpassword.h"
+#include "headers/masterpassword.h"
 
 
 MasterPassword::MasterPassword() {}

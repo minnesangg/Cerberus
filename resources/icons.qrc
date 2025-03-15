@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>../mainIcon.png</file>
+        <file>../../mainIcon.png</file>
         <file>bufferCopy.png</file>
     </qresource>
 </RCC>
