@@ -2,9 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "masterpassword.h"
-#include "database.h"
-#include "password_generator.h"
+#include "headers/masterpassword.h"
+#include "headers/database.h"
+#include "headers/password_generator.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QListWidgetItem>
@@ -12,6 +12,9 @@
 #include <QFile>
 #include <QClipboard>
 #include <QTimer>
+
+#include <QMediaPlayer>
+#include <QVideoWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,11 +45,22 @@ private slots:
     void on_copyBufferButton_clicked();
     void on_savePassButton_clicked();
 
+    void on_findButton_clicked();
+
+    void on_copyFindedButton_clicked();
+
+    void on_deleteButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MasterPassword masterPasswordHandler;
     DatabaseManager databaseManager;
     PasswordGenerator passwordGenerator;
+
+    void MAKENAGAGREATAGAIN();
+    void listWidgetSettings();
+    void copyButtonsImages();
+
 };
 
 #endif // MAINWINDOW_H

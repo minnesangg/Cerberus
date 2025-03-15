@@ -4,7 +4,7 @@
 #include <QDialog>
 #include <QString>
 #include <QStackedWidget>
-#include "masterpassword.h"
+#include "headers/masterpassword.h"
 #include <QMessageBox>
 #include <QDebug>
 #include <QFile>

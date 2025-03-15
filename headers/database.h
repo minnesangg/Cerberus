@@ -14,7 +14,7 @@
 #include <QCoreApplication>
 #include <QMessageBox>
 #include <QSqlError>
-#include "masterpassword.h"
+#include "headers/masterpassword.h"
 
 
 class DatabaseManager : public QWidget  {
