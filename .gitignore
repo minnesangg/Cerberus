@@ -41,6 +41,7 @@ Makefile*
 /build
 Qt-Secret/
 
+.vscode/
 # Qt unit tests
 target_wrapper.*
 
