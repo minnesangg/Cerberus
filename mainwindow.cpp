@@ -112,8 +112,10 @@ void MainWindow::on_savePassButton_clicked()
         return;
 
     const QString passwordName = ui->passwordNameLabel->text();
-    if(passwordName.isEmpty())
+    if(passwordName.isEmpty()){
+        ui->statusbar->showMessage("Line with password's name is empty!");
         return;
+    }
 
     database.savePassword(passwordName, generatedPassword);
     ui->statusbar->showMessage("Password saved!", 3000);
