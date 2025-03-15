@@ -5,6 +5,13 @@
 #include "masterpassword.h"
 #include "database.h"
 #include "password_generator.h"
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QListWidgetItem>
+#include <QListWidget>
+#include <QFile>
+#include <QClipboard>
+#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -18,6 +25,9 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    DatabaseManager database;
+    PasswordGenerator password_generator;
+
 private slots:
     // void on_generateButton_clicked();
     // void on_showButton_clicked();
@@ -27,8 +37,10 @@ private slots:
     // void on_clearButton_clicked();
 
     void changePage(int index);
-
     void on_generateButton_clicked();
+    void on_deletePassButton_clicked();
+    void on_copyBufferButton_clicked();
+    void on_savePassButton_clicked();
 
 private:
     Ui::MainWindow *ui;

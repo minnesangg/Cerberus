@@ -43,7 +43,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="login">
     <widget class="QLabel" name="cerberusLabel">
@@ -112,11 +112,11 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>-10</x>
-       <y>110</y>
+       <y>109</y>
        <width>621</width>
        <height>221</height>
       </rect>
@@ -144,9 +144,9 @@
         </property>
         <property name="styleSheet">
          <string notr="true">QLineEdit {
-    background-color: #2b2b2b; /* Графитовый фон */
-    border: 1px solid #3c3c3c; /* Чуть светлее для выделения */
-    color: #d1d1d1; /* Бело-серый текст */
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1; 
     font-size: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -177,8 +177,8 @@ QLineEdit:focus {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: #6fcf97; /* Мягкий зелёный */
-    color: #1e1e1e; /* Тёмный текст на светлом фоне */
+    background-color: #6fcf97;
+    color: #1e1e1e; 
     font-size: 18px;
     font-weight: bold;
     border: none;
@@ -201,6 +201,54 @@ QPushButton:pressed {
         </property>
         <property name="text">
          <string>Login</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>330</y>
+       <width>160</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="attemptsLayout">
+      <item>
+       <widget class="QLabel" name="attemptsLabel">
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+        </property>
+        <property name="text">
+         <string>Attempts left:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="attemptsCounterLabel">
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+}</string>
+        </property>
+        <property name="text">
+         <string>3</string>
         </property>
        </widget>
       </item>
@@ -242,7 +290,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>-10</x>
-       <y>120</y>
+       <y>70</y>
        <width>621</width>
        <height>221</height>
       </rect>
@@ -270,9 +318,9 @@ QPushButton:pressed {
         </property>
         <property name="styleSheet">
          <string notr="true">QLineEdit {
-    background-color: #2b2b2b; /* Графитовый фон */
-    border: 1px solid #3c3c3c; /* Чуть светлее для выделения */
-    color: #d1d1d1; /* Бело-серый текст */
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c;
+    color: #d1d1d1;
     font-size: 16px;
     padding: 12px;
     border-radius: 10px;
@@ -280,7 +328,7 @@ QPushButton:pressed {
 }
 
 QLineEdit:focus {
-    border-color: #6fcf97; /* Зелёный акцент при фокусе */
+    border-color: #6fcf97; 
     box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
 }
 </string>
@@ -303,8 +351,8 @@ QLineEdit:focus {
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
-    background-color: #6fcf97; /* Мягкий зелёный */
-    color: #1e1e1e; /* Тёмный текст на светлом фоне */
+    background-color: #6fcf97; 
+    color: #1e1e1e; 
     font-size: 18px;
     font-weight: bold;
     border: none;

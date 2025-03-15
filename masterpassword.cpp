@@ -1,23 +1,14 @@
 #include "masterpassword.h"
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QRandomGenerator>
-#include <QCryptographicHash>
-#include <QFile>
-#include <QApplication>
-#include <QSettings>
-#include "password_generator.h"
+
 
 MasterPassword::MasterPassword() {}
 
 void MasterPassword::masterPassword(QString password){
-    PasswordGenerator password_generator;
     // добавить "соль"
     QByteArray hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
 
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
     settings.setValue("MasterPasswordHash", QString(hashedPass.toHex()));
-    QMessageBox::information(this, "Successful", "Master password set.");
 }
 
 

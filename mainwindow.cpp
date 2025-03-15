@@ -1,10 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QListWidgetItem>
-#include <QListWidget>
-#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -14,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     databaseManager.loadPasswords();
 
     ui->listWidget->setIconSize(QSize(32, 32));
+
+    ui->centralwidget->setStyleSheet("centralwidget { background-color: #121212; }");
 
     QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
     generateItem->setIcon(QIcon(":/generate.png"));
@@ -35,7 +32,7 @@ MainWindow::MainWindow(QWidget *parent)
     settingsItem->setIcon(QIcon(":/settings.png"));
     ui->listWidget->addItem(settingsItem);
 
-    ui->stackedWidget->setCurrentWidget(ui->generatePage);
+    ui->stackedWidget->setCurrentWidget(ui->defaultPage);
 
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &MainWindow::changePage);
 
@@ -51,6 +48,10 @@ MainWindow::MainWindow(QWidget *parent)
     ui->copyBufferButton->setIconSize(QSize(32, 32));
     ui->copyBufferButton->setFlat(true);
     ui->copyBufferButton->setText("");
+
+
+    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
+    ui->mainGenLabel->setAlignment(Qt::AlignCenter);
 }
 
 MainWindow::~MainWindow()
@@ -85,36 +86,42 @@ void MainWindow::on_generateButton_clicked()
 {
     int size = ui->lengthBox->value();
 
-    PasswordGenerator password_generator;
     QString generated_password = password_generator.passGeneration(size);
     ui->generatedLine->setText(generated_password);
 
-    ui->lengthBox->setValue(8);
 }
 
-// void MainWindow::on_generateButton_clicked(){
-//     int begin = 0, min = 0, max = 0;
-//     bool ok;
+void MainWindow::on_deletePassButton_clicked()
+{
+    ui->generatedLine->clear();
+    ui->passwordNameLabel->clear();
+}
 
-//     passwordGenerator.chooseDiff(begin, min, max, ok);
-//     if (!ok) return;
+void MainWindow::on_copyBufferButton_clicked()
+{
+    QClipboard *clipboard = QApplication::clipboard();
+    clipboard->setText(ui->generatedLine->text());
 
-//     int passwordSize = QInputDialog::getInt(this, tr("Generate Password"), tr("Choose password size:"), begin, min, max, 1, &ok);
-//     if (!ok) return;
+    ui->statusbar->showMessage("Saved to buffer!", 3000);
+}
 
-//     QString password = passwordGenerator.passGeneration(passwordSize);
-//     QMessageBox::information(this, "Generated Password", "Generated password: " + password);
+void MainWindow::on_savePassButton_clicked()
+{
+    const QString generatedPassword = ui->generatedLine->text();
+    if(generatedPassword.isEmpty())
+        return;
 
-//     bool save = QMessageBox::question(this, "Save Password", "Do you want to save the password?") == QMessageBox::Yes;
-//     if (save){
-//         QString savedPass = QInputDialog::getText(this, "Save Password", "What is this password for?");
-//         if (!savedPass.isEmpty()){
-//             databaseManager.savePassword(savedPass, password);
-//             QMessageBox::information(this, "Password Saved", "Password saved successfully.");
-//         }
-//     }
-//     on_showButton_clicked();
-// }
+    const QString passwordName = ui->passwordNameLabel->text();
+    if(passwordName.isEmpty())
+        return;
+
+    database.savePassword(passwordName, generatedPassword);
+    ui->statusbar->showMessage("Password saved!", 3000);
+
+    ui->generatedLine->clear();
+    ui->passwordNameLabel->clear();
+}
+
 
 // void MainWindow::on_showButton_clicked() {
 //     databaseManager.loadPasswords();
@@ -180,9 +187,6 @@ void MainWindow::on_generateButton_clicked()
 //     on_showButton_clicked();
 // }
 
-// void MainWindow::on_clearButton_clicked(){
-//     ui->passwordOutput->clear();
-// }
 
 
 

@@ -36,6 +36,18 @@
     <cursorShape>ArrowCursor</cursorShape>
    </property>
    <layout class="QFormLayout" name="formLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QListWidget" name="listWidget">
       <property name="cursor" stdset="0">
@@ -43,16 +55,16 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QListWidget {
-    background-color: #2b2b2b;  /* Темный фон для списка */
+    background-color: #2b2b2b;  
     border: none;
-    border-right: 2px solid #444d58; /* Разделительная линия справа */
+    border-right: 2px solid #444d58;
     font-size: 16px;
 }
 
 QListWidget::item {
-    background-color: #2b2b2b;  /* Темный фон для каждого элемента */
-    color: #d1d1d1;              /* Бело-серый текст */
-    border-bottom: 1px solid #444d58; /* Линия между кнопками */
+    background-color: #2b2b2b;  
+    color: #d1d1d1;              
+    border-bottom: 1px solid #444d58;
     padding: 10px;
     font-weight: bold;
     border-radius: 10px;
@@ -60,13 +72,13 @@ QListWidget::item {
 }
 
 QListWidget::item:selected {
-    background-color: #6fcf97;  /* Зеленый фон для выбранного элемента */
-    color: #1e1e1e;             /* Тёмный текст на зеленом фоне */
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
 }
 
 QPushButton {
-    background-color: #6fcf97;  /* Мягкий зеленый фон для кнопок */
-    color: #1e1e1e;             /* Тёмный текст */
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
     font-size: 16px;
     font-weight: bold;
     border: none;
@@ -77,18 +89,18 @@ QPushButton {
 }
 
 QPushButton:hover {
-    background-color: #5bbd88;  /* Зеленый цвет на наведении */
+    background-color: #5bbd88; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:pressed {
-    background-color: #4aa97a;  /* Темный зеленый при нажатии */
+    background-color: #4aa97a;  
     box-shadow: none;
 }
 
 QPushButton:disabled {
-    background-color: #3e6b4c;  /* Цвет для отключенной кнопки */
-    color: #6c6c6c;              /* Серый текст для отключенной кнопки */
+    background-color: #3e6b4c;  
+    color: #6c6c6c;            
 }
 </string>
       </property>
@@ -122,64 +134,19 @@ QPushButton:disabled {
          <string>PASSWORD GENERATION</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="generateButton">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>270</y>
-          <width>171</width>
-          <height>51</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>16</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #6fcf97; 
-    color: #1e1e1e; 
-    font-weight: bold;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-QPushButton:hover {
-    background-color: #5bbd88;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: #4aa97a;
-    box-shadow: none;
-}</string>
-        </property>
-        <property name="text">
-         <string>Generate</string>
-        </property>
-       </widget>
        <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>120</x>
-          <y>410</y>
+          <x>130</x>
+          <y>380</y>
           <width>441</width>
-          <height>112</height>
+          <height>158</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="generatedPassLayout">
          <item>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="1" column="0">
+           <item row="2" column="0">
             <widget class="QPushButton" name="savePassButton">
              <property name="font">
               <font>
@@ -193,7 +160,7 @@ QPushButton:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    background-color: #6fcf97; 
+    background-color: #2ECC71;
     color: #1e1e1e; 
     font-weight: bold;
     border: none;
@@ -211,14 +178,16 @@ QPushButton:hover {
 QPushButton:pressed {
     background-color: #4aa97a;
     box-shadow: none;
-}</string>
+}
+
+</string>
              </property>
              <property name="text">
               <string>Save password</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="2" column="1">
             <widget class="QPushButton" name="deletePassButton">
              <property name="font">
               <font>
@@ -232,7 +201,7 @@ QPushButton:pressed {
              </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    background-color: #6fcf97; 
+	background-color: #E74C3C;
     color: #1e1e1e; 
     font-weight: bold;
     border: none;
@@ -243,12 +212,12 @@ QPushButton:pressed {
 }
 
 QPushButton:hover {
-    background-color: #5bbd88;
+    background-color: #C0392B;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:pressed {
-    background-color: #4aa97a;
+    background-color: #912a1f;
     box-shadow: none;
 }</string>
              </property>
@@ -261,22 +230,21 @@ QPushButton:pressed {
             <layout class="QHBoxLayout" name="horizontalLayout">
              <item>
               <widget class="QLineEdit" name="generatedLine">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
-    background-color: #424242; 
-    border: 1px solid #3c3c3c; 
-    color: #d1d1d1;
-    font-size: 16px;
-    padding: 12px;
-    border-radius: 10px;
-	selection-background-color: transparent;
-    transition: border-color 0.3s;
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
 }
-
-QLineEdit:focus {
-    border-color: #6fcf97; 
-    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
-}</string>
+</string>
                </property>
                <property name="echoMode">
                 <enum>QLineEdit::Normal</enum>
@@ -309,6 +277,35 @@ QLineEdit:focus {
              </item>
             </layout>
            </item>
+           <item row="1" column="0" colspan="2">
+            <widget class="QLineEdit" name="passwordNameLabel">
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="echoMode">
+              <enum>QLineEdit::Normal</enum>
+             </property>
+             <property name="placeholderText">
+              <string>What is this password for?</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
         </layout>
@@ -316,10 +313,10 @@ QLineEdit:focus {
        <widget class="QWidget" name="horizontalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>180</x>
-          <y>180</y>
+          <x>190</x>
+          <y>190</y>
           <width>331</width>
-          <height>71</height>
+          <height>51</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="lengthLayout">
@@ -400,7 +397,53 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="generateButton">
+        <property name="geometry">
+         <rect>
+          <x>270</x>
+          <y>260</y>
+          <width>171</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>16</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: #6fcf97; 
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}</string>
+        </property>
+        <property name="text">
+         <string>Generate</string>
+        </property>
+       </widget>
       </widget>
+      <widget class="QWidget" name="defaultPage"/>
       <widget class="QWidget" name="managePage">
        <layout class="QVBoxLayout" name="verticalLayout_5"/>
       </widget>
@@ -446,6 +489,30 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
      <horstretch>1</horstretch>
      <verstretch>1</verstretch>
     </sizepolicy>
+   </property>
+   <property name="font">
+    <font>
+     <family>Gill Sans MT</family>
+     <pointsize>12</pointsize>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QStatusBar {
+    background-color: #222831;    
+    color: #76e0a6;             
+    font-size: 16
+px;
+    font-weight: bold;
+    padding: 5px;
+    border-top: 2px solid #76e0a6; 
+}
+
+QStatusBar::item {
+    border: none;                  
+    padding-left: 10px;             
+}
+</string>
    </property>
   </widget>
  </widget>

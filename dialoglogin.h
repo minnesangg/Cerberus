@@ -4,6 +4,10 @@
 #include <QDialog>
 #include <QString>
 #include <QStackedWidget>
+#include "masterpassword.h"
+#include <QMessageBox>
+#include <QDebug>
+#include <QFile>
 
 namespace Ui {
 class DialogLogin;
@@ -24,6 +28,7 @@ private slots:
 private:
     Ui::DialogLogin *ui;
     QStackedWidget *masterPassStacked;
+    MasterPassword master_pass;
 
 };
 
