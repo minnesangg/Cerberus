@@ -9,9 +9,45 @@ MainWindow::MainWindow(QWidget *parent)
     databaseManager.loadPasswords();
 
     ui->listWidget->setIconSize(QSize(32, 32));
-
     ui->centralwidget->setStyleSheet("centralwidget { background-color: #121212; }");
 
+    listWidgetSettings();
+
+    QFile file(":/styles.qss");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream ts(&file);
+        qApp->setStyleSheet(ts.readAll());
+    }
+
+    ui->generatedLine->setReadOnly(true);
+
+    copyButtonsImages();
+
+    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
+    ui->mainGenLabel->setAlignment(Qt::AlignCenter);
+
+    MAKENAGAGREATAGAIN();
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::copyButtonsImages(){
+    ui->copyBufferButton->setIcon(QIcon(":/bufferCopy.png"));
+    ui->copyBufferButton->setIconSize(QSize(32, 32));
+    ui->copyBufferButton->setFlat(true);
+    ui->copyBufferButton->setText("");
+
+    ui->copyFindedButton->setIcon(QIcon(":/bufferCopy.png"));
+    ui->copyFindedButton->setIconSize(QSize(32, 32));
+    ui->copyFindedButton->setFlat(true);
+    ui->copyFindedButton->setText("");
+
+}
+
+void MainWindow::listWidgetSettings(){
     QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
     generateItem->setIcon(QIcon(":/generate.png"));
     ui->listWidget->addItem(generateItem);
@@ -36,27 +72,29 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &MainWindow::changePage);
 
-    QFile file(":/styles.qss");
-    if (file.open(QFile::ReadOnly | QFile::Text)) {
-        QTextStream ts(&file);
-        qApp->setStyleSheet(ts.readAll());
-    }
-
-    ui->generatedLine->setReadOnly(true);
-
-    ui->copyBufferButton->setIcon(QIcon(":/bufferCopy.png"));
-    ui->copyBufferButton->setIconSize(QSize(32, 32));
-    ui->copyBufferButton->setFlat(true);
-    ui->copyBufferButton->setText("");
-
-
-    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
-    ui->mainGenLabel->setAlignment(Qt::AlignCenter);
 }
 
-MainWindow::~MainWindow()
-{
-    delete ui;
+void MainWindow::MAKENAGAGREATAGAIN(){
+    QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(ui->settingsPage->layout());
+    if (!layout) {
+        layout = new QVBoxLayout(ui->settingsPage);
+        ui->settingsPage->setLayout(layout);
+    }
+
+
+    QVideoWidget *videoWidget = new QVideoWidget(ui->settingsPage);
+    QMediaPlayer *player = new QMediaPlayer(ui->settingsPage);
+
+    videoWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    videoWidget->setMinimumSize(ui->settingsPage->size());
+
+    player->setVideoOutput(videoWidget);
+    player->setSource(QUrl::fromLocalFile("D:/Cerberus/qt/MAKENAGAGREATAGAIN.mp4"));
+
+    player->setLoops(QMediaPlayer::Infinite);
+
+    layout->addWidget(videoWidget);
+    player->play();
 }
 
 void MainWindow::changePage(int index)
@@ -97,14 +135,6 @@ void MainWindow::on_deletePassButton_clicked()
     ui->passwordNameLabel->clear();
 }
 
-void MainWindow::on_copyBufferButton_clicked()
-{
-    QClipboard *clipboard = QApplication::clipboard();
-    clipboard->setText(ui->generatedLine->text());
-
-    ui->statusbar->showMessage("Saved to buffer!", 3000);
-}
-
 void MainWindow::on_savePassButton_clicked()
 {
     const QString generatedPassword = ui->generatedLine->text();
@@ -113,7 +143,7 @@ void MainWindow::on_savePassButton_clicked()
 
     const QString passwordName = ui->passwordNameLabel->text();
     if(passwordName.isEmpty()){
-        ui->statusbar->showMessage("Line with password's name is empty!");
+        ui->statusbar->showMessage("Line with password's name is empty!", 3000);
         return;
     }
 
@@ -123,6 +153,75 @@ void MainWindow::on_savePassButton_clicked()
     ui->generatedLine->clear();
     ui->passwordNameLabel->clear();
 }
+
+void MainWindow::on_findButton_clicked()
+{
+    const QString findedName = ui->findNameLabel->text();
+
+    if(findedName.isEmpty()){
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+
+    auto savedPasswords = databaseManager.getSavedPasswords();
+    auto findedPass = savedPasswords.find(findedName);
+    if (findedPass != savedPasswords.end()) {
+        ui->findedLine->setText(findedPass.value());
+    } else {
+        ui->findedLine->setText("Password not found");
+    }
+
+}
+
+void MainWindow::on_deleteButton_clicked()
+{
+    const QString findedName = ui->deleteLabel->text();
+    if(findedName.isEmpty()){
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare("DELETE FROM passwords WHERE name = :name");
+    query.bindValue(":name", findedName);
+
+    if (query.exec()) {
+        if (query.numRowsAffected() > 0) {
+            databaseManager.getSavedPasswords().remove(findedName);
+            ui->statusbar->showMessage("Password for " + findedName + " has been deleted.", 3000);
+            ui->deleteLabel->clear();
+        } else {
+            ui->statusbar->showMessage("Password for " + findedName + " not found.", 3000);
+            ui->deleteLabel->clear();
+        }
+    } else {
+        ui->statusbar->showMessage("Failed to delete password.", 3000);
+        ui->deleteLabel->clear();
+    }
+    databaseManager.loadPasswords();
+}
+
+void MainWindow::on_copyFindedButton_clicked()
+{
+    QClipboard *clipboard = QApplication::clipboard();
+    QString findedPassword = ui->findedLine->text();
+    if(findedPassword != "Password not found"){
+        clipboard->setText(findedPassword);
+        ui->statusbar->showMessage("Saved to buffer!", 3000);
+    }
+}
+
+
+void MainWindow::on_copyBufferButton_clicked()
+{
+    QClipboard *clipboard = QApplication::clipboard();
+    QString generatedPass = ui->generatedLine->text();
+    if(!generatedPass.isEmpty()){
+        clipboard->setText(generatedPass);
+        ui->statusbar->showMessage("Saved to buffer!", 3000);
+    }
+}
+
 
 
 // void MainWindow::on_showButton_clicked() {
@@ -142,41 +241,6 @@ void MainWindow::on_savePassButton_clicked()
 
 //     ui->passwordOutput->setPlainText(allPasswords);
 // }
-
-// void MainWindow::on_findButton_clicked() {
-//     QString key = QInputDialog::getText(this, "Find Password", "Which password do you need?");
-//     if (key.isEmpty()) return;
-
-//     auto savedPasswords = databaseManager.getSavedPasswords();
-//     auto it = savedPasswords.find(key);
-//     if (it != savedPasswords.end()) {
-//         QMessageBox::information(this, "Password Found", "Password for " + key + ": " + it.value());
-//     } else {
-//         QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
-//     }
-// }
-
-// void MainWindow::on_deleteButton_clicked() {
-//     QString key = QInputDialog::getText(this, "Delete Password", "Which password do you want to delete?");
-//     if (key.isEmpty()) return;
-
-//     QSqlQuery query;
-//     query.prepare("DELETE FROM passwords WHERE name = :name");
-//     query.bindValue(":name", key);
-
-//     if (query.exec()) {
-//         if (query.numRowsAffected() > 0) {
-//             QMessageBox::information(this, "Password Deleted", "Password for " + key + " has been deleted.");
-//             databaseManager.getSavedPasswords().remove(key);
-//         } else {
-//             QMessageBox::warning(this, "Not Found", "Password for " + key + " not found.");
-//         }
-//     } else {
-//         QMessageBox::critical(this, "Database Error", "Failed to delete password.");
-//     }
-//     on_showButton_clicked();
-// }
-
 // void MainWindow::on_addButton_clicked() {
 //     QString whichPassword = QInputDialog::getText(this, "Add Password", "Which password do you want to add?");
 //     if (whichPassword.isEmpty()) return;
@@ -188,7 +252,4 @@ void MainWindow::on_savePassButton_clicked()
 //     QMessageBox::information(this, "Password Added", "Password added successfully.");
 //     on_showButton_clicked();
 // }
-
-
-
 

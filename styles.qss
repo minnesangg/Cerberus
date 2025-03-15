@@ -1,67 +1,106 @@
-QStackedWidget {
+ QMainWindow {
     background-color: #2b2b2b; 
+    border: none;
+}
+
+QStackedWidget, QFrame {
+    background-color: #333333;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+/*
+QLabel#mainGenLabel {
+    color: #d1d1d1;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
 }
 
-QWidget {
-    background-color: #333333; 
-    border-radius: 10px; 
-    padding: 15px; 
-    color: #d1d1d1; 
-    font-size: 16px; 
-
-QWidget:focus {
-    border: 2px solid #6fcf97;
-    box-shadow: 0 0 10px rgba(111, 207, 151, 0.5);
+QLabel#manageLabel {
+    color: #d1d1d1;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
 }
+
 
 QPushButton {
-    background-color: #6fcf97; 
-    color: #1e1e1e; 
+    background-color: #6fcf97;
+    color: #1e1e1e;
     font-size: 18px;
     font-weight: bold;
     border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
+    padding: 10px 20px;
+    border-radius: 20px;
+    min-width: 120px;
 }
 
 QPushButton:hover {
     background-color: #5bbd88;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:pressed {
     background-color: #4aa97a;
-    box-shadow: none;
+}
+
+QPushButton#savePassButton {
+    background-color: #2E8B57;
+    border-radius: 8px;
+    width: 140px;
+}
+
+QPushButton#deletePassButton {
+    background-color: #B33A3A;
+    border-radius: 8px;
+    width: 140px;
+}
+
+QPushButton#findButton {
+    background-color: #2E8B57;
+    border-radius: 8px;
+    width: 140px;
+}
+
+QPushButton#deleteButton {
+    background-color: #B33A3A;
+    border-radius: 8px;
+    width: 140px;
+}
+
+QPushButton#copyFindedButton {
+    background-color: #6fcf97;
+    border-radius: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 40px;
+    max-height: 40px;
+    padding: 5px;
+}
+
+QPushButton#copyBufferButton {
+    background-color: #6fcf97;
+    border-radius: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 40px;
+    max-height: 40px;
+    padding: 5px;
 }
 
 QLineEdit {
-    background-color: #2b2b2b; 
-    border: 1px solid #3c3c3c; 
+    background-color: #222;
+    border: 1px solid #444;
     color: #d1d1d1;
     font-size: 16px;
-    padding: 12px;
-    border-radius: 10px;
-    transition: border-color 0.3s;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 QLineEdit:focus {
-    border-color: #6fcf97; 
-    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+    border-color: #6fcf97;
 }
+
 
 QLabel {
-    color: #d1d1d1; 
-    font-size: 18px;
-    margin-bottom: 10px; 
-}
-
-QSplitter::handle {
-    background-color: #3c3c3c; 
-    border-radius: 5px;
-    width: 10px;
-}
+    color: #d1d1d1;
+    font-size: 16px;
+} */

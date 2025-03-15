@@ -13,6 +13,9 @@
 #include <QClipboard>
 #include <QTimer>
 
+#include <QMediaPlayer>
+#include <QVideoWidget>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -42,11 +45,22 @@ private slots:
     void on_copyBufferButton_clicked();
     void on_savePassButton_clicked();
 
+    void on_findButton_clicked();
+
+    void on_copyFindedButton_clicked();
+
+    void on_deleteButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MasterPassword masterPasswordHandler;
     DatabaseManager databaseManager;
     PasswordGenerator passwordGenerator;
+
+    void MAKENAGAGREATAGAIN();
+    void listWidgetSettings();
+    void copyButtonsImages();
+
 };
 
 #endif // MAINWINDOW_H

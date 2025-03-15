@@ -1,5 +1,7 @@
 QT += core gui sql
 
+QT += multimedia multimediawidgets
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 LIBS += -L$$PWD/Qt-Secret/src/build/release -lQt-Secret1
 LIBS += -L$$PWD/Qt-Secret/src/mini-gmp/src/build/release -lQt-Secret1
