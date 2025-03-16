@@ -51,6 +51,8 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_addPassButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MasterPassword masterPasswordHandler;

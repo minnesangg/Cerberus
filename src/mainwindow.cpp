@@ -188,7 +188,7 @@ void MainWindow::on_deleteButton_clicked()
 
     if (query.exec()) {
         if (query.numRowsAffected() > 0) {
-            databaseManager.getSavedPasswords().remove(findedName);
+            databaseManager.deletePassword(findedName);
             ui->statusbar->showMessage("Password for " + findedName + " has been deleted.", 3000);
             ui->deleteLabel->clear();
         } else {
@@ -199,8 +199,31 @@ void MainWindow::on_deleteButton_clicked()
         ui->statusbar->showMessage("Failed to delete password.", 3000);
         ui->deleteLabel->clear();
     }
+
     databaseManager.loadPasswords();
 }
+
+void MainWindow::on_addPassButton_clicked()
+{
+    QString passwordName = ui->ownPassName->text();
+    QString ownPassword = ui->ownPass->text();
+
+    if(passwordName.isEmpty()){
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+    if(ownPassword.isEmpty()){
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+
+    databaseManager.savePassword(passwordName, ownPassword);
+    ui->statusbar->showMessage("Password saved!", 3000);
+
+    ui->ownPassName->clear();
+    ui->ownPass->clear();
+}
+
 
 void MainWindow::on_copyFindedButton_clicked()
 {
@@ -253,4 +276,6 @@ void MainWindow::on_copyBufferButton_clicked()
 //     QMessageBox::information(this, "Password Added", "Password added successfully.");
 //     on_showButton_clicked();
 // }
+
+
 

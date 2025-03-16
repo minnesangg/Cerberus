@@ -148,9 +148,15 @@ QPushButton:disabled {
         </property>
         <layout class="QVBoxLayout" name="generatedPassLayout">
          <item>
-          <layout class="QGridLayout" name="gridLayout_2">
+          <layout class="QGridLayout" name="bottomLayout">
            <item row="2" column="0">
             <widget class="QPushButton" name="savePassButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <family>Gill Sans MT</family>
@@ -168,7 +174,9 @@ QPushButton:disabled {
     font-weight: bold;
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -192,6 +200,12 @@ QPushButton:pressed {
            </item>
            <item row="2" column="1">
             <widget class="QPushButton" name="deletePassButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="font">
               <font>
                <family>Gill Sans MT</family>
@@ -209,7 +223,9 @@ QPushButton:pressed {
     font-weight: bold;
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -313,96 +329,68 @@ QLineEdit:focus {
          </item>
         </layout>
        </widget>
-       <widget class="QPushButton" name="generateButton">
+       <widget class="QWidget" name="verticalLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>280</x>
-          <y>260</y>
-          <width>168</width>
-          <height>55</height>
+          <x>180</x>
+          <y>200</y>
+          <width>351</width>
+          <height>101</height>
          </rect>
         </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>16</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>PointingHandCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-    background-color: #6fcf97; 
-    color: #1e1e1e; 
-    font-weight: bold;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-QPushButton:hover {
-    background-color: #5bbd88;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-QPushButton:pressed {
-    background-color: #4aa97a;
-    box-shadow: none;
-}</string>
-        </property>
-        <property name="text">
-         <string>Generate</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="lengthLabel">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>180</y>
-          <width>271</width>
-          <height>36</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>14</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="lengthLabel">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
     color: #d1d1d1; 
     margin-bottom: 10px; 
 }</string>
-        </property>
-        <property name="text">
-         <string>Choose length of password</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="lengthBox">
-        <property name="geometry">
-         <rect>
-          <x>470</x>
-          <y>180</y>
-          <width>51</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
-        <property name="cursor">
-         <cursorShape>IBeamCursor</cursorShape>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QSpinBox {
+             </property>
+             <property name="text">
+              <string>Choose length of password</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSpinBox" name="lengthBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>-1</pointsize>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>IBeamCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QSpinBox {
     background-color: #2b2b2b; 
     color: #ffffff;
     border: 2px solid #555555; 
@@ -438,13 +426,81 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
     image: url(:/upArrow.png); 
 }
 </string>
-        </property>
-        <property name="minimum">
-         <number>8</number>
-        </property>
-        <property name="maximum">
-         <number>50</number>
-        </property>
+             </property>
+             <property name="minimum">
+              <number>8</number>
+             </property>
+             <property name="maximum">
+              <number>50</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="leftMargin">
+            <number>100</number>
+           </property>
+           <property name="rightMargin">
+            <number>100</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="generateButton">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>58</width>
+               <height>29</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>16</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #6fcf97; 
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}</string>
+             </property>
+             <property name="text">
+              <string>Generate</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="defaultPage"/>
@@ -474,27 +530,42 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
          <string>MANAGE YOUR PASSWORDS</string>
         </property>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_2">
+       <widget class="QWidget" name="horizontalLayoutWidget_2">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>100</y>
-          <width>711</width>
-          <height>150</height>
+          <y>80</y>
+          <width>731</width>
+          <height>153</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <property name="topMargin">
-          <number>0</number>
-         </property>
+        <layout class="QHBoxLayout" name="globalLayout">
          <item>
-          <layout class="QHBoxLayout" name="findLayout">
+          <layout class="QVBoxLayout" name="buttonsLayout">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="topMargin">
+            <number>5</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QPushButton" name="findButton">
+             <property name="minimumSize">
+              <size>
+               <width>59</width>
+               <height>29</height>
+              </size>
+             </property>
              <property name="font">
               <font>
                <family>Gill Sans MT</family>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
                <bold>true</bold>
               </font>
              </property>
@@ -508,7 +579,9 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
     font-weight: bold;
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -531,91 +604,54 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="findNameLabel">
+            <widget class="QPushButton" name="addPassButton">
              <property name="font">
               <font>
                <family>Gill Sans MT</family>
-               <pointsize>11</pointsize>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
               </font>
              </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    background-color: #1E1E1E;
-    border: 1px solid #333;
-    padding: 8px;
-    border-radius: 5px;
-    color: #E0E0E0;
-}
-</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Normal</enum>
-             </property>
-             <property name="placeholderText">
-              <string>What is this password for?</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="findedLine">
-             <property name="font">
-              <font>
-               <family>Gill Sans MT</family>
-               <pointsize>12</pointsize>
-              </font>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    background-color: #1E1E1E;
-    border: 1px solid #333;
-    padding: 8px;
-    border-radius: 5px;
-    color: #E0E0E0;
-}
-</string>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Normal</enum>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="copyFindedButton">
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
-    background-color: #424242; 
-    border: 1px solid #3c3c3c; 
-    color: #d1d1d1;
-    font-size: 16px;
-    padding: 12px;
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
     border-radius: 10px;
-	selection-background-color: transparent;
-    transition: border-color 0.3s;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-QLineEdit:focus {
-    border-color: #6fcf97; 
-    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
-}</string>
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
              </property>
              <property name="text">
-              <string/>
+              <string>Add Your Password</string>
              </property>
             </widget>
            </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="deleteLayout">
            <item>
             <widget class="QPushButton" name="deleteButton">
              <property name="font">
               <font>
                <family>Gill Sans MT</family>
-               <pointsize>12</pointsize>
+               <pointsize>14</pointsize>
                <bold>true</bold>
               </font>
              </property>
@@ -629,7 +665,9 @@ QLineEdit:focus {
     font-weight: bold;
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
@@ -649,16 +687,28 @@ QPushButton:pressed {
              </property>
             </widget>
            </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="lineEditsLayout">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
            <item>
-            <widget class="QLineEdit" name="deleteLabel">
-             <property name="font">
-              <font>
-               <family>Gill Sans MT</family>
-               <pointsize>11</pointsize>
-              </font>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QLineEdit {
+            <layout class="QHBoxLayout" name="findLayout">
+             <item>
+              <widget class="QLineEdit" name="findNameLabel">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
     background-color: #1E1E1E;
     border: 1px solid #333;
     padding: 8px;
@@ -666,17 +716,161 @@ QPushButton:pressed {
     color: #E0E0E0;
 }
 </string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="echoMode">
-              <enum>QLineEdit::Normal</enum>
-             </property>
-             <property name="placeholderText">
-              <string>What is this password for?</string>
-             </property>
-            </widget>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+               <property name="placeholderText">
+                <string>What is this password for?</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="findedLine">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="copyFindedButton">
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+    background-color: #424242; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+	selection-background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLineEdit" name="ownPassName">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+               <property name="placeholderText">
+                <string>What is this password for?</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="ownPass">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+               <property name="placeholderText">
+                <string>Password</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="deleteLayout">
+             <item>
+              <widget class="QLineEdit" name="deleteLabel">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>11</pointsize>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Normal</enum>
+               </property>
+               <property name="placeholderText">
+                <string>What is this password for?</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </item>

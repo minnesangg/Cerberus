@@ -3,32 +3,8 @@
 
 DatabaseManager::DatabaseManager() {}
 
-bool DatabaseManager::deletePassword(const QString &name) {
-    QSqlQuery query;
-    query.prepare("SELECT COUNT(*) FROM passwords WHERE name = :name");
-    query.bindValue(":name", name);
-
-    if (!query.exec()) { 
-        QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
-        return false;
-    }
-
-    query.next();
-    if (query.value(0).toInt() == 0) {
-        QMessageBox::warning(nullptr, "Not Found", "Password for " + name + " not found.");
-        return false;
-    }
-
-    query.prepare("DELETE FROM passwords WHERE name = :name");
-    query.bindValue(":name", name);
-
-    if (!query.exec()) {
-        QMessageBox::critical(nullptr, "Database Error", query.lastError().text());
-        return false;
-    }
-
+void DatabaseManager::deletePassword(const QString &name) {
     savedPasswords.remove(name);
-    return true;
 }
 
 QMap<QString, QString> DatabaseManager::getSavedPasswords() const {
