@@ -246,7 +246,7 @@ QPushButton:pressed {
             </widget>
            </item>
            <item row="0" column="0" colspan="2">
-            <layout class="QHBoxLayout" name="horizontalLayout">
+            <layout class="QHBoxLayout" name="generatedLayout">
              <item>
               <widget class="QLineEdit" name="generatedLine">
                <property name="font">
@@ -332,15 +332,15 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_5">
         <property name="geometry">
          <rect>
-          <x>180</x>
+          <x>160</x>
           <y>200</y>
           <width>351</width>
           <height>101</height>
          </rect>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QVBoxLayout" name="generateLayout">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <layout class="QHBoxLayout" name="genLengthLayout">
            <property name="spacing">
             <number>0</number>
            </property>
@@ -361,7 +361,7 @@ QLineEdit:focus {
              <property name="styleSheet">
               <string notr="true">QLabel {
     color: #d1d1d1; 
-    margin-bottom: 10px; 
+
 }</string>
              </property>
              <property name="text">
@@ -438,12 +438,12 @@ QSpinBox::up-arrow:hover, QSpinBox::down-arrow:hover {
           </layout>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
+          <layout class="QVBoxLayout" name="genButtonLayout">
            <property name="leftMargin">
-            <number>100</number>
+            <number>120</number>
            </property>
            <property name="rightMargin">
-            <number>100</number>
+            <number>90</number>
            </property>
            <item>
             <widget class="QPushButton" name="generateButton">
@@ -536,7 +536,7 @@ QPushButton:pressed {
           <x>10</x>
           <y>80</y>
           <width>731</width>
-          <height>153</height>
+          <height>191</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="globalLayout">
@@ -546,19 +546,19 @@ QPushButton:pressed {
             <number>10</number>
            </property>
            <property name="topMargin">
-            <number>5</number>
+            <number>20</number>
            </property>
            <property name="rightMargin">
             <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>5</number>
+            <number>20</number>
            </property>
            <item>
             <widget class="QPushButton" name="findButton">
              <property name="minimumSize">
               <size>
-               <width>59</width>
+               <width>58</width>
                <height>29</height>
               </size>
              </property>
@@ -695,7 +695,10 @@ QPushButton:pressed {
             <number>0</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>15</number>
+           </property>
+           <property name="bottomMargin">
+            <number>15</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="findLayout">
@@ -875,6 +878,31 @@ QLineEdit:focus {
           </layout>
          </item>
         </layout>
+       </widget>
+       <widget class="QLabel" name="exportLabel">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>340</y>
+          <width>301</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+        </property>
+        <property name="text">
+         <string>EXPORT PASSWORDS</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="categoriesPage">
