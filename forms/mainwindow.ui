@@ -536,23 +536,23 @@ QPushButton:pressed {
           <x>10</x>
           <y>80</y>
           <width>731</width>
-          <height>191</height>
+          <height>161</height>
          </rect>
         </property>
         <layout class="QHBoxLayout" name="globalLayout">
          <item>
           <layout class="QVBoxLayout" name="buttonsLayout">
            <property name="spacing">
-            <number>10</number>
+            <number>5</number>
            </property>
            <property name="topMargin">
-            <number>20</number>
+            <number>0</number>
            </property>
            <property name="rightMargin">
             <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>20</number>
+            <number>0</number>
            </property>
            <item>
             <widget class="QPushButton" name="findButton">
@@ -695,10 +695,10 @@ QPushButton:pressed {
             <number>0</number>
            </property>
            <property name="topMargin">
-            <number>15</number>
+            <number>0</number>
            </property>
            <property name="bottomMargin">
-            <number>15</number>
+            <number>0</number>
            </property>
            <item>
             <layout class="QHBoxLayout" name="findLayout">
@@ -879,11 +879,11 @@ QLineEdit:focus {
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="exportLabel">
+       <widget class="QLabel" name="storedLabel">
         <property name="geometry">
          <rect>
           <x>240</x>
-          <y>340</y>
+          <y>310</y>
           <width>301</width>
           <height>41</height>
          </rect>
@@ -901,8 +901,167 @@ QLineEdit:focus {
 }</string>
         </property>
         <property name="text">
-         <string>EXPORT PASSWORDS</string>
+         <string>STORED PASSWORDS</string>
         </property>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>360</y>
+          <width>531</width>
+          <height>271</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="passShowLayout">
+         <property name="spacing">
+          <number>5</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="namesPassLayout">
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="showButton">
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>Show Names</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="showAllButton">
+             <property name="font">
+              <font>
+               <family>Gill Sans MT</family>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>Show Names and Password</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="textEditLayout">
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QTextEdit" name="passNamesOutput">
+               <property name="font">
+                <font>
+                 <family>Gill Sans MT</family>
+                 <pointsize>12</pointsize>
+                </font>
+               </property>
+               <property name="cursor" stdset="0">
+                <cursorShape>IBeamCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QTextEdit {
+    background-color: #1E1E1E; 
+    border: 1px solid #333;
+    color: #E0E0E0; 
+    padding: 5px;
+    border-radius: 12px;
+}
+
+QTextEdit::item {
+    background-color: #2A2A2A; 
+    border-radius: 5px;
+    padding: 8px;
+    color: #E0E0E0; 
+}
+
+QListWidget::item:hover {
+    background-color: #444444;
+}
+
+QTextEdit::item:selected {
+    background-color: #2ECC71; 
+    color: #1E1E1E; 
+    font-weight: bold;
+}
+</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="categoriesPage">

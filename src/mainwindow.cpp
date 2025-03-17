@@ -5,28 +5,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    databaseManager.initDatabase();
-    databaseManager.loadPasswords();
 
-    ui->listWidget->setIconSize(QSize(32, 32));
-    ui->centralwidget->setStyleSheet("centralwidget { background-color: #121212; }");
-
-    listWidgetSettings();
-
-    QFile file(":/styles.qss");
-    if (file.open(QFile::ReadOnly | QFile::Text)) {
-        QTextStream ts(&file);
-        qApp->setStyleSheet(ts.readAll());
-    }
-
-    ui->generatedLine->setReadOnly(true);
-
-    copyButtonsImages();
-
-    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
-    ui->mainGenLabel->setAlignment(Qt::AlignCenter);
-
-    MAKENAGAGREATAGAIN();
+    startProgramm();
 
 }
 
@@ -35,27 +15,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::copyButtonsImages(){
-    ui->copyBufferButton->setIcon(QIcon(":/bufferCopy.png"));
-    ui->copyBufferButton->setIconSize(QSize(32, 32));
-    ui->copyBufferButton->setFlat(true);
-    ui->copyBufferButton->setText("");
+void MainWindow::startProgramm(){
+    databaseManager.initDatabase();
+    databaseManager.loadPasswords();
 
-    ui->copyFindedButton->setIcon(QIcon(":/bufferCopy.png"));
-    ui->copyFindedButton->setIconSize(QSize(32, 32));
-    ui->copyFindedButton->setFlat(true);
-    ui->copyFindedButton->setText("");
+    ui->centralwidget->setStyleSheet("centralwidget { background-color: #121212; }");
 
+    listWidgetSettings();
+    openStyleFile();
+    copyButtonsImages();
+    allignCenter();
+
+    ui->passNamesOutput->setReadOnly(true);
+    ui->generatedLine->setReadOnly(true);
+    MAKENAGAGREATAGAIN();
 }
 
 void MainWindow::listWidgetSettings(){
-    QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
-    generateItem->setIcon(QIcon(":/generate.png"));
-    ui->listWidget->addItem(generateItem);
+    ui->listWidget->setIconSize(QSize(32, 32));
 
     QListWidgetItem *manageItem = new QListWidgetItem("Manage Passwords");
     manageItem->setIcon(QIcon(":/manage.png"));
     ui->listWidget->addItem(manageItem);
+
+    QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
+    generateItem->setIcon(QIcon(":/generate.png"));
+    ui->listWidget->addItem(generateItem);
 
     QListWidgetItem *categoriesItem = new QListWidgetItem("Categories");
     categoriesItem->setIcon(QIcon(":/categories.png"));
@@ -75,11 +60,45 @@ void MainWindow::listWidgetSettings(){
 
 }
 
+void MainWindow::openStyleFile(){
+    QFile file(":/styles.qss");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream ts(&file);
+        qApp->setStyleSheet(ts.readAll());
+    }
+}
+
+void MainWindow::copyButtonsImages(){
+    ui->copyBufferButton->setIcon(QIcon(":/bufferCopy.png"));
+    ui->copyBufferButton->setIconSize(QSize(32, 32));
+    ui->copyBufferButton->setFlat(true);
+    ui->copyBufferButton->setText("");
+
+    ui->copyFindedButton->setIcon(QIcon(":/bufferCopy.png"));
+    ui->copyFindedButton->setIconSize(QSize(32, 32));
+    ui->copyFindedButton->setFlat(true);
+    ui->copyFindedButton->setText("");
+
+}
+
+void MainWindow::allignCenter(){
+    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
+    ui->mainGenLabel->setAlignment(Qt::AlignCenter);
+    ui->storedLabel->setAlignment(Qt::AlignCenter);
+    ui->passShowLayout->setAlignment(Qt::AlignCenter);
+    ui->manageLabel->setAlignment(Qt::AlignCenter);
+    ui->globalLayout->setAlignment(Qt::AlignCenter);
+    ui->generateLayout->setAlignment(Qt::AlignCenter);
+    ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
+    ui->globalLayout->setAlignment(Qt::AlignCenter);
+
+}
+
 void MainWindow::MAKENAGAGREATAGAIN(){
-    QVBoxLayout *layout = qobject_cast<QVBoxLayout*>(ui->settingsPage->layout());
-    if (!layout) {
-        layout = new QVBoxLayout(ui->settingsPage);
-        ui->settingsPage->setLayout(layout);
+    QVBoxLayout *videoLayout = qobject_cast<QVBoxLayout*>(ui->settingsPage->layout());
+    if (!videoLayout) {
+        videoLayout = new QVBoxLayout(ui->settingsPage);
+        ui->settingsPage->setLayout(videoLayout);
     }
 
 
@@ -93,8 +112,7 @@ void MainWindow::MAKENAGAGREATAGAIN(){
     player->setSource(QUrl::fromLocalFile("D:/Cerberus/qt/MAKENAGAGREATAGAIN.mp4"));
 
     player->setLoops(QMediaPlayer::Infinite);
-
-    layout->addWidget(videoWidget);
+    videoLayout->addWidget(videoWidget);
     player->play();
 }
 
@@ -102,10 +120,10 @@ void MainWindow::changePage(int index)
 {
     switch (index) {
     case 0:
-        ui->stackedWidget->setCurrentWidget(ui->generatePage);
+        ui->stackedWidget->setCurrentWidget(ui->managePage);
         break;
     case 1:
-        ui->stackedWidget->setCurrentWidget(ui->managePage);
+        ui->stackedWidget->setCurrentWidget(ui->generatePage);
         break;
     case 2:
         ui->stackedWidget->setCurrentWidget(ui->categoriesPage);
@@ -224,6 +242,65 @@ void MainWindow::on_addPassButton_clicked()
     ui->ownPass->clear();
 }
 
+void MainWindow::on_showButton_clicked()
+{
+    databaseManager.loadPasswords();
+
+    if(databaseManager.getSavedPasswords().isEmpty()){
+        ui->statusbar->showMessage("There's no passwords!", 3000);
+        return;
+    }
+
+    QString allPasswords;
+    auto savedPasswords = databaseManager.getSavedPasswords();
+
+    allPasswords += "<html><body><style>"
+                    "table { width: 100%; border-collapse: collapse; }"
+                    "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
+                    "</style><table>";
+    allPasswords += "<tr><th>Password's Name</th></tr>";
+
+    for(auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); it++){
+        allPasswords += "<tr>";
+        allPasswords += "<td><b>" + it.key() + "</b></td>";
+        allPasswords += "</tr>";
+    }
+
+
+    allPasswords += "</table></body></html>";
+    ui->passNamesOutput->setHtml(allPasswords);
+}
+
+
+void MainWindow::on_showAllButton_clicked()
+{
+    databaseManager.loadPasswords();
+
+    if(databaseManager.getSavedPasswords().isEmpty()){
+        ui->statusbar->showMessage("There's no passwords!", 3000);
+        return;
+    }
+
+    QString allPasswords;
+    auto savedPasswords = databaseManager.getSavedPasswords();
+
+    allPasswords += "<html><body><style>"
+                    "table { width: 100%; border-collapse: collapse; }"
+                    "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
+                    "</style><table>";
+    allPasswords += "<tr><th>Password's Name</th><th>Password</th></tr>";
+
+    for(auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); it++){
+        allPasswords += "<tr>";
+        allPasswords += "<td><b>" + it.key() + "</b></td>";
+        allPasswords += "<td>" + it.value() + "</td>";
+        allPasswords += "</tr>";
+    }
+
+
+    allPasswords += "</table></body></html>";
+    ui->passNamesOutput->setHtml(allPasswords);
+}
 
 void MainWindow::on_copyFindedButton_clicked()
 {
@@ -265,17 +342,3 @@ void MainWindow::on_copyBufferButton_clicked()
 
 //     ui->passwordOutput->setPlainText(allPasswords);
 // }
-// void MainWindow::on_addButton_clicked() {
-//     QString whichPassword = QInputDialog::getText(this, "Add Password", "Which password do you want to add?");
-//     if (whichPassword.isEmpty()) return;
-
-//     QString password = QInputDialog::getText(this, "Add Password", "Enter password:");
-//     if (password.isEmpty()) return;
-
-//     databaseManager.savePassword(whichPassword, password);
-//     QMessageBox::information(this, "Password Added", "Password added successfully.");
-//     on_showButton_clicked();
-// }
-
-
-
