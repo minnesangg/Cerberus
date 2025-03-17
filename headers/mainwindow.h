@@ -32,13 +32,6 @@ public:
     PasswordGenerator password_generator;
 
 private slots:
-    // void on_generateButton_clicked();
-    // void on_showButton_clicked();
-    // void on_findButton_clicked();
-    // void on_deleteButton_clicked();
-    // void on_addButton_clicked();
-    // void on_clearButton_clicked();
-
     void changePage(int index);
     void on_generateButton_clicked();
     void on_deletePassButton_clicked();
@@ -51,6 +44,12 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_addPassButton_clicked();
+
+    void on_showButton_clicked();
+
+    void on_showAllButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     MasterPassword masterPasswordHandler;
@@ -60,6 +59,10 @@ private:
     void MAKENAGAGREATAGAIN();
     void listWidgetSettings();
     void copyButtonsImages();
+    void allignCenter();
+    void openStyleFile();
+
+    void startProgramm();
 
 };
 

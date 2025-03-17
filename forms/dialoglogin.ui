@@ -212,7 +212,7 @@ QPushButton:pressed {
        <x>250</x>
        <y>330</y>
        <width>160</width>
-       <height>21</height>
+       <height>22</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="attemptsLayout">
@@ -316,6 +316,12 @@ QPushButton:pressed {
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
         <property name="styleSheet">
          <string notr="true">QLineEdit {
     background-color: #2b2b2b; 
@@ -348,6 +354,16 @@ QLineEdit:focus {
           <horstretch>1</horstretch>
           <verstretch>1</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <family>Gill Sans MT</family>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {

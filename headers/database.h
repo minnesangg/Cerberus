@@ -24,7 +24,7 @@ public:
     void initDatabase();
     void loadPasswords();
     void savePassword(const QString &name, const QString &password);
-    bool deletePassword(const QString &name);
+    void deletePassword(const QString &name);
     QMap<QString, QString> getSavedPasswords() const;
 
 private:
