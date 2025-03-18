@@ -28,7 +28,6 @@ void MainWindow::startProgramm(){
 
     ui->passNamesOutput->setReadOnly(true);
     ui->generatedLine->setReadOnly(true);
-    MAKENAGAGREATAGAIN();
 }
 
 void MainWindow::listWidgetSettings(){
@@ -92,28 +91,6 @@ void MainWindow::allignCenter(){
     ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
     ui->globalLayout->setAlignment(Qt::AlignCenter);
 
-}
-
-void MainWindow::MAKENAGAGREATAGAIN(){
-    QVBoxLayout *videoLayout = qobject_cast<QVBoxLayout*>(ui->settingsPage->layout());
-    if (!videoLayout) {
-        videoLayout = new QVBoxLayout(ui->settingsPage);
-        ui->settingsPage->setLayout(videoLayout);
-    }
-
-
-    QVideoWidget *videoWidget = new QVideoWidget(ui->settingsPage);
-    QMediaPlayer *player = new QMediaPlayer(ui->settingsPage);
-
-    videoWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    videoWidget->setMinimumSize(ui->settingsPage->size());
-
-    player->setVideoOutput(videoWidget);
-    player->setSource(QUrl::fromLocalFile("D:/Cerberus/qt/MAKENAGAGREATAGAIN.mp4"));
-
-    player->setLoops(QMediaPlayer::Infinite);
-    videoLayout->addWidget(videoWidget);
-    player->play();
 }
 
 void MainWindow::changePage(int index)

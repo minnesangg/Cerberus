@@ -21,10 +21,6 @@ bool MasterPassword::verifyMasterPass(const QString &inputPass) {
 
 bool MasterPassword::checkMasterPass(QString password) {
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
-    // if(!settings.contains("MasterPasswordHash")) {
-    //     masterPassword();
-    //     return false;
-    // }
 
     if (!verifyMasterPass(password)) {
         QMessageBox::critical(this, "Error", "Wrong Master Password. Please try again.");
