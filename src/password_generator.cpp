@@ -1,10 +1,4 @@
 #include "headers/password_generator.h"
-#include <QMessageBox>
-#include <QInputDialog>
-#include <QRandomGenerator>
-#include <QCryptographicHash>
-#include <QFile>
-#include <QSettings>
 
 PasswordGenerator::PasswordGenerator() {}
 

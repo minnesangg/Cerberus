@@ -95,6 +95,8 @@ private:
     Ui::MainWindow *ui; ///< Pointer to the UI elements.
 
     MasterPassword masterPasswordHandler; ///< Handles master password verification.
+    PasswordGenerator password_generator; ///< Handle password generator.
+    DatabaseManager database; ///< Handle database connection.
 
     /// Applies additional visual settings to the list widget.
     void listWidgetSettings();
