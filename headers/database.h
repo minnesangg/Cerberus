@@ -5,32 +5,84 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QByteArray>
-#include <QWidget>
-#include <QSqlDatabase>
-#include <QSqlQuery>
-#include <QSqlError>
-#include <QByteArray>
 #include <QString>
 #include <QCoreApplication>
 #include <QMessageBox>
-#include <QSqlError>
+#include <QMap>
 #include "headers/masterpassword.h"
 
-
-class DatabaseManager : public QWidget  {
+/**
+ * @brief The DatabaseManager class.
+ *
+ * @details This class manages database operations for securely storing, loading, and deleting passwords.
+ * It handles all database interactions, including AES-256 encryption and decryption of passwords
+ * and stores them in a SQLite database. The passwords are associated with a name or label (e.g., website name)
+ * for easy retrieval. This class also handles the initialization of the database, loading all stored passwords,
+ * saving new passwords with encryption, and deleting passwords.
+ *
+ * @note Encryption is performed using AES-256 in CBC mode.
+ */
+class DatabaseManager : public QWidget {
     Q_OBJECT
+
 public:
+    /**
+     * @brief Constructs a DatabaseManager object.
+     *
+     * @details Initializes the object but does not establish a database connection.
+     * The database connection will be established later using `initDatabase()`.
+     */
     DatabaseManager();
+
+    /**
+     * @brief Initializes the database connection.
+     *
+     * @details Ensures that the database is accessible and ready for operations.
+     * If the database does not exist, it creates a new SQLite database file.
+     * It also creates a table for storing passwords.
+     */
     void initDatabase();
+
+    /**
+     * @brief Loads all stored passwords from the database.
+     *
+     * @details Retrieves all saved passwords from the database, decrypts them
+     * using the master password, and stores them in the `savedPasswords` QMap for quick access.
+     */
     void loadPasswords();
+
+    /**
+     * @brief Saves a password to the database.
+     *
+     * @details Encrypts the password using AES-256 and stores it in the database with a name or label.
+     * If the password already exists, it updates the existing record.
+     *
+     * @param name The name or label associated with the password (e.g., website name).
+     * @param password The password to be stored (it will be encrypted before saving).
+     */
     void savePassword(const QString &name, const QString &password);
+
+    /**
+     * @brief Deletes a password from the database.
+     *
+     * @details Removes the password entry identified by the provided name from the database.
+     *
+     * @param name The name of the password entry to be removed.
+     */
     void deletePassword(const QString &name);
+
+    /**
+     * @brief Retrieves all saved passwords.
+     *
+     * @details Returns a QMap containing pairs of password names and their corresponding values.
+     *
+     * @return A QMap containing (name, password) pairs for all saved passwords.
+     */
     QMap<QString, QString> getSavedPasswords() const;
 
 private:
-    QMap<QString, QString> savedPasswords;
-    MasterPassword master_password;
-
+    QMap<QString, QString> savedPasswords;  ///< Stores passwords as (name, password) pairs.
+    MasterPassword master_password;         ///< Object for handling the master password.
 };
 
 #endif // DATABASE_H
