@@ -8,6 +8,11 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 
 ![logotype](https://github.com/user-attachments/assets/483e8aa4-2f96-4f6b-b0d8-d57dd951ca4f)
 
+## 📚 Documentation
+
+For detailed documentation visit [Cerberus Documentation](https://minnesangg.github.io/Cerberus_Docs/).
+
+
 ## 📌 Features
 
 ✅ Generate random passwords with customizable length and complexity.
@@ -66,6 +71,11 @@ This project is licensed under the MIT License.
 Все пароли **хранятся только на вашем устройстве и не отправляются никуда**, обеспечивая полную конфиденциальность и безопасность.
 
 В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, интеграция с Have I Been Pwned API и многое другое.**
+
+## 📚 Документация
+
+Для ознакомления с документацией посетите сайт [Cerberus Documentation](https://minnesangg.github.io/Cerberus_Docs/).
+
 
 ## 📌 Возможности
 
