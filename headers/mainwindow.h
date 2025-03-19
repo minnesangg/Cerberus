@@ -1,3 +1,24 @@
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
+
+#include <QMainWindow>
+#include "headers/masterpassword.h"
+#include "headers/database.h"
+#include "headers/password_generator.h"
+#include <QMessageBox>
+#include <QInputDialog>
+#include <QListWidgetItem>
+#include <QListWidget>
+#include <QFile>
+#include <QClipboard>
+#include <QTimer>
+#include <QMediaPlayer>
+#include <QVideoWidget>
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
+
 /**
  * @brief The MainWindow class.
  *
@@ -159,3 +180,4 @@
      void startProgramm();
  };
  
+#endif //MAINWINDOW_H
