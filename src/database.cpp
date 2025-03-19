@@ -83,4 +83,3 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     }
     savedPasswords[name] = password;
 }
-

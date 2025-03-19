@@ -32,19 +32,6 @@ public:
     PasswordGenerator();
 
     /**
-     * @brief Selects the difficulty level for password generation.
-     *
-     * @details Displays a dialog allowing the user to choose the difficulty level for the password generation.
-     * Based on the chosen difficulty, it adjusts the password size and sets limits for the password length.
-     *
-     * @param begin The starting length for the password.
-     * @param min The minimum length for the password.
-     * @param max The maximum length for the password.
-     * @param ok A flag indicating if the user confirmed the selection.
-     */
-    void chooseDiff(int &begin, int &min, int &max, bool &ok);
-
-    /**
      * @brief Generates a random password of the specified size.
      *
      * @details Generates a password by randomly selecting characters (uppercase and lowercase letters,
