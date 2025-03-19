@@ -12,7 +12,7 @@
 #include "headers/masterpassword.h"
 
 /**
- * @brief The DatabaseManager class.
+ * @class The DatabaseManager class.
  *
  * @details This class manages database operations for securely storing, loading, and deleting passwords.
  * It handles all database interactions, including AES-256 encryption and decryption of passwords

@@ -74,4 +74,3 @@ void DialogLogin::on_newMasterPassButton_clicked()
 
     masterPassStacked->setCurrentWidget(ui->login);
 }
-

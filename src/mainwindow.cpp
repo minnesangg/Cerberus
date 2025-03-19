@@ -299,23 +299,3 @@ void MainWindow::on_copyBufferButton_clicked()
         ui->statusbar->showMessage("Saved to buffer!", 3000);
     }
 }
-
-
-
-// void MainWindow::on_showButton_clicked() {
-//     databaseManager.loadPasswords();
-
-//     if (databaseManager.getSavedPasswords().isEmpty()) {
-//         QMessageBox::information(this, "Saved Passwords", "No saved passwords.");
-//         ui->passwordOutput->clear();
-//         return;
-//     }
-
-//     QString allPasswords;
-//     auto savedPasswords = databaseManager.getSavedPasswords();
-//     for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it) {
-//         allPasswords += "For " + it.key() + ": " + it.value() + "\n";
-//     }
-
-//     ui->passwordOutput->setPlainText(allPasswords);
-// }
