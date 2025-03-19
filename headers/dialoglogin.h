@@ -14,7 +14,7 @@ class DialogLogin;
 }
 
 /**
- * @class The DialogLogin class. Manages user authentication and master password setup.
+ * @brief The DialogLogin class. Manages user authentication and master password setup.
  *
  * @details This class provides a login interface that allows users to authenticate
  * using a master password. If the master password is not yet set, it provides

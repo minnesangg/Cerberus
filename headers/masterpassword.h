@@ -16,7 +16,7 @@
 #include "headers/password_generator.h"
 
 /**
- * @class The MasterPassword class.
+ * @brief The MasterPassword class.
  *
  * @details This class is responsible for handling the master password for the password manager.
  * It provides functionality for setting and verifying the master password, generating a secure hash,

@@ -12,7 +12,7 @@
 
 
 /**
- * @class The PasswordGenerator class.
+ * @brief The PasswordGenerator class.
  *
  * @details This class is responsible for generating secure passwords and selecting the difficulty level
  * for password generation. It includes functionality for generating random passwords based on the selected
