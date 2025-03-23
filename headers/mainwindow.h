@@ -11,9 +11,7 @@
 #include <QListWidget>
 #include <QFile>
 #include <QClipboard>
-#include <QTimer>
-#include <QMediaPlayer>
-#include <QVideoWidget>
+//#include <QTimer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

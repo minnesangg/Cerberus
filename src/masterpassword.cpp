@@ -5,6 +5,7 @@ MasterPassword::MasterPassword() {}
 
 void MasterPassword::masterPassword(QString password){
     // добавить "соль"
+    password = password.trimmed();
     QByteArray hashedPass = QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256);
 
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
