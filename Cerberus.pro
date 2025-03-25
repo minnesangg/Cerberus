@@ -1,16 +1,17 @@
 QT += core gui sql
 
-QT += multimedia multimediawidgets
-
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-LIBS += -L$$PWD/Qt-Secret/src/build/release -lQt-Secret1
-LIBS += -L$$PWD/Qt-Secret/src/mini-gmp/src/build/release -lQt-Secret1
+
+# LIBS += -L/home/extra/programming/qt/Cerberus/Qt-Secret/src/build/release -lQt-Secret
+# LIBS += -L/home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release -lQtBigInt
+# QMAKE_RPATHDIR += /home/extra/programming/qt/Cerberus/Qt-Secret/src/build/release /home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release
 
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
 
 SOURCES += \
     src/database.cpp \
@@ -41,7 +42,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    resources/arrows.qrc \
-    resources/icons.qrc \
-    resources/optionsIcons.qrc \
-    resources/resources.qrc
+    #resources/arrows.qrc \
+   # resources/icons.qrc \
+    #resources/optionsIcons.qrc \
+    #resources/resources.qrc
