@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# C++ objects and libs
-=======
->>>>>>> 82a941a (added prog)
 *.slo
 *.lo
 *.o
@@ -64,8 +60,5 @@ compile_commands.json
 # QtCreator local machine specific files for imported projects
 *creator.user*
 
-<<<<<<< HEAD
 *_qmlcache.qrc
-=======
-*_qmlcache.qrc
->>>>>>> 82a941a (added prog)
+
