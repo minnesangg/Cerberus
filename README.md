@@ -53,7 +53,7 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 1. Clone the repository:
    ```sh
-   git clone https://gitlab.com/username/cerberus.git
+   git clone https://github.com/minnesangg/Cerberus
    ```
 2. Open the project in Qt Creator.
 
@@ -128,7 +128,7 @@ Developed by Minnesang. Contributions are welcome!
 
 1. Клонируйте репозиторий:
    ```sh
-   git clone https://gitlab.com/username/cerberus.git
+   git clone https://github.com/minnesangg/Cerberus
    ```
 2. Откройте проект в Qt Creator.
 
