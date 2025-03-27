@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
         window.setWindowTitle("Cerberus");
 
         // Set the application icon (ensure the path is correct)
-        window.setWindowIcon(QIcon("D:/Cerberus/qt/Cerberus/resources/mainIcon.png"));
+        window.setWindowIcon(QIcon(":/icons/mainIcon.png"));
 
         // Display the main window
         window.show();
