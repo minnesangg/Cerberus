@@ -12,10 +12,9 @@ Future updates will include **password categories, improved UI/UX, Have I Been P
 
 For detailed documentation visit [Cerberus Documentation](https://minnesangg.github.io/Cerberus_Docs/).
 
-
 ## 📌 Features
 
-✅ Generate random passwords with customizable length and complexity.
+✅ Generate random passwords with customizable length.
 
 ✅ Encrypt passwords using **AES-256** before storing them.
 
@@ -27,11 +26,10 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ Minimalistic and user-friendly interface.
 
-## 🚀Future Improvements
+
+## 🚀 Future Improvements
 
 🔹 Organizing passwords into categories (e.g., "Work", "Social Media").
-
-🔹 Improved UI/UX.
 
 🔹 Integration with **Have I Been Pwned API** to check for leaked passwords.
 
@@ -58,28 +56,39 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
    git clone https://gitlab.com/username/cerberus.git
    ```
 2. Open the project in Qt Creator.
+
 3. Build and run.
 
-## 📜 License
+## 📜 Licensing & Third-Party Components
 
-This project is licensed under the MIT License.
+1. This project is licensed under the GNU General Public License v3.0 (GPLv3).
+You are free to use, modify, and distribute the software, but any derivative work must also be released under GPLv3.
 
-# Cerberus - Менеджер Паролей
+2. Third-Party Dependencies:
+   Qt Secret (LGPL 3.0) – used for encryption. You must dynamically link against it and provide users the ability to replace the library. For more information, see Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
+
+## 🌟 Credits
+
+Developed by Minnesang. Contributions are welcome!
+
+
+# Cerberus - Менеджер паролей
 
 **Cerberus** — это безопасный менеджер паролей, разработанный на **Qt (C++)**.  
 Он позволяет пользователям **генерировать, шифровать и хранить пароли** в локальной базе данных **SQLite**.  
 Все пароли **хранятся только на вашем устройстве и не отправляются никуда**, обеспечивая полную конфиденциальность и безопасность.
 
-В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, интеграция с Have I Been Pwned API и многое другое.**
+В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, интеграция с API Have I Been Pwned и многое другое.**
+
+![logotype](https://github.com/user-attachments/assets/483e8aa4-2f96-4f6b-b0d8-d57dd951ca4f)
 
 ## 📚 Документация
 
-Для ознакомления с документацией посетите сайт [Cerberus Documentation](https://minnesangg.github.io/Cerberus_Docs/).
-
+Для подробной документации посетите [Документацию Cerberus](https://minnesangg.github.io/Cerberus_Docs/).
 
 ## 📌 Возможности
 
-✅ Генерация случайных паролей с настраиваемой длиной и сложностью.
+✅ Генерация случайных паролей с настраиваемой длиной.
 
 ✅ Шифрование паролей с использованием **AES-256** перед сохранением.
 
@@ -91,15 +100,15 @@ This project is licensed under the MIT License.
 
 ✅ Минималистичный и удобный интерфейс.
 
+
 ## 🚀 Будущие улучшения
 
-🔹 Организация паролей по категориям (например, "Работа", "Соцсети").
+🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
 
-🔹 Улучшенный UI/UX.
+🔹 Интеграция с **API Have I Been Pwned** для проверки утечек паролей.
 
-🔹 Интеграция с **Have I Been Pwned API** для проверки утечек паролей.
+🔹 Функционал для создания резервных копий и восстановления паролей и настроек.
 
-🔹 Создание резервных копий паролей и настроек.
 
 ## 🛠️ Технологии
 
@@ -113,7 +122,7 @@ This project is licensed under the MIT License.
 ### Требования
 
 - Qt 6+
-- Компилятор с поддержкой **C++17**
+- Компилятор, совместимый с C++17
 
 ### Инструкция по сборке (Qt Creator)
 
@@ -122,8 +131,15 @@ This project is licensed under the MIT License.
    git clone https://gitlab.com/username/cerberus.git
    ```
 2. Откройте проект в Qt Creator.
-3. Соберите и запустите.
 
-## 📜 Лицензия
+3. Соберите и запустите проект.
 
-Проект распространяется под MIT License.
+##📜 Лицензия и сторонние компоненты
+
+   1. Этот проект распространяется под лицензией GNU General Public License v3.0 (GPLv3).
+   Вы можете использовать, модифицировать и распространять программу, но любые производные работы также должны быть выпущены под лицензией GPLv3.
+   2. Сторонние зависимости: Qt Secret (LGPL 3.0) — используется для шифрования. Вам нужно динамически связать его и предоставить пользователю возможность заменить библиотеку. Для получения дополнительной информации, смотрите Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
+
+## 🌟 Авторы
+
+Разработано Minnesang. Приветствуются любые вклады!
