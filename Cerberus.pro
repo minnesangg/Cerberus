@@ -1,10 +1,11 @@
 QT += core gui sql
 
+QT += multimedia multimediawidgets
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-# LIBS += -L/home/extra/programming/qt/Cerberus/Qt-Secret/src/build/release -lQt-Secret
-# LIBS += -L/home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release -lQtBigInt
-# QMAKE_RPATHDIR += /home/extra/programming/qt/Cerberus/Qt-Secret/src/build/release /home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release
+LIBS += -L$$PWD/Qt-Secret/src/build/release -lQt-Secret.so.1 -Wl,-rpath,$$PWD/Qt-Secret/src/build/release
+LIBS += -L$$PWD/Qt-Secret/src/mini-gmp/src/build/release -lQtBigInt.so.6 -Wl,-rpath,$$PWD/Qt-Secret/src/mini-gmp/src/build/release
 
 CONFIG += c++17
 
@@ -12,17 +13,7 @@ CONFIG += c++17
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-contains(QMAKE_HOST_OS, "Windows") {
-    message("Building for Windows")
-    DEFINES += PLATFORM_WINDOWS
-}
 
-contains(QMAKE_HOST_OS, "Linux") {
-    message("Building for Linux")
-    DEFINES += PLATFORM_LINUX
-}
-
-DEFINES += QT_NO_QRESOURCE_COMPRESSION
 
 SOURCES += \
     src/database.cpp \
@@ -54,6 +45,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     resources/arrows.qrc \
-   resources/icons.qrc \
+    #resources/icons.qrc \
     resources/optionsIcons.qrc \
     resources/resources.qrc
+
