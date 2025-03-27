@@ -152,6 +152,7 @@ void MainWindow::on_savePassButton_clicked()
 
 void MainWindow::on_findButton_clicked()
 {
+    databaseManager.loadPasswords();
     const QString findedName = ui->findNameLabel->text();
 
     if(findedName.isEmpty()){
@@ -299,3 +300,4 @@ void MainWindow::on_copyBufferButton_clicked()
         ui->statusbar->showMessage("Saved to buffer!", 3000);
     }
 }
+
