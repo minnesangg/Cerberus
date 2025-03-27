@@ -40,7 +40,7 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 - **Language**: C++
 - **Framework**: Qt
 - **Database**: SQLite
-- **Encryption**: AES-256 (QAESEncryption)
+- **Encryption**: AES-256
 
 ## 🔧 Build and Run
 
@@ -115,7 +115,7 @@ Developed by Minnesang. Contributions are welcome!
 - **Язык**: C++
 - **Фреймворк**: Qt
 - **База данных**: SQLite
-- **Шифрование**: AES-256 (QAESEncryption)
+- **Шифрование**: AES-256
 
 ## 🔧 Сборка и запуск
 
