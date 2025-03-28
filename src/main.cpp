@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     // If the login dialog is accepted (user successfully logs in), open the main window
     if (login.exec() == QDialog::Accepted) {
         MainWindow window;
-
+        QApplication::setStyle("Windows");
         // Set the size of the main window
         window.resize(1000, 700);
 

@@ -72,9 +72,10 @@ void MainWindow::listWidgetSettings(){
     settingsItem->setIcon(QIcon(":/settings.png"));
     ui->listWidget->addItem(settingsItem);
 
-    ui->stackedWidget->setCurrentWidget(ui->defaultPage);
-
     connect(ui->listWidget, &QListWidget::currentRowChanged, this, &MainWindow::changePage);
+    ui->listWidget->setAlternatingRowColors(false);
+    ui->listWidget->setUniformItemSizes(true);
+    ui->listWidget->setSpacing(2);
 
 }
 
@@ -109,7 +110,6 @@ void MainWindow::allignCenter(){
     ui->generateLayout->setAlignment(Qt::AlignCenter);
     ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
     ui->globalLayout->setAlignment(Qt::AlignCenter);
-
 }
 
 void MainWindow::changePage(int index)
