@@ -76,7 +76,7 @@
       <string>CERBERUS</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
     <widget class="QLabel" name="cerberusDesc">
@@ -109,16 +109,16 @@
       <string>Secure storage for your passwords</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignCenter</set>
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>-10</x>
-       <y>109</y>
-       <width>621</width>
-       <height>221</height>
+       <x>-70</x>
+       <y>90</y>
+       <width>764</width>
+       <height>224</height>
       </rect>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_Login" stretch="0,0">
@@ -126,13 +126,13 @@
        <number>15</number>
       </property>
       <property name="leftMargin">
-       <number>200</number>
+       <number>270</number>
       </property>
       <property name="topMargin">
        <number>100</number>
       </property>
       <property name="rightMargin">
-       <number>200</number>
+       <number>270</number>
       </property>
       <item>
        <widget class="QLineEdit" name="passwordLine">
@@ -147,7 +147,7 @@
     background-color: #2b2b2b; 
     border: 1px solid #3c3c3c; 
     color: #d1d1d1; 
-    font-size: 16px;
+    font-size: 20px;
     padding: 12px;
     border-radius: 10px;
     transition: border-color 0.3s;
@@ -160,7 +160,7 @@ QLineEdit:focus {
 </string>
         </property>
         <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
+         <enum>QLineEdit::EchoMode::Password</enum>
         </property>
         <property name="placeholderText">
          <string>Enter your password</string>
@@ -170,16 +170,22 @@ QLineEdit:focus {
       <item>
        <widget class="QPushButton" name="loginButton">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
           <horstretch>1</horstretch>
           <verstretch>1</verstretch>
          </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+          <bold>true</bold>
+         </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton {
     background-color: #6fcf97;
     color: #1e1e1e; 
-    font-size: 18px;
+    font-size: 23px;
     font-weight: bold;
     border: none;
     padding: 12px 24px;
@@ -283,7 +289,7 @@ QPushButton:pressed {
       <string>Create Master Password</string>
      </property>
      <property name="alignment">
-      <set>Qt::AlignHCenter|Qt::AlignTop</set>
+      <set>Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop</set>
      </property>
     </widget>
     <widget class="QWidget" name="layoutWidget">
@@ -292,21 +298,24 @@ QPushButton:pressed {
        <x>-10</x>
        <y>70</y>
        <width>621</width>
-       <height>221</height>
+       <height>385</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+     <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
       <property name="spacing">
        <number>15</number>
       </property>
       <property name="leftMargin">
-       <number>200</number>
+       <number>190</number>
       </property>
       <property name="topMargin">
        <number>100</number>
       </property>
       <property name="rightMargin">
-       <number>200</number>
+       <number>190</number>
+      </property>
+      <property name="bottomMargin">
+       <number>100</number>
       </property>
       <item>
        <widget class="QLineEdit" name="newMasterPassLabel">
@@ -316,34 +325,61 @@ QPushButton:pressed {
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-         </font>
-        </property>
         <property name="styleSheet">
          <string notr="true">QLineEdit {
     background-color: #2b2b2b; 
-    border: 1px solid #3c3c3c;
-    color: #d1d1d1;
-    font-size: 16px;
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1; 
+    font-size: 20px;
     padding: 12px;
     border-radius: 10px;
     transition: border-color 0.3s;
 }
 
 QLineEdit:focus {
-    border-color: #6fcf97; 
+    border-color: #6fcf97; /* Зелёный акцент при фокусе */
     box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
 }
 </string>
         </property>
         <property name="echoMode">
-         <enum>QLineEdit::Password</enum>
+         <enum>QLineEdit::EchoMode::Password</enum>
         </property>
         <property name="placeholderText">
          <string>Enter your password</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="repeatPassLabel">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>1</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #2b2b2b; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1; 
+    font-size: 20px;
+    padding: 12px;
+    border-radius: 10px;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; /* Зелёный акцент при фокусе */
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}
+</string>
+        </property>
+        <property name="echoMode">
+         <enum>QLineEdit::EchoMode::Password</enum>
+        </property>
+        <property name="placeholderText">
+         <string>Repeat your password</string>
         </property>
        </widget>
       </item>
@@ -355,13 +391,6 @@ QLineEdit:focus {
           <verstretch>1</verstretch>
          </sizepolicy>
         </property>
-        <property name="font">
-         <font>
-          <family>Gill Sans MT</family>
-          <pointsize>-1</pointsize>
-          <bold>true</bold>
-         </font>
-        </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
@@ -369,7 +398,7 @@ QLineEdit:focus {
          <string notr="true">QPushButton {
     background-color: #6fcf97; 
     color: #1e1e1e; 
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bold;
     border: none;
     padding: 12px 24px;

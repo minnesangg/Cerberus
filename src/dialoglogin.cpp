@@ -82,15 +82,22 @@ void DialogLogin::on_loginButton_clicked()
 void DialogLogin::on_newMasterPassButton_clicked()
 {
     QString password = ui->newMasterPassLabel->text();
+    QString repeatedPassword = ui->repeatPassLabel->text();
 
-    if(password.isEmpty()){
+    if(password.isEmpty() || repeatedPassword.isEmpty()){
         QMessageBox::critical(this, "Error", "Empty password line. Please try again.");
         return;
     }
 
-    master_pass.masterPassword(password);
-    QMessageBox::information(this, "Success", "Master password has been set! Please log in.");
+    if(password == repeatedPassword){
+        master_pass.masterPassword(password);
+        QMessageBox::information(this, "Success", "Master password has been set! Please log in.");
+        masterPassStacked->setCurrentWidget(ui->login);
+    } else {
+        QMessageBox::critical(this, "Warning", "The repeated password does not match the original password.");
+        ui->newMasterPassLabel->clear();
+        ui->repeatPassLabel->clear();
+    }
 
-    masterPassStacked->setCurrentWidget(ui->login);
 }
 
