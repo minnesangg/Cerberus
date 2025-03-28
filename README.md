@@ -65,7 +65,7 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 You are free to use, modify, and distribute the software, but any derivative work must also be released under GPLv3.
 
 2. Third-Party Dependencies:
-   Qt Secret (LGPL 3.0) – used for encryption. You must dynamically link against it and provide users the ability to replace the library. For more information, see Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
+   Qt Secret (LGPL 3.0) – used for encryption. For more information, see Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
 
 ## 🌟 Credits
 
@@ -134,11 +134,11 @@ Developed by Minnesang. Contributions are welcome!
 
 3. Соберите и запустите проект.
 
-##📜 Лицензия и сторонние компоненты
+## 📜 Лицензия и сторонние компоненты
 
    1. Этот проект распространяется под лицензией GNU General Public License v3.0 (GPLv3).
    Вы можете использовать, модифицировать и распространять программу, но любые производные работы также должны быть выпущены под лицензией GPLv3.
-   2. Сторонние зависимости: Qt Secret (LGPL 3.0) — используется для шифрования. Вам нужно динамически связать его и предоставить пользователю возможность заменить библиотеку. Для получения дополнительной информации, смотрите Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
+   2. Сторонние зависимости: Qt Secret (LGPL 3.0) — используется для шифрования. Для получения дополнительной информации, смотрите Qt Secret. [Qt-Secret](https://github.com/QuasarApp/Qt-Secret).
 
 ## 🌟 Авторы
 
