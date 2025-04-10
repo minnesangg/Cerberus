@@ -24,6 +24,7 @@
 #include "headers/masterpassword.h"
 #include "headers/database.h"
 #include "headers/password_generator.h"
+#include "headers/pwnedapichecker.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QListWidgetItem>
@@ -89,6 +90,23 @@ QT_END_NAMESPACE
      PasswordGenerator passwordGenerator;
  
  private slots:
+
+     /**
+     * @brief Slot that handles the result of the password check.
+     *
+     * This method is called when the password check has completed. It evaluates
+     * whether the entered password has been found in any data breaches. Depending
+     * on the result, it updates the UI with a corresponding message:
+     * - If the password has been found in breaches, it shows a warning message
+     *   with the number of breaches and advises the user to change their password.
+     * - If the password is safe, it displays a confirmation message indicating
+     *   the password is not in any breaches.
+     *
+     * @param found Boolean value indicating whether the password was found in any breaches.
+     * @param count The number of breaches where the password was found.
+     */
+     void onPasswordChecked(bool found, int count);
+
      /**
       * @brief Switches the displayed page in the UI.
       * 
@@ -148,7 +166,18 @@ QT_END_NAMESPACE
       * @brief Copies the found password to the clipboard.
       */
      void on_copyFindedButton_clicked();
- 
+
+     /**
+     * @brief Slot triggered when the user clicks the "Check" button.
+     *
+     * This method retrieves the password entered by the user in the input field,
+     * creates an instance of the PwnedApiChecker class, and connects the
+     * `passwordChecked` signal to the `onPasswordChecked` slot.
+     * Then, it calls the `checkPassword` method to check the entered password
+     * against the "Have I Been Pwned" API.
+     */
+     void on_apiButton_clicked();
+
  private:
      /**
       * @brief Pointer to the UI elements.
