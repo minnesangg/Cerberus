@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
-QT += core gui sql
+QT += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -46,7 +46,8 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/masterpassword.cpp \
-    src/password_generator.cpp
+    src/password_generator.cpp \
+    src/pwnedapichecker.cpp
 
 
 include ($$PWD/Qt-Secret/src/Qt-Secret.pri)
@@ -56,7 +57,8 @@ HEADERS += \
     headers/dialoglogin.h \
     headers/mainwindow.h \
     headers/masterpassword.h \
-    headers/password_generator.h
+    headers/password_generator.h \
+    headers/pwnedapichecker.h
 
 
 FORMS += \

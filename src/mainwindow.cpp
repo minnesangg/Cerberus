@@ -47,6 +47,9 @@ void MainWindow::startProgramm(){
 
     ui->passNamesOutput->setReadOnly(true);
     ui->generatedLine->setReadOnly(true);
+
+    ui->positiveMessageLabel->hide();
+    ui->negativeMessageLabel->hide();
 }
 
 void MainWindow::listWidgetSettings(){
@@ -110,6 +113,7 @@ void MainWindow::allignCenter(){
     ui->generateLayout->setAlignment(Qt::AlignCenter);
     ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
     ui->globalLayout->setAlignment(Qt::AlignCenter);
+    ui->passCheckLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index)
@@ -316,5 +320,33 @@ void MainWindow::on_copyBufferButton_clicked()
     if(!generatedPass.isEmpty()){
         clipboard->setText(generatedPass);
         ui->statusbar->showMessage("Saved to buffer!", 3000);
+    }
+}
+
+void MainWindow::on_apiButton_clicked()
+{
+    QString password = ui->checkPassLine->text();
+    PwnedApiChecker *checker = new PwnedApiChecker(this);
+
+    connect(checker, &PwnedApiChecker::passwordChecked, this, &MainWindow::onPasswordChecked);
+
+    checker->checkPassword(password);
+}
+
+void MainWindow::onPasswordChecked(bool found, int count) {
+    ui->positiveMessageLabel->clear();
+    ui->negativeMessageLabel->clear();
+    ui->positiveMessageLabel->hide();
+    ui->negativeMessageLabel->hide();
+    if(!ui->checkPassLine->text().isEmpty()){
+        if (found) {
+            ui->negativeMessageLabel->setText(QString("Your password has been found in %1 breaches! Please change it!").arg(count));
+            ui->negativeMessageLabel->show();
+        } else {
+            ui->positiveMessageLabel->setText("Your password is safe!");
+            ui->positiveMessageLabel->show();
+        }
+    } else {
+        ui->statusbar->showMessage("Line is empty!", 3000);
     }
 }
