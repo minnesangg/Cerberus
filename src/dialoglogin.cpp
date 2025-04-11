@@ -42,15 +42,32 @@ DialogLogin::DialogLogin(QWidget *parent)
     } else {
         masterPassStacked->setCurrentWidget(login);
     }
+
+    updateStyles();
 }
 
-DialogLogin::~DialogLogin()
-{
+DialogLogin::~DialogLogin() {
     delete ui;
 }
 
-void DialogLogin::on_loginButton_clicked()
-{
+void DialogLogin::updateStyles(){
+    QString darkStyle = "QWidget { background-color: #2E2E2E; color: #2ECC71; }"
+                        "QPushButton { background-color: #2E2E2E; color: #121212; border: none; padding: 10px; }"
+                        "QMessageBox { background-color: #2E2E2E; color: #2ECC71; border: 2px solid #2ECC71; }"
+                        "QMessageBox QAbstractButton { "
+                        "background-color: #2ECC71; "
+                        "color: #121212; "
+                        "border: none; "
+                        "padding: 5px 15px; "
+                        "border-radius: 5px; "
+                        "} "
+                        "QMessageBox QLabel {"
+                        "color: #2ECC71; "
+                        "}";
+    qApp->setStyleSheet(darkStyle);
+}
+
+void DialogLogin::on_loginButton_clicked() {
     QString password = ui->passwordLine->text();
     QString attemptsCounterLabel = ui->attemptsCounterLabel->text();
     int attemptsCounter = attemptsCounterLabel.toInt();
@@ -79,8 +96,7 @@ void DialogLogin::on_loginButton_clicked()
     }
 }
 
-void DialogLogin::on_newMasterPassButton_clicked()
-{
+void DialogLogin::on_newMasterPassButton_clicked() {
     QString password = ui->newMasterPassLabel->text();
     QString repeatedPassword = ui->repeatPassLabel->text();
 

@@ -84,6 +84,17 @@ private:
     QStackedWidget *masterPassStacked;  ///< Stack widget for switching between login and setup screens
         ///< based on whether a master password is set.
     MasterPassword master_pass;         ///< Object for handling master password authentication and management.
+
+    /**
+     * @brief Updates the application style to a dark theme.
+     *
+     * This method applies a dark theme to the entire application by updating
+     * the stylesheet for various UI elements, including the main window,
+     * buttons, and message boxes. It sets a background color of dark gray
+     * (`#2E2E2E`) with green text (`#2ECC71`) and modifies button and message
+     * box appearances for a consistent dark theme throughout the interface.
+     */
+    void updateStyles();
 };
 
 #endif // DIALOGLOGIN_H
