@@ -36,6 +36,8 @@ Makefile*
 
 /build
 Qt-Secret/
+.qtc_clangd/
+.qtc_clangd/.cache/clangd/index
 
 docs/
 Doxyfile
