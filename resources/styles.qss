@@ -4,7 +4,7 @@
 }
 
 QStackedWidget, QFrame {
-    background-color: #333333;
+    background-color: #1E1E1E;
     border-radius: 10px;
 }
 /*

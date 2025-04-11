@@ -30,8 +30,7 @@
  * @param argv The array of command-line arguments.
  * @return An integer indicating the exit status of the application (0 for success, non-zero for failure).
  */
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     // Create a QApplication object, which is required for any Qt-based application
     QApplication app(argc, argv);
 
@@ -41,7 +40,24 @@ int main(int argc, char *argv[])
     // If the login dialog is accepted (user successfully logs in), open the main window
     if (login.exec() == QDialog::Accepted) {
         MainWindow window;
-        QApplication::setStyle("Windows");
+        QApplication::setStyle("fusion");
+
+        // Applies a dark theme with green accents for QWidget, QPushButton, and QMessageBox, ensuring a consistent style across the application.
+        QString darkStyle = "QWidget { background-color: #2E2E2E; color: #2ECC71; }"
+                            "QPushButton { background-color: #2E2E2E; color: #121212; border: none; padding: 10px; }"
+                            "QMessageBox { background-color: #2E2E2E; color: #2ECC71; border: 2px solid #2ECC71; }"
+                            "QMessageBox QAbstractButton { "
+                            "background-color: #2ECC71; "
+                            "color: #121212; "
+                            "border: none; "
+                            "padding: 5px 15px; "
+                            "border-radius: 5px; "
+                            "} "
+                            "QMessageBox QLabel {"
+                            "color: #2ECC71; "
+                            "}";
+        qApp->setStyleSheet(darkStyle);
+
         // Set the size of the main window
         window.resize(1000, 700);
 

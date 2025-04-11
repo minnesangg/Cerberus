@@ -121,6 +121,9 @@ QPushButton:disabled {
         <family>Monospace</family>
        </font>
       </property>
+      <property name="cursor">
+       <cursorShape>UpArrowCursor</cursorShape>
+      </property>
       <widget class="QWidget" name="generatePage">
        <widget class="QLabel" name="mainGenLabel">
         <property name="geometry">
@@ -223,6 +226,9 @@ QPushButton:disabled {
                  <family>Cantarell</family>
                  <pointsize>14</pointsize>
                 </font>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
                </property>
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
@@ -787,6 +793,9 @@ QPushButton:pressed {
                  <pointsize>14</pointsize>
                 </font>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QLineEdit {
     background-color: #424242; 
@@ -1113,7 +1122,7 @@ QTextEdit::item:selected {
         </property>
         <layout class="QVBoxLayout" name="passCheckLayout">
          <item>
-          <widget class="QLabel" name="passCheckLabel">
+          <widget class="QLabel" name="passCheckPageLabel">
            <property name="font">
             <font>
              <family>Monospace</family>
@@ -1339,11 +1348,274 @@ QPushButton:pressed {
          <string>Check if your password has been exposed in data breaches</string>
         </property>
        </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_6">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>290</y>
+          <width>381</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="checkAllPassLabelLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>10</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="allPassCheckLabel">
+           <property name="font">
+            <font>
+             <family>Noto Sans Mono</family>
+             <pointsize>15</pointsize>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+           </property>
+           <property name="text">
+            <string>Check all paswords in database</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QTableWidget" name="passwordTable">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>350</y>
+          <width>711</width>
+          <height>211</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Monospace</family>
+          <pointsize>14</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"> QTableWidget {
+        background-color: #121212;
+        color: #2ECC71;
+        gridline-color: #2ECC71;
+        border: 2px solid #2ECC71;
+    }
+    QHeaderView::section {
+        background-color: #1E1E1E;
+        color: #2ECC71;
+        padding: 4px;
+        border: 1px solid #2ECC71;
+    }
+    QTableWidget::item {
+        background-color: #121212;
+        color: #2ECC71;
+        padding: 4px;
+    }
+    QTableWidget::item:selected {
+        background-color: #2ECC71;
+        color: #121212;
+    }
+
+QScrollBar:vertical {
+    border: none;
+    background: #1E1E1E;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #2ECC71;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #27AE60; /* чуть темнее при наведении */
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Горизонтальный скроллбар, если вдруг появится */
+QScrollBar:horizontal {
+    border: none;
+    background: #1E1E1E;
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #2ECC71;
+    min-width: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #27AE60;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_3">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>580</y>
+          <width>501</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>120</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="checkAllPassButton">
+           <property name="font">
+            <font>
+             <family>Cantarell</family>
+             <pointsize>13</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>CHECK</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clearAllPassButton">
+           <property name="font">
+            <font>
+             <family>Cantarell</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #E74C3C;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px;
+}
+
+QPushButton:hover {
+    background-color: #C0392B;
+}
+
+QPushButton:pressed {
+    background-color: #A93226; 
+}
+</string>
+           </property>
+           <property name="text">
+            <string>CLEAR</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="additInfoButton">
+        <property name="geometry">
+         <rect>
+          <x>700</x>
+          <y>0</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #424242; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+	selection-background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
        <zorder>verticalLayoutWidget_3</zorder>
        <zorder>horizontalLayoutWidget</zorder>
        <zorder>negativeMessageLabel</zorder>
        <zorder>positiveMessageLabel</zorder>
        <zorder>infoLabel</zorder>
+       <zorder>verticalLayoutWidget_6</zorder>
+       <zorder>passwordTable</zorder>
+       <zorder>horizontalLayoutWidget_3</zorder>
+       <zorder>additInfoButton</zorder>
       </widget>
       <widget class="QWidget" name="settingsPage">
        <layout class="QFormLayout" name="formLayout_2"/>

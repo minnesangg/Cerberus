@@ -31,6 +31,8 @@
 #include <QListWidget>
 #include <QFile>
 #include <QClipboard>
+#include <QTableWidget>
+#include <QTableWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -79,33 +81,46 @@ QT_END_NAMESPACE
       */
      ~MainWindow();
  
-     /**
-      * @brief Manages interactions with the password database.
-      */
-     DatabaseManager databaseManager;
- 
-     /**
-      * @brief Handles password generation.
-      */
-     PasswordGenerator passwordGenerator;
- 
  private slots:
 
      /**
-     * @brief Slot that handles the result of the password check.
-     *
-     * This method is called when the password check has completed. It evaluates
-     * whether the entered password has been found in any data breaches. Depending
-     * on the result, it updates the UI with a corresponding message:
-     * - If the password has been found in breaches, it shows a warning message
-     *   with the number of breaches and advises the user to change their password.
-     * - If the password is safe, it displays a confirmation message indicating
-     *   the password is not in any breaches.
-     *
-     * @param found Boolean value indicating whether the password was found in any breaches.
-     * @param count The number of breaches where the password was found.
-     */
+      * @brief Slot that handles the result of the password check.
+      *
+      * This method is called when the password check has completed. It evaluates
+      * whether the entered password has been found in any data breaches. Depending
+      * on the result, it updates the UI with a corresponding message:
+      * - If the password has been found in breaches, it shows a warning message
+      *   with the number of breaches and advises the user to change their password.
+      * - If the password is safe, it displays a confirmation message indicating
+      *   the password is not in any breaches.
+      *
+      * @param found Boolean value indicating whether the password was found in any breaches.
+      * @param count The number of breaches where the password was found.
+      */
      void onPasswordChecked(bool found, int count);
+
+     /**
+      * @brief Handles the result of password breach checks for all passwords.
+      *
+      * This method is called when a password check completes, updating the table
+      * with the result of the breach check. If the password was found in breaches,
+      * the count of breaches is displayed. If the password is safe, a "Safe ✅" message
+      * is shown in the table. It also ensures proper cleanup by deleting the checker object.
+      *
+      * @param found Indicates whether the password was found in any breaches.
+      * @param count The number of breaches the password was found in, if any.
+      */
+     void onAllPasswordChecked(bool found, int count);
+
+     /**
+      * @brief Sets up the table for displaying passwords and breach counts.
+      *
+      * This method initializes the table widget by setting the column count to 2,
+      * configuring the column headers, and adjusting the header resizing modes.
+      * It also hides the vertical header, disables selection and editing features
+      * for the table cells.
+      */
+     void setupTable();
 
      /**
       * @brief Switches the displayed page in the UI.
@@ -178,7 +193,64 @@ QT_END_NAMESPACE
      */
      void on_apiButton_clicked();
 
+     /**
+     * @brief Initiates the password check process for all saved passwords.
+     *
+     * This method retrieves all saved passwords from the database, clears the
+     * existing password table, and then checks each password for breaches using
+     * the Have I Been Pwned API. If a password is found in breaches, it is added
+     * to the table with the corresponding breach count. The table is displayed after
+     * all passwords have been processed.
+     */
+     void on_checkAllPassButton_clicked();
+
+     /**
+     * @brief Clears all contents from the password table and resets the row count.
+     *
+     * This method clears the content in all cells of the password table and resets
+     * the row count to 0, effectively clearing the displayed passwords and breach data.
+     */
+     void on_clearAllPassButton_clicked();
+
+     /**
+     * @brief Displays additional information in a message box.
+     *
+     * This method shows a message box with information about the integration of
+     * the application with "Have I Been Pwned" when the user clicks the additional
+     * info button.
+     */
+     void on_additInfoButton_clicked();
+
  private:
+
+     /**
+     * @brief Total number of passwords that need to be checked.
+     *
+     * This variable holds the count of passwords that need to be checked against
+     * the "Have I Been Pwned" database. It is initialized before the checking
+     * process starts and is incremented during the check process.
+     */
+     int totalPasswordsToCheck;
+
+     /**
+     * @brief Number of passwords that have already been checked.
+     *
+     * This variable tracks the number of passwords that have already been checked
+     * against the "Have I Been Pwned" database. It is updated each time a password
+     * check is completed.
+     */
+     int passwordsChecked;
+
+     /**
+     * @brief A map that stores the row index for each PwnedApiChecker instance.
+     *
+     * This map associates a `PwnedApiChecker` instance with the row number in the
+     * password table where its results should be displayed. The key is the
+     * `PwnedApiChecker*`, and the value is the corresponding row index in the
+     * password table.
+     */
+     QMap<PwnedApiChecker*, int> checkerRowMap;
+
      /**
       * @brief Pointer to the UI elements.
       */
@@ -205,9 +277,9 @@ QT_END_NAMESPACE
      void listWidgetSettings();
  
      /**
-      * @brief Loads and sets images for the copy buttons.
+      * @brief Loads and sets images for the buttons.
       */
-     void copyButtonsImages();
+     void buttonsImages();
  
      /**
       * @brief Aligns UI elements to be properly centered.
