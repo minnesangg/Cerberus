@@ -3,8 +3,9 @@
 **Cerberus** is a secure password manager built with **Qt (C++)**.  
 It allows users to **generate, encrypt, and store passwords** in a local **SQLite** database.  
 All passwords are **stored only on your device and never sent anywhere**, ensuring complete privacy and security.
+Also, here is a Have I Been Pwned API integration for checking if passwords have been exposed in data breaches.
 
-Future updates will include **password categories, improved UI/UX, Have I Been Pwned API integration, and more.**
+Future updates will include **password categories, improved UI/UX, and more.**
 
 ![logotype](https://github.com/user-attachments/assets/483e8aa4-2f96-4f6b-b0d8-d57dd951ca4f)
 
@@ -26,12 +27,11 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ Minimalistic and user-friendly interface.
 
+✅ Integration with **Have I Been Pwned API** to check for leaked passwords.
 
 ## 🚀 Future Improvements
 
-🔹 Organizing passwords into categories (e.g., "Work", "Social Media").
-
-🔹 Integration with **Have I Been Pwned API** to check for leaked passwords.
+🔹 Organizing passwords into categories (e.g., "Work", "Social Media"). 
 
 🔹 Backup and restore functionality for passwords and settings.
 
@@ -77,8 +77,9 @@ Developed by Minnesang. Contributions are welcome!
 **Cerberus** — это безопасный менеджер паролей, разработанный на **Qt (C++)**.  
 Он позволяет пользователям **генерировать, шифровать и хранить пароли** в локальной базе данных **SQLite**.  
 Все пароли **хранятся только на вашем устройстве и не отправляются никуда**, обеспечивая полную конфиденциальность и безопасность.
+Также есть интеграция с Have I Been Pwned API для проверки того, был ли пароль замечен в утечках.
 
-В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, интеграция с API Have I Been Pwned и многое другое.**
+В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, и многое другое.**
 
 ![logotype](https://github.com/user-attachments/assets/483e8aa4-2f96-4f6b-b0d8-d57dd951ca4f)
 
@@ -100,12 +101,12 @@ Developed by Minnesang. Contributions are welcome!
 
 ✅ Минималистичный и удобный интерфейс.
 
+✅ Интеграция с **API Have I Been Pwned** для проверки утечек паролей.
+
 
 ## 🚀 Будущие улучшения
 
 🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
-
-🔹 Интеграция с **API Have I Been Pwned** для проверки утечек паролей.
 
 🔹 Функционал для создания резервных копий и восстановления паролей и настроек.
 
