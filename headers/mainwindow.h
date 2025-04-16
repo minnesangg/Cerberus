@@ -221,6 +221,8 @@ QT_END_NAMESPACE
      */
      void on_additInfoButton_clicked();
 
+     void on_clearTableButton_clicked();
+
  private:
 
      /**

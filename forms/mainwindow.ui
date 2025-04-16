@@ -949,10 +949,10 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>120</x>
+          <x>90</x>
           <y>360</y>
-          <width>531</width>
-          <height>271</height>
+          <width>601</width>
+          <height>81</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="passShowLayout">
@@ -1050,59 +1050,141 @@ QPushButton:pressed {
              </property>
             </widget>
            </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="textEditLayout">
-           <property name="topMargin">
-            <number>0</number>
-           </property>
            <item>
-            <layout class="QVBoxLayout" name="verticalLayout">
-             <item>
-              <widget class="QTextEdit" name="passNamesOutput">
-               <property name="font">
-                <font>
-                 <family>Cantarell</family>
-                 <pointsize>14</pointsize>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="cursor" stdset="0">
-                <cursorShape>IBeamCursor</cursorShape>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QTextEdit {
-    background-color: #1E1E1E; 
-    border: 1px solid #333;
-    color: #E0E0E0; 
-    padding: 5px;
-    border-radius: 12px;
-}
-
-QTextEdit::item {
-    background-color: #2A2A2A; 
-    border-radius: 5px;
-    padding: 8px;
-    color: #E0E0E0; 
-}
-
-QListWidget::item:hover {
-    background-color: #444444;
-}
-
-QTextEdit::item:selected {
-    background-color: #2ECC71; 
-    color: #1E1E1E; 
+            <widget class="QPushButton" name="clearTableButton">
+             <property name="font">
+              <font>
+               <family>Cantarell</family>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+	background-color: #E74C3C;
+    color: #1e1e1e; 
     font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
-</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+
+QPushButton:hover {
+    background-color: #C0392B;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #912a1f;
+    box-shadow: none;
+}</string>
+             </property>
+             <property name="text">
+              <string>Clear</string>
+             </property>
+            </widget>
            </item>
           </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>440</y>
+          <width>711</width>
+          <height>201</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="textTableLayout">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QTableWidget" name="showPassTable">
+           <property name="styleSheet">
+            <string notr="true"> QTableWidget {
+        background-color: #121212;
+        color: #2ECC71;
+        gridline-color: #2ECC71;
+        border: 2px solid #2ECC71;
+    }
+    QHeaderView::section {
+        background-color: #1E1E1E;
+        color: #2ECC71;
+        padding: 4px;
+        border: 1px solid #2ECC71;
+    }
+    QTableWidget::item {
+        background-color: #121212;
+        color: #2ECC71;
+        padding: 4px;
+    }
+    QTableWidget::item:selected {
+        background-color: #2ECC71;
+        color: #121212;
+    }
+
+QScrollBar:vertical {
+    border: none;
+    background: #1E1E1E;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #2ECC71;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #27AE60; /* чуть темнее при наведении */
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Горизонтальный скроллбар, если вдруг появится */
+QScrollBar:horizontal {
+    border: none;
+    background: #1E1E1E;
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #2ECC71;
+    min-width: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #27AE60;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </widget>
