@@ -33,6 +33,8 @@
 #include <QClipboard>
 #include <QTableWidget>
 #include <QTableWidgetItem>
+#include <QProcess>
+#include <QSysInfo>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -220,6 +222,10 @@ QT_END_NAMESPACE
      * info button.
      */
      void on_additInfoButton_clicked();
+
+     void on_clearTableButton_clicked();
+
+     void on_gmailSendButton_clicked();
 
  private:
 

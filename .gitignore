@@ -33,14 +33,17 @@ Makefile*
 *build-*
 *.qm
 *.prl
+*.spec
 
 /build
 Qt-Secret/
 .qtc_clangd/
 .qtc_clangd/.cache/clangd/index
 
+dist/
 docs/
 Doxyfile
+config.json
 
 .vscode/
 # Qt unit tests

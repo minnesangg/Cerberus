@@ -44,7 +44,6 @@ void MainWindow::startProgramm() {
     buttonsImages();
     allignCenter();
 
-    ui->passNamesOutput->setReadOnly(true);
     ui->generatedLine->setReadOnly(true);
 
     ui->positiveMessageLabel->hide();
@@ -71,6 +70,10 @@ void MainWindow::listWidgetSettings() {
     QListWidgetItem *checkItem = new QListWidgetItem("Check Password");
     checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
+
+    QListWidgetItem *backupDB = new QListWidgetItem("Backup");
+    //checkItem->setIcon(QIcon(":/backup.png"));
+    ui->listWidget->addItem(backupDB);
 
     QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
     settingsItem->setIcon(QIcon(":/settings.png"));
@@ -119,6 +122,9 @@ void MainWindow::allignCenter() {
     ui->generatedPassLayout->setAlignment(Qt::AlignCenter);
     ui->globalLayout->setAlignment(Qt::AlignCenter);
     ui->passCheckLayout->setAlignment(Qt::AlignCenter);
+    ui->textTableLayout->setAlignment(Qt::AlignCenter);
+    ui->backupLabelLayout->setAlignment(Qt::AlignCenter);
+    ui->sendGmailLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index) {
@@ -136,6 +142,9 @@ void MainWindow::changePage(int index) {
         ui->stackedWidget->setCurrentWidget(ui->checkPage);
         break;
     case 4:
+        ui->stackedWidget->setCurrentWidget(ui->backupPage);
+        break;
+    case 5:
         ui->stackedWidget->setCurrentWidget(ui->settingsPage);
         break;
     default:
@@ -243,60 +252,53 @@ void MainWindow::on_addPassButton_clicked() {
 void MainWindow::on_showButton_clicked() {
     database.loadPasswords();
 
-    if(database.getSavedPasswords().isEmpty()){
+    auto savedPasswords = database.getSavedPasswords();
+    if (savedPasswords.isEmpty()) {
         ui->statusbar->showMessage("There's no passwords!", 3000);
         return;
     }
 
-    QString allPasswords;
-    auto savedPasswords = database.getSavedPasswords();
+    ui->showPassTable->clear();
+    ui->showPassTable->setRowCount(savedPasswords.size());
+    ui->showPassTable->setColumnCount(1);
+    ui->showPassTable->setHorizontalHeaderLabels({ "Password's Name" });
+    ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->showPassTable->verticalHeader()->setVisible(false);
+    ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->showPassTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    allPasswords += "<html><body><style>"
-                    "table { width: 100%; border-collapse: collapse; }"
-                    "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
-                    "</style><table>";
-    allPasswords += "<tr><th>Password's Name</th></tr>";
-
-    for(auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); it++){
-        allPasswords += "<tr>";
-        allPasswords += "<td><b>" + it.key() + "</b></td>";
-        allPasswords += "</tr>";
+    int row = 0;
+    for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it, ++row) {
+        ui->showPassTable->setItem(row, 0, new QTableWidgetItem(it.key()));
     }
-
-
-    allPasswords += "</table></body></html>";
-    ui->passNamesOutput->setHtml(allPasswords);
 }
 
 
 void MainWindow::on_showAllButton_clicked() {
     database.loadPasswords();
 
-    if(database.getSavedPasswords().isEmpty()){
+    auto savedPasswords = database.getSavedPasswords();
+    if (savedPasswords.isEmpty()) {
         ui->statusbar->showMessage("There's no passwords!", 3000);
         return;
     }
 
-    QString allPasswords;
-    auto savedPasswords = database.getSavedPasswords();
+    ui->showPassTable->clear();
+    ui->showPassTable->setRowCount(savedPasswords.size());
+    ui->showPassTable->setColumnCount(2);
+    ui->showPassTable->setHorizontalHeaderLabels({ "Password's Name", "Password" });
+    ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->showPassTable->verticalHeader()->setVisible(false);
+    ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->showPassTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
-    allPasswords += "<html><body><style>"
-                    "table { width: 100%; border-collapse: collapse; }"
-                    "th, td { border: 1px solid black; padding: 5px; text-align: left; }"
-                    "</style><table>";
-    allPasswords += "<tr><th>Password's Name</th><th>Password</th></tr>";
-
-    for(auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); it++){
-        allPasswords += "<tr>";
-        allPasswords += "<td><b>" + it.key() + "</b></td>";
-        allPasswords += "<td>" + it.value() + "</td>";
-        allPasswords += "</tr>";
+    int row = 0;
+    for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it, ++row) {
+        ui->showPassTable->setItem(row, 0, new QTableWidgetItem(it.key()));
+        ui->showPassTable->setItem(row, 1, new QTableWidgetItem(it.value()));
     }
-
-
-    allPasswords += "</table></body></html>";
-    ui->passNamesOutput->setHtml(allPasswords);
 }
+
 
 void MainWindow::on_copyFindedButton_clicked() {
     QClipboard *clipboard = QApplication::clipboard();
@@ -403,5 +405,36 @@ void MainWindow::on_clearAllPassButton_clicked()
 void MainWindow::on_additInfoButton_clicked()
 {
     QMessageBox::information(this, "Info", "Integrated with Have I Been Pwned.");
+}
+
+
+void MainWindow::on_clearTableButton_clicked()
+{
+    ui->showPassTable->clearContents();
+    ui->showPassTable->setRowCount(0);
+}
+
+void MainWindow::on_gmailSendButton_clicked()
+{
+    QString userGmail = ui->gmailLine->text();
+    if (userGmail.isEmpty()) {
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+
+    QString exePath;
+    QString dbPath = QCoreApplication::applicationDirPath() + "/passwords.db";
+
+#ifdef Q_OS_LINUX
+    exePath = QCoreApplication::applicationDirPath() + "/send_email";
+#elif defined(Q_OS_WIN)
+    exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
+#endif
+
+    QStringList arguments;
+    arguments << userGmail << dbPath;
+
+    QProcess *process = new QProcess(this);
+    process->startDetached(exePath, arguments);
 }
 
