@@ -71,8 +71,8 @@ void MainWindow::listWidgetSettings() {
     checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
 
-    QListWidgetItem *backupDB = new QListWidgetItem("Backup");
-    //checkItem->setIcon(QIcon(":/backup.png"));
+    QListWidgetItem *backupDB = new QListWidgetItem("Backups");
+    backupDB->setIcon(QIcon(":/backup.png"));
     ui->listWidget->addItem(backupDB);
 
     QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
