@@ -925,7 +925,7 @@ QLineEdit:focus {
         <property name="geometry">
          <rect>
           <x>240</x>
-          <y>310</y>
+          <y>270</y>
           <width>301</width>
           <height>41</height>
          </rect>
@@ -950,7 +950,7 @@ QLineEdit:focus {
         <property name="geometry">
          <rect>
           <x>90</x>
-          <y>360</y>
+          <y>320</y>
           <width>601</width>
           <height>81</height>
          </rect>
@@ -1093,13 +1093,13 @@ QPushButton:pressed {
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>440</y>
+          <y>400</y>
           <width>711</width>
-          <height>201</height>
+          <height>241</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="textTableLayout">
@@ -1698,6 +1698,143 @@ QLineEdit:focus {
        <zorder>passwordTable</zorder>
        <zorder>horizontalLayoutWidget_3</zorder>
        <zorder>additInfoButton</zorder>
+      </widget>
+      <widget class="QWidget" name="backupPage">
+       <widget class="QWidget" name="verticalLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>10</y>
+          <width>367</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="backupLabelLayout">
+         <item>
+          <widget class="QLabel" name="backupMainLabel">
+           <property name="font">
+            <font>
+             <family>Monospace</family>
+             <pointsize>22</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+           </property>
+           <property name="text">
+            <string>BACKUP YOUR DATABASE</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_7">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>200</y>
+          <width>631</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="sendGmailLayout">
+         <item>
+          <layout class="QVBoxLayout" name="sendLabelLayout">
+           <property name="leftMargin">
+            <number>195</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="sendGmailLabel">
+             <property name="font">
+              <font>
+               <family>Monospace</family>
+               <pointsize>20</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+             </property>
+             <property name="text">
+              <string>Send to Gmail</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="sendLineButtonLayout">
+           <item>
+            <widget class="QLineEdit" name="gmailLine">
+             <property name="font">
+              <font>
+               <family>Monospace</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="gmailSendButton">
+             <property name="font">
+              <font>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>SEND</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="settingsPage">
        <layout class="QFormLayout" name="formLayout_2"/>

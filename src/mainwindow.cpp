@@ -71,6 +71,10 @@ void MainWindow::listWidgetSettings() {
     checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
 
+    QListWidgetItem *backupDB = new QListWidgetItem("Backup");
+    //checkItem->setIcon(QIcon(":/backup.png"));
+    ui->listWidget->addItem(backupDB);
+
     QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
     settingsItem->setIcon(QIcon(":/settings.png"));
     ui->listWidget->addItem(settingsItem);
@@ -119,6 +123,8 @@ void MainWindow::allignCenter() {
     ui->globalLayout->setAlignment(Qt::AlignCenter);
     ui->passCheckLayout->setAlignment(Qt::AlignCenter);
     ui->textTableLayout->setAlignment(Qt::AlignCenter);
+    ui->backupLabelLayout->setAlignment(Qt::AlignCenter);
+    ui->sendGmailLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index) {
@@ -136,6 +142,9 @@ void MainWindow::changePage(int index) {
         ui->stackedWidget->setCurrentWidget(ui->checkPage);
         break;
     case 4:
+        ui->stackedWidget->setCurrentWidget(ui->backupPage);
+        break;
+    case 5:
         ui->stackedWidget->setCurrentWidget(ui->settingsPage);
         break;
     default:
@@ -403,5 +412,29 @@ void MainWindow::on_clearTableButton_clicked()
 {
     ui->showPassTable->clearContents();
     ui->showPassTable->setRowCount(0);
+}
+
+void MainWindow::on_gmailSendButton_clicked()
+{
+    QString userGmail = ui->gmailLine->text();
+    if (userGmail.isEmpty()) {
+        ui->statusbar->showMessage("Line is empty!", 3000);
+        return;
+    }
+
+    QString exePath;
+    QString dbPath = QCoreApplication::applicationDirPath() + "/passwords.db";
+
+#ifdef Q_OS_LINUX
+    exePath = QCoreApplication::applicationDirPath() + "/send_email";
+#elif defined(Q_OS_WIN)
+    exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
+#endif
+
+    QStringList arguments;
+    arguments << userGmail << dbPath;
+
+    QProcess *process = new QProcess(this);
+    process->startDetached(exePath, arguments);
 }
 
