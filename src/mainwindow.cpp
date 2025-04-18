@@ -71,8 +71,8 @@ void MainWindow::listWidgetSettings() {
     checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
 
-    QListWidgetItem *backupDB = new QListWidgetItem("Backup");
-    //checkItem->setIcon(QIcon(":/backup.png"));
+    QListWidgetItem *backupDB = new QListWidgetItem("Backups");
+    backupDB->setIcon(QIcon(":/backup.png"));
     ui->listWidget->addItem(backupDB);
 
     QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
@@ -434,7 +434,8 @@ void MainWindow::on_gmailSendButton_clicked()
     QStringList arguments;
     arguments << userGmail << dbPath;
 
-    QProcess *process = new QProcess(this);
-    process->startDetached(exePath, arguments);
+    QProcess::startDetached(exePath, arguments);
+    ui->gmailLine->clear();
+    ui->statusbar->showMessage("Backup successfully sent!", 3000);
 }
 

@@ -24,6 +24,24 @@ import ssl
 from email.message import EmailMessage
 import os
 
+"""
+@file cerberus_backup.py
+@brief A script to send a backup of the Cerberus password manager database via email.
+
+This script reads the configuration from a JSON file, retrieves the sender email and app password,
+and sends an email with the backup file of the Cerberus password manager database to a specified receiver.
+The script uses the Gmail SMTP server for sending the email securely over SSL.
+
+@details
+- The script expects two command-line arguments: the receiver's email and the path to the database file.
+- The script loads the configuration from "config.json", which includes the sender's email and app password.
+- The email is composed using the `EmailMessage` class from the `email.message` module.
+- The backup file is attached to the email as a binary stream.
+- The email is sent securely using the Gmail SMTP server.
+
+@note Make sure the "config.json" file exists in the same directory as this script and contains valid sender email and app password.
+"""
+
 print(f"Running from: {os.getcwd()}")
 print(f"Script dir: {os.path.dirname(os.path.abspath(__file__))}")
 print(f"Args: {sys.argv}")

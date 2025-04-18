@@ -223,8 +223,24 @@ QT_END_NAMESPACE
      */
      void on_additInfoButton_clicked();
 
+     /**
+     * @brief Clears the content of the table and resets its row count.
+     *
+     * This method is called when the "Clear Table" button is clicked. It clears the contents
+     * of the table (ui->showPassTable) and resets the number of rows to zero.
+     */
      void on_clearTableButton_clicked();
 
+     /**
+     * @brief Sends an email with the path to the passwords database.
+     *
+     * This method is triggered when the "Send Gmail" button is clicked. It retrieves the Gmail
+     * address from the input field, checks if it is empty, and if not, it prepares to send the
+     * email using an external executable. The executable is determined based on the operating system
+     * (Linux or Windows) and is passed the Gmail address and the path to the passwords database.
+     *
+     * @note If the input field is empty, a message will be displayed on the status bar.
+     */
      void on_gmailSendButton_clicked();
 
  private:
