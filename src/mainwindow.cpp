@@ -434,7 +434,8 @@ void MainWindow::on_gmailSendButton_clicked()
     QStringList arguments;
     arguments << userGmail << dbPath;
 
-    QProcess *process = new QProcess(this);
-    process->startDetached(exePath, arguments);
+    QProcess::startDetached(exePath, arguments);
+    ui->gmailLine->clear();
+    ui->statusbar->showMessage("Backup successfully sent!", 3000);
 }
 

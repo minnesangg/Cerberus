@@ -67,8 +67,8 @@ int main(int argc, char *argv[]) {
         // Set the window title
         window.setWindowTitle("Cerberus");
 
-        // Set the application icon (ensure the path is correct)
-        window.setWindowIcon(QIcon(":/icons/mainIcon.png"));
+        // Set the application icon
+        window.setWindowIcon(QIcon(":/mainIcon.png"));
 
         // Display the main window
         window.show();
@@ -76,7 +76,5 @@ int main(int argc, char *argv[]) {
         // Start the application's event loop
         return app.exec();
     }
-
-    // Return 0 if the login was not successful, indicating the application should not continue
     return 0;
 }
