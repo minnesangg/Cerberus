@@ -53,6 +53,14 @@ public:
      */
     DatabaseManager();
 
+    /**
+     * @brief Sets the path to the database file.
+     *
+     * This method stores the path to the SQLite database file,
+     * which will be used by the application to open and manage the database.
+     *
+     * @param path The absolute or relative path to the SQLite database file.
+     */
     void setDatabasePath(const QString& path);
 
     /**
