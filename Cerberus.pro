@@ -49,7 +49,6 @@ SOURCES += \
     src/password_generator.cpp \
     src/pwnedapichecker.cpp
 
-
 include ($$PWD/Qt-Secret/src/Qt-Secret.pri)
 
 HEADERS += \

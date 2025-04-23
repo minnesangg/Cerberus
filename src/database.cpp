@@ -30,9 +30,13 @@ QMap<QString, QString> DatabaseManager::getSavedPasswords() const {
     return savedPasswords;
 }
 
+void DatabaseManager::setDatabasePath(const QString& path){
+    dbPath = path;
+}
+
 void DatabaseManager::initDatabase(){
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(QCoreApplication::applicationDirPath() + "/passwords.db");
+    db.setDatabaseName(dbPath);
 
     if (!db.open()) {
         QMessageBox::critical(this, "Database Error", db.lastError().text());

@@ -62,7 +62,6 @@ public:
      */
     QString passGeneration(int passwordSize);
 
-private:
     /**
      * @brief Generates a random initialization vector (IV).
      *
@@ -73,6 +72,7 @@ private:
      * @return A QByteArray containing the generated IV.
      */
     QByteArray generateIV(int size);
+
 };
 
 #endif // PASSWORDGENERATOR_H
