@@ -1734,10 +1734,10 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_7">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>200</y>
-          <width>631</width>
-          <height>151</height>
+          <x>50</x>
+          <y>160</y>
+          <width>641</width>
+          <height>201</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="sendGmailLayout">
@@ -1834,7 +1834,189 @@ QPushButton:pressed {
            </item>
           </layout>
          </item>
+         <item>
+          <widget class="QLabel" name="checkSpamLabel">
+           <property name="font">
+            <font>
+             <family>Monospace</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+           </property>
+           <property name="text">
+            <string>Please check your spam folder, the email containing the database might be there.</string>
+           </property>
+          </widget>
+         </item>
         </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_8">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>400</y>
+          <width>641</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="restorePasswordLayout">
+         <item>
+          <layout class="QHBoxLayout" name="restorePassLabelLayout">
+           <property name="leftMargin">
+            <number>190</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="restorePassLabel">
+             <property name="font">
+              <font>
+               <family>Monospace</family>
+               <pointsize>20</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+             </property>
+             <property name="text">
+              <string>Restore Passwords</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="choosePassLayout">
+           <item>
+            <widget class="QPushButton" name="chooseFileButton">
+             <property name="font">
+              <font>
+               <family>Cantarell</family>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+             </property>
+             <property name="text">
+              <string>CHOOSE FILE</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="gmailLine_2">
+             <property name="font">
+              <font>
+               <family>Monospace</family>
+               <pointsize>14</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+             <property name="placeholderText">
+              <string>Choosed file</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="checkSpamLabel_2">
+           <property name="font">
+            <font>
+             <family>Monospace</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+           </property>
+           <property name="text">
+            <string>Please select the installed .db file, your passwords will be there.</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="backupInfoButton">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>10</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #424242; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+	selection-background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="settingsPage">

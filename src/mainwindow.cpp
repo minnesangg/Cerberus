@@ -34,6 +34,9 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::startProgramm() {
+    QString dbFilePath = QCoreApplication::applicationDirPath() + "/passwords.db";
+    database.setDatabasePath(dbFilePath);
+
     database.initDatabase();
     database.loadPasswords();
 
@@ -109,6 +112,11 @@ void MainWindow::buttonsImages() {
     ui->additInfoButton->setIconSize(QSize(32, 32));
     ui->additInfoButton->setFlat(true);
     ui->additInfoButton->setText("");
+
+    ui->backupInfoButton->setIcon(QIcon(":/addInfo.png"));
+    ui->backupInfoButton->setIconSize(QSize(32, 32));
+    ui->backupInfoButton->setFlat(true);
+    ui->backupInfoButton->setText("");
 }
 
 void MainWindow::allignCenter() {
@@ -125,6 +133,7 @@ void MainWindow::allignCenter() {
     ui->textTableLayout->setAlignment(Qt::AlignCenter);
     ui->backupLabelLayout->setAlignment(Qt::AlignCenter);
     ui->sendGmailLayout->setAlignment(Qt::AlignCenter);
+    ui->restorePasswordLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index) {
@@ -437,5 +446,40 @@ void MainWindow::on_gmailSendButton_clicked()
     QProcess::startDetached(exePath, arguments);
     ui->gmailLine->clear();
     ui->statusbar->showMessage("Backup successfully sent!", 3000);
+}
+
+
+void MainWindow::on_chooseFileButton_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(
+        this, "Choose Database", "", "Databases (*.db);;All Files (*)");
+
+    if (!filePath.isEmpty()) {
+        QString exeDir = QCoreApplication::applicationDirPath();
+        QFileInfo fileInfo(filePath);
+        QString destinationPath = QDir(exeDir).filePath(fileInfo.fileName());
+
+
+        database.close();
+        QSqlDatabase::removeDatabase(QSqlDatabase::defaultConnection);
+        if (QFile::exists(destinationPath)) {
+            QFile::remove(destinationPath);
+        }
+
+        if (QFile::copy(filePath, destinationPath)) {
+            ui->statusbar->showMessage("Database successfully added!", 3000);
+        } else {
+            ui->statusbar->showMessage("Error adding the database!", 3000);
+        }
+    } else {
+        ui->statusbar->showMessage("No file selected.", 3000);
+    }
+    database.initDatabase();
+}
+
+
+void MainWindow::on_backupInfoButton_clicked()
+{
+    QMessageBox::information(this,"Info" ,"All passwords in the database are transmitted in an encrypted form.");
 }
 

@@ -19,7 +19,6 @@
 #include <QApplication>
 #include "headers/mainwindow.h"
 #include "headers/dialoglogin.h"
-
 /**
  * @brief The main entry point of the application.
  *

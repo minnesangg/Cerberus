@@ -35,6 +35,7 @@
 #include <QTableWidgetItem>
 #include <QProcess>
 #include <QSysInfo>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -242,6 +243,10 @@ QT_END_NAMESPACE
      * @note If the input field is empty, a message will be displayed on the status bar.
      */
      void on_gmailSendButton_clicked();
+
+     void on_chooseFileButton_clicked();
+
+     void on_backupInfoButton_clicked();
 
  private:
 

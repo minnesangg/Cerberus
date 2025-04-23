@@ -53,6 +53,8 @@ public:
      */
     DatabaseManager();
 
+    void setDatabasePath(const QString& path);
+
     /**
      * @brief Initializes the database connection.
      *
@@ -102,6 +104,7 @@ public:
 private:
     QMap<QString, QString> savedPasswords;  ///< Stores passwords as (name, password) pairs.
     MasterPassword master_password;         ///< Object for handling the master password.
+    QString dbPath; ///< Database path.
 };
 
 #endif // DATABASE_H
