@@ -244,8 +244,23 @@ QT_END_NAMESPACE
      */
      void on_gmailSendButton_clicked();
 
-     void on_chooseFileButton_clicked();
+     /**
+     * @brief Handles the file selection for importing a new database.
+     *
+     * Opens a file dialog to let the user select a `.db` file. If a file is selected,
+     * the current database connection is closed and removed, and the selected database
+     * file is copied into the application directory. If a database with the same name already exists, it is overwritten.
+     *
+     * Displays a status message in the status bar to indicate success or failure.
+     */
+     void on_chooseFileButton_clicked(); 
 
+     /**
+     * @brief Shows information about data security.
+     *
+     * Displays a message box explaining that all passwords in the database
+     * are encrypted before being stored or transmitted.
+     */
      void on_backupInfoButton_clicked();
 
  private:
