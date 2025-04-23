@@ -29,11 +29,14 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ Integration with **Have I Been Pwned API** to check for leaked passwords.
 
+✅ Secure password backup via Gmail.
+
+
 ## 🚀 Future Improvements
 
 🔹 Organizing passwords into categories (e.g., "Work", "Social Media"). 
 
-🔹 Backup and restore functionality for passwords and settings.
+🔹 App customization options (language, theme, security level).
 
 ## 🛠️ Technologies
 
@@ -103,13 +106,14 @@ Developed by Minnesang. Contributions are welcome!
 
 ✅ Интеграция с **API Have I Been Pwned** для проверки утечек паролей.
 
+✅ Безопасное резервное копирование паролей через Gmail 
+
 
 ## 🚀 Будущие улучшения
 
 🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
 
-🔹 Функционал для создания резервных копий и восстановления паролей и настроек.
-
+🔹 Настройки приложения (язык, тема, уровень безопасности).
 
 ## 🛠️ Технологии
 
