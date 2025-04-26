@@ -73,6 +73,21 @@ public:
      */
     QByteArray generateIV(int size);
 
+    /**
+     * @brief Generates cryptographically secure random bytes.
+     *
+     * This function generates a sequence of cryptographically secure random bytes
+     * of the specified size.
+     * On Windows, it uses `BCryptGenRandom` with `BCRYPT_RNG_ALGORITHM`.
+     * On Unix-like systems, it reads directly from `/dev/urandom`.
+     *
+     * @param size The number of random bytes to generate.
+     * @return QByteArray containing the generated random bytes.
+     *
+     * @note If the underlying random source fails, the returned QByteArray may contain uninitialized data.
+     */
+    QByteArray secureRandomBytes(int size);
+
 };
 
 #endif // PASSWORDGENERATOR_H

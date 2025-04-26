@@ -117,6 +117,11 @@ void MainWindow::buttonsImages() {
     ui->backupInfoButton->setIconSize(QSize(32, 32));
     ui->backupInfoButton->setFlat(true);
     ui->backupInfoButton->setText("");
+
+    ui->generateInfoButton->setIcon(QIcon(":/addInfo.png"));
+    ui->generateInfoButton->setIconSize(QSize(32, 32));
+    ui->generateInfoButton->setFlat(true);
+    ui->generateInfoButton->setText("");
 }
 
 void MainWindow::allignCenter() {
@@ -481,5 +486,11 @@ void MainWindow::on_chooseFileButton_clicked()
 void MainWindow::on_backupInfoButton_clicked()
 {
     QMessageBox::information(this,"Info" ,"All passwords in the database are transmitted in an encrypted form.");
+}
+
+
+void MainWindow::on_generateInfoButton_clicked()
+{
+    QMessageBox::information(this, "Info", "All password are creating using strong cryptographic methods.");
 }
 

@@ -21,20 +21,37 @@
 
 PasswordGenerator::PasswordGenerator() {}
 
-QString PasswordGenerator::passGeneration(int passwordSize){
-    char symbols[] = {
-                      'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-                      'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-                      'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-                      'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-                      '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+QByteArray PasswordGenerator::secureRandomBytes(int size) {
+    QByteArray randomData;
+    randomData.resize(size);
 
-    int symbolsSize = sizeof(symbols) / sizeof(symbols[0]);
+#ifdef Q_OS_WIN
+    BCRYPT_ALG_HANDLE hProvider = nullptr;
+    if (BCryptOpenAlgorithmProvider(&hProvider, BCRYPT_RNG_ALGORITHM, nullptr, 0) == 0) {
+        BCryptGenRandom(hProvider, reinterpret_cast<UCHAR*>(randomData.data()), size, 0);
+        BCryptCloseAlgorithmProvider(hProvider, 0);
+    }
+#else
+    QFile urandom("/dev/urandom");
+    if (urandom.open(QIODevice::ReadOnly)) {
+        urandom.read(randomData.data(), size);
+        urandom.close();
+    }
+#endif
+
+    return randomData;
+}
+
+QString PasswordGenerator::passGeneration(int passwordSize) {
+    const QString symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    QByteArray randomBytes = secureRandomBytes(passwordSize);
+
     QString password;
+    int symbolCount = symbols.length();
 
-    for (int i = 0; i < passwordSize; i++){
-        int randomIndex = QRandomGenerator::global()->bounded(symbolsSize);
-        password += symbols[randomIndex];
+    for (int i = 0; i < passwordSize; ++i) {
+        quint8 index = static_cast<quint8>(randomBytes[i]) % symbolCount;
+        password += symbols.at(index);
     }
 
     return password;

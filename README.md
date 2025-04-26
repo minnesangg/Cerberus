@@ -31,12 +31,27 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ Secure password backup via Gmail.
 
-
 ## 🚀 Future Improvements
 
 🔹 Organizing passwords into categories (e.g., "Work", "Social Media"). 
 
 🔹 App customization options (language, theme, security level).
+
+## 🔒 Security
+
+**Cerberus** was built with a strong focus on security. Here's how your data is protected:
+
+- **Passwords are never sent anywhere.**  
+  All passwords are stored only locally on your device. No cloud, no external servers, no hidden data collection — complete privacy.
+
+- **Passwords are encrypted using AES-256-CBC.**  
+  Every password saved into the database is encrypted using the AES-256 algorithm in CBC (Cipher Block Chaining) mode — one of the most trusted encryption standards worldwide.
+
+- **Passwords are generated using a cryptographically secure random number generator.**  
+  Password generation relies on system-level cryptographic random sources (`/dev/urandom` on Linux, `BCryptGenRandom` on Windows), ensuring that generated passwords are truly unpredictable and resistant to statistical attacks.
+
+- **Master password is stored as a secure hash.**  
+  Instead of saving your master password directly, Cerberus stores only a hash of it (using a strong hashing algorithm). Even if someone accesses your database, they cannot retrieve your original master password.
 
 ## 🛠️ Technologies
 
@@ -114,6 +129,22 @@ Developed by Minnesang. Contributions are welcome!
 🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
 
 🔹 Настройки приложения (язык, тема, уровень безопасности).
+
+## 🔒 Безопасность
+
+**Cerberus** разрабатывался с акцентом на безопасность. Вот как ваши данные защищены:
+
+- **Пароли никуда не отправляются.**  
+  Все пароли хранятся только локально на вашем устройстве. Никаких облаков, сторонних серверов или скрытой передачи данных — полная конфиденциальность.
+
+- **Пароли шифруются с использованием AES-256-CBC.**  
+  При сохранении каждый пароль шифруется по стандарту AES-256 в режиме CBC (Cipher Block Chaining) — одному из самых надёжных и проверенных временем алгоритмов шифрования.
+
+- **Пароли генерируются с использованием криптографически безопасного генератора случайных чисел.**  
+  Генерация паролей основана на системных криптостойких источниках случайности (`/dev/urandom` на Linux, `BCryptGenRandom` на Windows), что гарантирует непредсказуемость и устойчивость к атакам.
+
+- **Мастер-пароль хранится только в виде безопасного хеша.**  
+  Вместо хранения реального мастер-пароля, Cerberus сохраняет только его хеш (с использованием надёжного алгоритма). Даже при доступе к базе данных восстановить исходный мастер-пароль будет невозможно.
 
 ## 🛠️ Технологии
 
