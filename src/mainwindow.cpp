@@ -436,21 +436,37 @@ void MainWindow::on_gmailSendButton_clicked()
         return;
     }
 
-    QString exePath;
-    QString dbPath = QCoreApplication::applicationDirPath() + "/passwords.db";
+    QString achtungString = "Are you shure that's YOUR email: " + userGmail.toUpper();
 
-#ifdef Q_OS_LINUX
-    exePath = QCoreApplication::applicationDirPath() + "/send_email";
-#elif defined(Q_OS_WIN)
-    exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
-#endif
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::warning(this, "ACHTUNG!", achtungString, QMessageBox::Yes | QMessageBox::No);
 
-    QStringList arguments;
-    arguments << userGmail << dbPath;
+    if (reply == QMessageBox::Yes) {
+        QString password = QInputDialog::getText(this, "Confirm operation", "Enter master password:");
+        if(masterPasswordHandler.checkMasterPass(password)){
+            QString exePath;
+            QString dbPath = QCoreApplication::applicationDirPath() + "/passwords.db";
 
-    QProcess::startDetached(exePath, arguments);
-    ui->gmailLine->clear();
-    ui->statusbar->showMessage("Backup successfully sent!", 3000);
+    #ifdef Q_OS_LINUX
+                exePath = QCoreApplication::applicationDirPath() + "/send_email";
+    #elif defined(Q_OS_WIN)
+                exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
+    #endif
+
+            QStringList arguments;
+            arguments << userGmail << dbPath;
+
+            QProcess::startDetached(exePath, arguments);
+            ui->gmailLine->clear();
+            ui->statusbar->showMessage("Backup successfully sent!", 3000);
+        } else {
+            statusBar()->showMessage("Incorrect password. Please try again!", 3000);
+        }
+
+    } else {
+        ui->gmailLine->clear();
+        return;
+    }
 }
 
 
