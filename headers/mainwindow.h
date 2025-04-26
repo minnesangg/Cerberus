@@ -263,6 +263,14 @@ QT_END_NAMESPACE
      */
      void on_backupInfoButton_clicked();
 
+     /**
+     * @brief Handles the click event of the "Generate Info" button.
+     *
+     * Displays an informational message box explaining that all passwords
+     * are generated using strong cryptographic methods.
+     */
+     void on_generateInfoButton_clicked();
+
  private:
 
      /**
