@@ -16,8 +16,13 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-
 #include "headers/password_generator.h"
+
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <bcrypt.h>
+#pragma comment(lib, "bcrypt.lib")
+#endif
 
 PasswordGenerator::PasswordGenerator() {}
 

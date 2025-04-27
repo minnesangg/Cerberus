@@ -264,10 +264,18 @@ QT_END_NAMESPACE
      void on_backupInfoButton_clicked();
 
      /**
-     * @brief Handles the click event of the "Generate Info" button.
+     * @brief Handles the click event of the "Send Gmail Backup" button.
      *
-     * Displays an informational message box explaining that all passwords
-     * are generated using strong cryptographic methods.
+     * This method validates the entered Gmail address, shows a confirmation dialog asking the user
+     * if the email address is correct, and then prompts the user to enter the master password.
+     * If the password is correct, it triggers the sending of a backup file to the provided Gmail address.
+     * If the user cancels the operation or enters an incorrect password, an appropriate message is displayed.
+     *
+     * 1. Validates the Gmail input.
+     * 2. Shows a warning dialog for email confirmation.
+     * 3. Prompts the user to enter the master password for operation confirmation.
+     * 4. Sends the backup file to the specified Gmail address if the password is correct.
+     * 5. Displays error messages for incorrect password or operation cancellation.
      */
      void on_generateInfoButton_clicked();
 
@@ -345,6 +353,22 @@ QT_END_NAMESPACE
       * @brief Initializes application logic and state on startup.
       */
      void startProgramm();
+
+     /**
+     * @brief Handles the click event of the "Send Gmail Backup" button.
+     *
+     * This method validates the entered Gmail address, shows a confirmation dialog asking the user
+     * if the email address is correct, and then prompts the user to enter the master password.
+     * If the password is correct, it triggers the sending of a backup file to the provided Gmail address.
+     * If the user cancels the operation or enters an incorrect password, an appropriate message is displayed.
+     *
+     * 1. Validates the Gmail input.
+     * 2. Shows a warning dialog for email confirmation.
+     * 3. Prompts the user to enter the master password for operation confirmation.
+     * 4. Sends the backup file to the specified Gmail address if the password is correct.
+     * 5. Displays error messages for incorrect password or operation cancellation.
+     */
+    QString confirmOperation();
  };
  
 #endif //MAINWINDOW_H

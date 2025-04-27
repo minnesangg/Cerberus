@@ -22,6 +22,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 # LIBS += -L/home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release -lQtBigInt
 # QMAKE_RPATHDIR += /home/extra/programming/qt/Cerberus/Qt-Secret/src/build/release /home/extra/programming/qt/Cerberus/Qt-Secret/src/mini-gmp/src/build/release
 
+win32:LIBS += -lbcrypt
+
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.

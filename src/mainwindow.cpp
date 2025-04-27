@@ -436,22 +436,27 @@ void MainWindow::on_gmailSendButton_clicked()
         return;
     }
 
-    QString achtungString = "Are you shure that's YOUR email: " + userGmail.toUpper();
+    QString achtungString = "Are you sure that's YOUR email: " + userGmail.toUpper();
 
     QMessageBox::StandardButton reply;
     reply = QMessageBox::warning(this, "ACHTUNG!", achtungString, QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
-        QString password = QInputDialog::getText(this, "Confirm operation", "Enter master password:");
-        if(masterPasswordHandler.checkMasterPass(password)){
+        QString password = confirmOperation();
+        if (password.isEmpty()) {
+            statusBar()->showMessage("Password entry canceled!", 3000);
+            return;
+        }
+
+        if (masterPasswordHandler.checkMasterPass(password)) {
             QString exePath;
             QString dbPath = QCoreApplication::applicationDirPath() + "/passwords.db";
 
-    #ifdef Q_OS_LINUX
-                exePath = QCoreApplication::applicationDirPath() + "/send_email";
-    #elif defined(Q_OS_WIN)
-                exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
-    #endif
+#ifdef Q_OS_LINUX
+            exePath = QCoreApplication::applicationDirPath() + "/send_email";
+#elif defined(Q_OS_WIN)
+            exePath = QCoreApplication::applicationDirPath() + "/send_email.exe";
+#endif
 
             QStringList arguments;
             arguments << userGmail << dbPath;
@@ -462,13 +467,55 @@ void MainWindow::on_gmailSendButton_clicked()
         } else {
             statusBar()->showMessage("Incorrect password. Please try again!", 3000);
         }
-
     } else {
         ui->gmailLine->clear();
         return;
     }
 }
 
+QString MainWindow::confirmOperation()
+{
+    QInputDialog dialog(this);
+    dialog.setWindowTitle("Confirm operation");
+    dialog.setLabelText("Enter master password:");
+    dialog.setTextEchoMode(QLineEdit::Password);
+
+    dialog.setStyleSheet(
+        "QInputDialog {"
+        "    color: #2ECC71;"
+        "    border: 2px solid #2ECC71;"
+        "}"
+        "QLabel {"
+        "    color: #2ECC71;"
+        "}"
+        "QLineEdit {"
+        "    background-color: #1E1E1E;"
+        "    color: #2ECC71;"
+        "    border: 2px solid #2ECC71;"
+        "    border-radius: 5px;"
+        "    padding: 5px;"
+        "}"
+        "QPushButton {"
+        "    background-color: #2ECC71;"
+        "    color: #121212;"
+        "    border-radius: 5px;"
+        "    padding: 5px 10px;"
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #27AE60;"
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #1E7C49;"
+        "}"
+        );
+
+    QString password;
+    if (dialog.exec() == QDialog::Accepted) {
+        password = dialog.textValue();
+    }
+
+    return password;
+}
 
 void MainWindow::on_chooseFileButton_clicked()
 {
