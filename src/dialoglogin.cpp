@@ -79,7 +79,7 @@ void DialogLogin::on_loginButton_clicked() {
         }
 
         if(password.isEmpty()){
-            QMessageBox::critical(this, "Error", "Empty password line. Please try again.");
+            QMessageBox::critical(this, tr("Error"), tr("Empty password line. Please try again."));
             return;
         }
 
@@ -101,16 +101,16 @@ void DialogLogin::on_newMasterPassButton_clicked() {
     QString repeatedPassword = ui->repeatPassLabel->text();
 
     if(password.isEmpty() || repeatedPassword.isEmpty()){
-        QMessageBox::critical(this, "Error", "Empty password line. Please try again.");
+        QMessageBox::critical(this, tr("Error"), tr("Empty password line. Please try again."));
         return;
     }
 
     if(password == repeatedPassword){
         master_pass.masterPassword(password);
-        QMessageBox::information(this, "Success", "Master password has been set! Please log in.");
+        QMessageBox::information(this, tr("Success"), tr("Master password has been set! Please log in."));
         masterPassStacked->setCurrentWidget(ui->login);
     } else {
-        QMessageBox::critical(this, "Warning", "The repeated password does not match the original password.");
+        QMessageBox::critical(this, tr("Warning"), tr("The repeated password does not match the original password."));
         ui->newMasterPassLabel->clear();
         ui->repeatPassLabel->clear();
     }

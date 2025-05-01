@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
-QT += core gui sql network
+QT += core gui sql network testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 win32:LIBS += -lbcrypt
 
-CONFIG += c++17
+CONFIG += c++17 testcase
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -61,10 +61,11 @@ HEADERS += \
     headers/password_generator.h \
     headers/pwnedapichecker.h
 
-
 FORMS += \
     forms/dialoglogin.ui \
     forms/mainwindow.ui
+
+TRANSLATIONS += translations/cerberus_ru.ts translations/cerberus_ua.ts translations/cerberus_en.ts
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -75,4 +76,5 @@ RESOURCES += \
     resources/arrows.qrc \
    resources/icons.qrc \
     resources/optionsIcons.qrc \
-    resources/resources.qrc
+    resources/resources.qrc \
+    resources/translations.qrc

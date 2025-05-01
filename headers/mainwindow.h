@@ -36,6 +36,7 @@
 #include <QProcess>
 #include <QSysInfo>
 #include <QFileDialog>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -279,6 +280,8 @@ QT_END_NAMESPACE
      */
      void on_generateInfoButton_clicked();
 
+     void on_languageButton_clicked();
+
  private:
 
      /**
@@ -328,6 +331,8 @@ QT_END_NAMESPACE
       * @brief Handles database connection.
       */
      DatabaseManager database;
+
+    //QTranslator translator;
  
      /**
       * @brief Applies additional visual settings to the list widget.
@@ -348,6 +353,8 @@ QT_END_NAMESPACE
       * @brief Opens and applies a custom style file for UI appearance.
       */
      void openStyleFile();
+
+     void setupComboBox();
  
      /**
       * @brief Initializes application logic and state on startup.

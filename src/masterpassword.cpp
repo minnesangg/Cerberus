@@ -42,7 +42,7 @@ bool MasterPassword::checkMasterPass(QString password) {
     QSettings settings(QCoreApplication::applicationDirPath() + "/master_password.ini", QSettings::IniFormat);
 
     if (!verifyMasterPass(password)) {
-        QMessageBox::critical(this, "Error", "Wrong Master Password. Please try again.");
+        QMessageBox::critical(this, tr("Error"), tr("Wrong Master Password. Please try again."));
         return false;
     }
 

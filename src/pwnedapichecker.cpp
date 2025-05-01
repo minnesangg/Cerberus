@@ -40,7 +40,7 @@ void PwnedApiChecker::checkPassword(const QString &password) {
 
 void PwnedApiChecker::onFinished(QNetworkReply *reply, const QString &hashSuffix) {
     if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Ошибка запроса:" << reply->errorString();
+        qWarning() << tr("Request error:") << reply->errorString();
         return;
     }
 

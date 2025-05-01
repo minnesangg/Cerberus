@@ -52,33 +52,35 @@ void MainWindow::startProgramm() {
     ui->positiveMessageLabel->hide();
     ui->negativeMessageLabel->hide();
 
+    setupComboBox();
+
     setupTable();
 }
 
 void MainWindow::listWidgetSettings() {
     ui->listWidget->setIconSize(QSize(32, 32));
 
-    QListWidgetItem *manageItem = new QListWidgetItem("Manage Passwords");
+    QListWidgetItem *manageItem = new QListWidgetItem(tr("Manage Passwords"));
     manageItem->setIcon(QIcon(":/manage.png"));
     ui->listWidget->addItem(manageItem);
 
-    QListWidgetItem *generateItem = new QListWidgetItem("Generate Passwords");
+    QListWidgetItem *generateItem = new QListWidgetItem(tr("Generate Passwords"));
     generateItem->setIcon(QIcon(":/generate.png"));
     ui->listWidget->addItem(generateItem);
 
-    QListWidgetItem *categoriesItem = new QListWidgetItem("Categories");
+    QListWidgetItem *categoriesItem = new QListWidgetItem(tr("Categories"));
     categoriesItem->setIcon(QIcon(":/categories.png"));
     ui->listWidget->addItem(categoriesItem);
 
-    QListWidgetItem *checkItem = new QListWidgetItem("Check Password");
+    QListWidgetItem *checkItem = new QListWidgetItem(tr("Check Password"));
     checkItem->setIcon(QIcon(":/check.png"));
     ui->listWidget->addItem(checkItem);
 
-    QListWidgetItem *backupDB = new QListWidgetItem("Backups");
+    QListWidgetItem *backupDB = new QListWidgetItem(tr("Backups"));
     backupDB->setIcon(QIcon(":/backup.png"));
     ui->listWidget->addItem(backupDB);
 
-    QListWidgetItem *settingsItem = new QListWidgetItem("Settings");
+    QListWidgetItem *settingsItem = new QListWidgetItem(tr("Settings"));
     settingsItem->setIcon(QIcon(":/settings.png"));
     ui->listWidget->addItem(settingsItem);
 
@@ -139,6 +141,9 @@ void MainWindow::allignCenter() {
     ui->backupLabelLayout->setAlignment(Qt::AlignCenter);
     ui->sendGmailLayout->setAlignment(Qt::AlignCenter);
     ui->restorePasswordLayout->setAlignment(Qt::AlignCenter);
+    ui->settingsLabelLayout->setAlignment(Qt::AlignCenter);
+    ui->manageLabelLayout->setAlignment(Qt::AlignCenter);
+    //ui->allLanguagesLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index) {
@@ -166,6 +171,12 @@ void MainWindow::changePage(int index) {
     }
 }
 
+void MainWindow::setupComboBox(){
+    ui->languageCombo->addItem(tr("English"));
+    ui->languageCombo->addItem(tr("Russian"));
+    ui->languageCombo->addItem(tr("Ukrainian"));
+}
+
 void MainWindow::on_generateButton_clicked() {
     int size = ui->lengthBox->value();
 
@@ -186,12 +197,12 @@ void MainWindow::on_savePassButton_clicked() {
 
     const QString passwordName = ui->passwordNameLabel->text();
     if(passwordName.isEmpty()){
-        ui->statusbar->showMessage("Line with password's name is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line with password's name is empty!"), 3000);
         return;
     }
 
     database.savePassword(passwordName, generatedPassword);
-    ui->statusbar->showMessage("Password saved!", 3000);
+    ui->statusbar->showMessage(tr("Password saved!"), 3000);
 
     ui->generatedLine->clear();
     ui->passwordNameLabel->clear();
@@ -201,7 +212,7 @@ void MainWindow::on_findButton_clicked() {
     const QString findedName = ui->findNameLabel->text();
 
     if(findedName.isEmpty()){
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
         return;
     }
 
@@ -210,7 +221,7 @@ void MainWindow::on_findButton_clicked() {
     if (findedPass != savedPasswords.end()) {
         ui->findedLine->setText(findedPass.value());
     } else {
-        ui->findedLine->setText("Password not found");
+        ui->findedLine->setText(tr("Password not found"));
     }
 
 }
@@ -218,7 +229,7 @@ void MainWindow::on_findButton_clicked() {
 void MainWindow::on_deleteButton_clicked() {
     const QString findedName = ui->deleteLabel->text();
     if(findedName.isEmpty()){
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
         return;
     }
 
@@ -229,14 +240,14 @@ void MainWindow::on_deleteButton_clicked() {
     if (query.exec()) {
         if (query.numRowsAffected() > 0) {
             database.deletePassword(findedName);
-            ui->statusbar->showMessage("Password for " + findedName + " has been deleted.", 3000);
+            ui->statusbar->showMessage(tr("Password for ") + findedName + tr(" has been deleted."), 3000);
             ui->deleteLabel->clear();
         } else {
-            ui->statusbar->showMessage("Password for " + findedName + " not found.", 3000);
+            ui->statusbar->showMessage(tr("Password for ") + findedName + tr(" not found."), 3000);
             ui->deleteLabel->clear();
         }
     } else {
-        ui->statusbar->showMessage("Failed to delete password.", 3000);
+        ui->statusbar->showMessage(tr("Failed to delete password."), 3000);
         ui->deleteLabel->clear();
     }
 
@@ -248,16 +259,16 @@ void MainWindow::on_addPassButton_clicked() {
     QString ownPassword = ui->ownPass->text();
 
     if(passwordName.isEmpty()){
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
         return;
     }
     if(ownPassword.isEmpty()){
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
         return;
     }
 
     database.savePassword(passwordName, ownPassword);
-    ui->statusbar->showMessage("Password saved!", 3000);
+    ui->statusbar->showMessage(tr("Password saved!"), 3000);
 
     ui->ownPassName->clear();
     ui->ownPass->clear();
@@ -268,14 +279,14 @@ void MainWindow::on_showButton_clicked() {
 
     auto savedPasswords = database.getSavedPasswords();
     if (savedPasswords.isEmpty()) {
-        ui->statusbar->showMessage("There's no passwords!", 3000);
+        ui->statusbar->showMessage(tr("There's no passwords!"), 3000);
         return;
     }
 
     ui->showPassTable->clear();
     ui->showPassTable->setRowCount(savedPasswords.size());
     ui->showPassTable->setColumnCount(1);
-    ui->showPassTable->setHorizontalHeaderLabels({ "Password's Name" });
+    ui->showPassTable->setHorizontalHeaderLabels({ tr("Password's Name") });
     ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->showPassTable->verticalHeader()->setVisible(false);
     ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
@@ -293,14 +304,14 @@ void MainWindow::on_showAllButton_clicked() {
 
     auto savedPasswords = database.getSavedPasswords();
     if (savedPasswords.isEmpty()) {
-        ui->statusbar->showMessage("There's no passwords!", 3000);
+        ui->statusbar->showMessage(tr("There's no passwords!"), 3000);
         return;
     }
 
     ui->showPassTable->clear();
     ui->showPassTable->setRowCount(savedPasswords.size());
     ui->showPassTable->setColumnCount(2);
-    ui->showPassTable->setHorizontalHeaderLabels({ "Password's Name", "Password" });
+    ui->showPassTable->setHorizontalHeaderLabels({ tr("Password's Name"), tr("Password") });
     ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->showPassTable->verticalHeader()->setVisible(false);
     ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
@@ -319,7 +330,7 @@ void MainWindow::on_copyFindedButton_clicked() {
     QString findedPassword = ui->findedLine->text();
     if(findedPassword != "Password not found"){
         clipboard->setText(findedPassword);
-        ui->statusbar->showMessage("Saved to buffer!", 3000);
+        ui->statusbar->showMessage(tr("Saved to buffer!"), 3000);
     }
 }
 
@@ -329,7 +340,7 @@ void MainWindow::on_copyBufferButton_clicked() {
     QString generatedPass = ui->generatedLine->text();
     if(!generatedPass.isEmpty()){
         clipboard->setText(generatedPass);
-        ui->statusbar->showMessage("Saved to buffer!", 3000);
+        ui->statusbar->showMessage(tr("Saved to buffer!"), 3000);
     }
 }
 
@@ -349,14 +360,15 @@ void MainWindow::onPasswordChecked(bool found, int count) {
     ui->negativeMessageLabel->hide();
     if(!ui->checkPassLine->text().isEmpty()){
         if (found) {
-            ui->negativeMessageLabel->setText(QString("Your password has been found in %1 breaches! Please change it!").arg(count));
+            QString breachWord = (count == 1) ? tr("breach") : tr("breaches");
+            ui->negativeMessageLabel->setText(QString(tr("Your password has been found in %1 %2! Please change it!")).arg(count).arg(breachWord));
             ui->negativeMessageLabel->show();
         } else {
-            ui->positiveMessageLabel->setText("Your password is safe!");
+            ui->positiveMessageLabel->setText(tr("Your password is safe!"));
             ui->positiveMessageLabel->show();
         }
     } else {
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
     }
 }
 
@@ -388,10 +400,12 @@ void MainWindow::onAllPasswordChecked(bool found, int count) {
         return;
     int row = checkerRowMap[checker];
 
+    QString breachWord = (count == 1) ? tr("breach") : tr("breaches");
+
     if (found) {
-        ui->passwordTable->item(row, 1)->setText(QString("Found in %1 breaches!").arg(count));
+        ui->passwordTable->item(row, 1)->setText(QString(tr("Found in %1 %2!")).arg(count).arg(breachWord));
     } else {
-        ui->passwordTable->item(row, 1)->setText("Safe ✅");
+        ui->passwordTable->item(row, 1)->setText(tr("Safe"));
     }
 
     checker->deleteLater();
@@ -400,7 +414,7 @@ void MainWindow::onAllPasswordChecked(bool found, int count) {
 void MainWindow::setupTable() {
     ui->passwordTable->setColumnCount(2);
     QStringList headers;
-    headers << "Password" << "Breaches Count";
+    headers << tr("Password") << tr("Breaches Count");
     ui->passwordTable->setHorizontalHeaderLabels(headers);
 
     ui->passwordTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -418,7 +432,7 @@ void MainWindow::on_clearAllPassButton_clicked()
 
 void MainWindow::on_additInfoButton_clicked()
 {
-    QMessageBox::information(this, "Info", "Integrated with Have I Been Pwned.");
+    QMessageBox::information(this, tr("Info"), tr("Integrated with Have I Been Pwned."));
 }
 
 
@@ -432,19 +446,19 @@ void MainWindow::on_gmailSendButton_clicked()
 {
     QString userGmail = ui->gmailLine->text();
     if (userGmail.isEmpty()) {
-        ui->statusbar->showMessage("Line is empty!", 3000);
+        ui->statusbar->showMessage(tr("Line is empty!"), 3000);
         return;
     }
 
-    QString achtungString = "Are you sure that's YOUR email: " + userGmail.toUpper();
+    QString achtungString = tr("Are you sure that's YOUR email: ") + userGmail.toUpper();
 
     QMessageBox::StandardButton reply;
-    reply = QMessageBox::warning(this, "ACHTUNG!", achtungString, QMessageBox::Yes | QMessageBox::No);
+    reply = QMessageBox::warning(this, tr("ACHTUNG!"), achtungString, QMessageBox::Yes | QMessageBox::No);
 
     if (reply == QMessageBox::Yes) {
         QString password = confirmOperation();
         if (password.isEmpty()) {
-            statusBar()->showMessage("Password entry canceled!", 3000);
+            statusBar()->showMessage(tr("Password entry canceled!"), 3000);
             return;
         }
 
@@ -463,9 +477,9 @@ void MainWindow::on_gmailSendButton_clicked()
 
             QProcess::startDetached(exePath, arguments);
             ui->gmailLine->clear();
-            ui->statusbar->showMessage("Backup successfully sent!", 3000);
+            ui->statusbar->showMessage(tr("Backup successfully sent!"), 3000);
         } else {
-            statusBar()->showMessage("Incorrect password. Please try again!", 3000);
+            statusBar()->showMessage(tr("Incorrect password. Please try again!"), 3000);
         }
     } else {
         ui->gmailLine->clear();
@@ -476,8 +490,8 @@ void MainWindow::on_gmailSendButton_clicked()
 QString MainWindow::confirmOperation()
 {
     QInputDialog dialog(this);
-    dialog.setWindowTitle("Confirm operation");
-    dialog.setLabelText("Enter master password:");
+    dialog.setWindowTitle(tr("Confirm operation"));
+    dialog.setLabelText(tr("Enter master password:"));
     dialog.setTextEchoMode(QLineEdit::Password);
 
     dialog.setStyleSheet(
@@ -520,7 +534,7 @@ QString MainWindow::confirmOperation()
 void MainWindow::on_chooseFileButton_clicked()
 {
     QString filePath = QFileDialog::getOpenFileName(
-        this, "Choose Database", "", "Databases (*.db);;All Files (*)");
+        this, tr("Choose Database"), "", tr("Databases (*.db);;All Files (*)"));
 
     if (!filePath.isEmpty()) {
         QString exeDir = QCoreApplication::applicationDirPath();
@@ -535,12 +549,12 @@ void MainWindow::on_chooseFileButton_clicked()
         }
 
         if (QFile::copy(filePath, destinationPath)) {
-            ui->statusbar->showMessage("Database successfully added!", 3000);
+            ui->statusbar->showMessage(tr("Database successfully added!"), 3000);
         } else {
-            ui->statusbar->showMessage("Error adding the database!", 3000);
+            ui->statusbar->showMessage(tr("Error adding the database!"), 3000);
         }
     } else {
-        ui->statusbar->showMessage("No file selected.", 3000);
+        ui->statusbar->showMessage(tr("No file selected."), 3000);
     }
     database.initDatabase();
 }
@@ -548,12 +562,48 @@ void MainWindow::on_chooseFileButton_clicked()
 
 void MainWindow::on_backupInfoButton_clicked()
 {
-    QMessageBox::information(this,"Info" ,"All passwords in the database are transmitted in an encrypted form.");
+    QMessageBox::information(this,tr("Info") ,tr("All passwords in the database are transmitted in an encrypted form."));
 }
-
 
 void MainWindow::on_generateInfoButton_clicked()
 {
-    QMessageBox::information(this, "Info", "All password are creating using strong cryptographic methods.");
+    QMessageBox::information(this, tr("Info"), tr("All password are creating using strong cryptographic methods."));
+}
+
+void MainWindow::on_languageButton_clicked()
+{
+    static QTranslator* translator = nullptr;
+
+    QMap<QString, QString> langMap = {
+        {"English", ":/translations/cerberus_en.qm"},
+        {"Russian", ":/translations/cerberus_ru.qm"},
+        {"Ukrainian", ":/translations/cerberus_ua.qm"}
+    };
+
+    QString selectedLang = ui->languageCombo->currentText();
+
+    if (!langMap.contains(selectedLang)) {
+        ui->statusbar->showMessage(tr("Unknown language selected"));
+        return;
+    }
+    if (translator) {
+        qApp->removeTranslator(translator);
+        delete translator;
+        translator = nullptr;
+    }
+
+    translator = new QTranslator(qApp);
+    if (translator->load(langMap[selectedLang])) {
+        qApp->installTranslator(translator);
+        ui->retranslateUi(this);
+        this->setWindowTitle("Cerberus");
+        ui->listWidget->clear();
+        listWidgetSettings();
+        allignCenter();
+    } else {
+        ui->statusbar->showMessage(tr("Retranslating error!"));
+        delete translator;
+        translator = nullptr;
+    }
 }
 
