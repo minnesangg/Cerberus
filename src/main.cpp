@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
     // Create a QApplication object, which is required for any Qt-based application
     QApplication app(argc, argv);
 
+    // Sets the programm localisation(that storaged at settings.json)
     Settings settings;
     QString language = settings.getLanguage();
     settings.setLanguage(language);

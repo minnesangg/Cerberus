@@ -281,6 +281,23 @@ QT_END_NAMESPACE
      */
      void on_generateInfoButton_clicked();
 
+
+     /**
+     * @brief Triggered when the language selection button is clicked.
+     *
+     * Retrieves the selected language code from the `languageCombo` combo box and
+     * attempts to apply and save the new language via the `Settings` class.
+     * If successful, the UI is retransformed to reflect the new translation.
+     *
+     * Updates include:
+     * - Status bar message showing result
+     * - Calling `retranslateUi()` to reapply translations
+     * - Resetting the main window title
+     * - Refreshing the contents of `listWidget`
+     * - Re-aligning elements via `allignCenter()`
+     *
+     * Displays error messages in case the translation fails to load or cannot be saved.
+     */
      void on_languageButton_clicked();
 
  private:
@@ -333,9 +350,10 @@ QT_END_NAMESPACE
       */
      DatabaseManager database;
 
+     /**
+      * @brief Handles settings connection.
+      */
      Settings settings;
-
-    //QTranslator translator;
  
      /**
       * @brief Applies additional visual settings to the list widget.
@@ -357,6 +375,20 @@ QT_END_NAMESPACE
       */
      void openStyleFile();
 
+     /**
+     * @brief Sets up the language selection combo box with available options.
+     *
+     * This method populates the `languageCombo` widget with human-readable
+     * language names (localized using `tr()`) and associates each item with its
+     * internal language code using Qt::UserRole.
+     *
+     * Supported languages:
+     * - English
+     * - Russian
+     * - Ukrainian
+     *
+     * The internal value (e.g. "English") is later used to load the corresponding translation file.
+     */
      void setupComboBox();
  
      /**
