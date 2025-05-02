@@ -1763,9 +1763,9 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>170</x>
+          <x>120</x>
           <y>10</y>
-          <width>461</width>
+          <width>511</width>
           <height>80</height>
          </rect>
         </property>
