@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/translations">
+        <file>translations/cerberus_en.qm</file>
+        <file>translations/cerberus_ru.qm</file>
+        <file>translations/cerberus_ua.qm</file>
+        <file>cerberus_ua.qm</file>
+        <file>cerberus_ru.qm</file>
+        <file>cerberus_en.qm</file>
+    </qresource>
+</RCC>

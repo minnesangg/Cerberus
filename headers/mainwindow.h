@@ -25,6 +25,7 @@
 #include "headers/database.h"
 #include "headers/password_generator.h"
 #include "headers/pwnedapichecker.h"
+#include "headers/settings.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QListWidgetItem>
@@ -36,6 +37,7 @@
 #include <QProcess>
 #include <QSysInfo>
 #include <QFileDialog>
+#include <QTranslator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -279,6 +281,25 @@ QT_END_NAMESPACE
      */
      void on_generateInfoButton_clicked();
 
+
+     /**
+     * @brief Triggered when the language selection button is clicked.
+     *
+     * Retrieves the selected language code from the `languageCombo` combo box and
+     * attempts to apply and save the new language via the `Settings` class.
+     * If successful, the UI is retransformed to reflect the new translation.
+     *
+     * Updates include:
+     * - Status bar message showing result
+     * - Calling `retranslateUi()` to reapply translations
+     * - Resetting the main window title
+     * - Refreshing the contents of `listWidget`
+     * - Re-aligning elements via `allignCenter()`
+     *
+     * Displays error messages in case the translation fails to load or cannot be saved.
+     */
+     void on_languageButton_clicked();
+
  private:
 
      /**
@@ -328,6 +349,11 @@ QT_END_NAMESPACE
       * @brief Handles database connection.
       */
      DatabaseManager database;
+
+     /**
+      * @brief Handles settings connection.
+      */
+     Settings settings;
  
      /**
       * @brief Applies additional visual settings to the list widget.
@@ -348,6 +374,22 @@ QT_END_NAMESPACE
       * @brief Opens and applies a custom style file for UI appearance.
       */
      void openStyleFile();
+
+     /**
+     * @brief Sets up the language selection combo box with available options.
+     *
+     * This method populates the `languageCombo` widget with human-readable
+     * language names (localized using `tr()`) and associates each item with its
+     * internal language code using Qt::UserRole.
+     *
+     * Supported languages:
+     * - English
+     * - Russian
+     * - Ukrainian
+     *
+     * The internal value (e.g. "English") is later used to load the corresponding translation file.
+     */
+     void setupComboBox();
  
      /**
       * @brief Initializes application logic and state on startup.

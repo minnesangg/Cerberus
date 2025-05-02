@@ -39,7 +39,7 @@ void DatabaseManager::initDatabase(){
     db.setDatabaseName(dbPath);
 
     if (!db.open()) {
-        QMessageBox::critical(this, "Database Error", db.lastError().text());
+        QMessageBox::critical(this, tr("Database Error"), db.lastError().text());
         return;
     }
 
@@ -56,7 +56,7 @@ void DatabaseManager::loadPasswords() {
     QSqlQuery query;
     query.prepare("SELECT name, password FROM passwords");
     if (!query.exec()) {
-        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        QMessageBox::critical(this, tr("Database Error"), query.lastError().text());
         return;
     }
 
@@ -91,7 +91,7 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     QByteArray encryptedPassword = QAESEncryption::Crypt(QAESEncryption::AES_256, QAESEncryption::CBC, password.toUtf8(), masterKey, IV);
 
     if (encryptedPassword.isEmpty()) {
-        QMessageBox::critical(this, "Encryption Error", "Failed to encrypt the password.");
+        QMessageBox::critical(this, tr("Encryption Error"), tr("Failed to encrypt the password."));
         return;
     }
 
@@ -102,7 +102,7 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     query.bindValue(":password", encryptedWithIV);
 
     if (!query.exec()) {
-        QMessageBox::critical(this, "Database Error", query.lastError().text());
+        QMessageBox::critical(this, tr("Database Error"), query.lastError().text());
     }
     savedPasswords[name] = password;
 }

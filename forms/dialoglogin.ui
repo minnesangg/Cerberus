@@ -43,7 +43,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="login">
     <widget class="QLabel" name="cerberusLabel">
@@ -82,9 +82,9 @@
     <widget class="QLabel" name="cerberusDesc">
      <property name="geometry">
       <rect>
-       <x>140</x>
+       <x>80</x>
        <y>50</y>
-       <width>330</width>
+       <width>461</width>
        <height>26</height>
       </rect>
      </property>
@@ -265,9 +265,9 @@ QPushButton:pressed {
     <widget class="QLabel" name="createMasterLabel">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>80</x>
        <y>30</y>
-       <width>301</width>
+       <width>441</width>
        <height>91</height>
       </rect>
      </property>
