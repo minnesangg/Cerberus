@@ -19,6 +19,8 @@
 #include <QApplication>
 #include "headers/mainwindow.h"
 #include "headers/dialoglogin.h"
+#include "headers/settings.h"
+
 /**
  * @brief The main entry point of the application.
  *
@@ -32,6 +34,10 @@
 int main(int argc, char *argv[]) {
     // Create a QApplication object, which is required for any Qt-based application
     QApplication app(argc, argv);
+
+    Settings settings;
+    QString language = settings.getLanguage();
+    settings.setLanguage(language);
 
     // Create the login dialog
     DialogLogin login;
@@ -56,6 +62,7 @@ int main(int argc, char *argv[]) {
                             "color: #2ECC71; "
                             "}";
         qApp->setStyleSheet(darkStyle);
+
 
         // Set the size of the main window
         window.resize(1000, 700);

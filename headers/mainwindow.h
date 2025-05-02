@@ -25,6 +25,7 @@
 #include "headers/database.h"
 #include "headers/password_generator.h"
 #include "headers/pwnedapichecker.h"
+#include "headers/settings.h"
 #include <QMessageBox>
 #include <QInputDialog>
 #include <QListWidgetItem>
@@ -331,6 +332,8 @@ QT_END_NAMESPACE
       * @brief Handles database connection.
       */
      DatabaseManager database;
+
+     Settings settings;
 
     //QTranslator translator;
  

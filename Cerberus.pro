@@ -43,6 +43,7 @@ contains(QMAKE_HOST_OS, "Linux") {
 DEFINES += QT_NO_QRESOURCE_COMPRESSION
 
 SOURCES += \
+    src/settings.cpp \
     src/database.cpp \
     src/dialoglogin.cpp \
     src/main.cpp \
@@ -59,7 +60,8 @@ HEADERS += \
     headers/mainwindow.h \
     headers/masterpassword.h \
     headers/password_generator.h \
-    headers/pwnedapichecker.h
+    headers/pwnedapichecker.h \
+    headers/settings.h
 
 FORMS += \
     forms/dialoglogin.ui \

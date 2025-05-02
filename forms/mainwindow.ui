@@ -131,20 +131,27 @@ QPushButton:disabled {
           <x>150</x>
           <y>40</y>
           <width>391</width>
-          <height>51</height>
+          <height>61</height>
          </rect>
         </property>
         <property name="font">
          <font>
           <family>Gill Sans MT</family>
-          <pointsize>20</pointsize>
+          <pointsize>-1</pointsize>
+          <fontweight>DemiBold</fontweight>
          </font>
         </property>
         <property name="styleSheet">
          <string notr="true">QLabel {
-    color: #d1d1d1; 
-    margin-bottom: 10px; 
-}</string>
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
         </property>
         <property name="text">
          <string>PASSWORD GENERATION</string>
@@ -1199,9 +1206,9 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
        <widget class="QWidget" name="verticalLayoutWidget_11">
         <property name="geometry">
          <rect>
-          <x>200</x>
+          <x>90</x>
           <y>0</y>
-          <width>481</width>
+          <width>611</width>
           <height>80</height>
          </rect>
         </property>
@@ -1211,14 +1218,21 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
            <property name="font">
             <font>
              <family>Gill Sans MT</family>
-             <pointsize>18</pointsize>
+             <pointsize>-1</pointsize>
+             <fontweight>DemiBold</fontweight>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QLabel {
-    color: #d1d1d1; 
-    margin-bottom: 10px; 
-}</string>
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
            </property>
            <property name="text">
             <string>MANAGE YOUR PASSWORDS</string>
@@ -1247,17 +1261,24 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
            <property name="font">
             <font>
              <family>Monospace</family>
-             <pointsize>20</pointsize>
+             <pointsize>-1</pointsize>
+             <fontweight>DemiBold</fontweight>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QLabel {
-    color: #d1d1d1; 
-    margin-bottom: 10px; 
-}</string>
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
            </property>
            <property name="text">
-            <string>Password Security Check</string>
+            <string>PASSWORD SECURITY CHECK</string>
            </property>
           </widget>
          </item>
@@ -1754,14 +1775,21 @@ QLineEdit:focus {
            <property name="font">
             <font>
              <family>Monospace</family>
-             <pointsize>22</pointsize>
+             <pointsize>-1</pointsize>
+             <fontweight>DemiBold</fontweight>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QLabel {
-    color: #d1d1d1; 
-    margin-bottom: 10px; 
-}</string>
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
            </property>
            <property name="text">
             <string>BACKUP YOUR DATABASE</string>
@@ -2064,8 +2092,8 @@ QLineEdit:focus {
          <rect>
           <x>270</x>
           <y>20</y>
-          <width>211</width>
-          <height>80</height>
+          <width>261</width>
+          <height>81</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="settingsLabelLayout">
@@ -2074,14 +2102,21 @@ QLineEdit:focus {
            <property name="font">
             <font>
              <family>Monospace</family>
-             <pointsize>22</pointsize>
+             <pointsize>-1</pointsize>
+             <fontweight>DemiBold</fontweight>
             </font>
            </property>
            <property name="styleSheet">
             <string notr="true">QLabel {
-    color: #d1d1d1; 
-    margin-bottom: 10px; 
-}</string>
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
            </property>
            <property name="text">
             <string>SETTINGS</string>
@@ -2202,6 +2237,7 @@ QComboBox::drop-down:hover {
             <widget class="QPushButton" name="languageButton">
              <property name="font">
               <font>
+               <family>Cantarell</family>
                <pointsize>14</pointsize>
                <bold>true</bold>
               </font>

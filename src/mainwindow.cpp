@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     startProgramm();
+
 }
 
 MainWindow::~MainWindow()
@@ -55,6 +56,9 @@ void MainWindow::startProgramm() {
     setupComboBox();
 
     setupTable();
+
+    QString language = settings.getLanguage();
+    settings.setLanguage(language);
 }
 
 void MainWindow::listWidgetSettings() {
@@ -172,10 +176,20 @@ void MainWindow::changePage(int index) {
 }
 
 void MainWindow::setupComboBox(){
-    ui->languageCombo->addItem(tr("English"));
-    ui->languageCombo->addItem(tr("Russian"));
-    ui->languageCombo->addItem(tr("Ukrainian"));
+    QMap<QString, QString> langMap = {
+        {"English", tr("English")},
+        {"Russian", tr("Russian")},
+        {"Ukrainian", tr("Ukrainian")}
+    };
+
+    ui->languageCombo->clear();
+
+    for (auto it = langMap.begin(); it != langMap.end(); ++it) {
+        ui->languageCombo->addItem(it.value());
+        ui->languageCombo->setItemData(ui->languageCombo->count() - 1, it.key(), Qt::UserRole);
+    }
 }
+
 
 void MainWindow::on_generateButton_clicked() {
     int size = ui->lengthBox->value();
@@ -572,38 +586,21 @@ void MainWindow::on_generateInfoButton_clicked()
 
 void MainWindow::on_languageButton_clicked()
 {
-    static QTranslator* translator = nullptr;
+    int index = ui->languageCombo->currentIndex();
+    QString selectedLang = ui->languageCombo->itemData(index, Qt::UserRole).toString();
 
-    QMap<QString, QString> langMap = {
-        {"English", ":/translations/cerberus_en.qm"},
-        {"Russian", ":/translations/cerberus_ru.qm"},
-        {"Ukrainian", ":/translations/cerberus_ua.qm"}
-    };
-
-    QString selectedLang = ui->languageCombo->currentText();
-
-    if (!langMap.contains(selectedLang)) {
-        ui->statusbar->showMessage(tr("Unknown language selected"));
-        return;
-    }
-    if (translator) {
-        qApp->removeTranslator(translator);
-        delete translator;
-        translator = nullptr;
-    }
-
-    translator = new QTranslator(qApp);
-    if (translator->load(langMap[selectedLang])) {
-        qApp->installTranslator(translator);
+    if (settings.setLanguage(selectedLang)) {
+        if (settings.saveLanguage(selectedLang)) {
+            ui->statusbar->showMessage("New language succesfully saved!", 3000);
+        } else {
+            ui->statusbar->showMessage("Error saving new language.", 3000);
+        }
         ui->retranslateUi(this);
         this->setWindowTitle("Cerberus");
         ui->listWidget->clear();
         listWidgetSettings();
         allignCenter();
     } else {
-        ui->statusbar->showMessage(tr("Retranslating error!"));
-        delete translator;
-        translator = nullptr;
+        ui->statusbar->showMessage(tr("Retranslating error!"), 3000);
     }
 }
-
