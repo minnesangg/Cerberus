@@ -14,7 +14,7 @@
 #   You should have received a copy of the GNU General Public License
 #   along with this program. If not, see <https://www.gnu.org/licenses/>.
 #
-QT += core gui sql network testlib
+QT += core gui sql network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,7 +24,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 win32:LIBS += -lbcrypt
 
-CONFIG += c++17 testcase
+CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
