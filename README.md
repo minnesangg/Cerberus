@@ -7,7 +7,8 @@ Also, here is a Have I Been Pwned API integration for checking if passwords have
 
 Future updates will include **password categories, improved UI/UX, and more.**
 
-![logotype](https://github.com/user-attachments/assets/2b8a32e7-3b2b-4b3c-84aa-b2e1f9947cf7)
+![logotype](https://github.com/user-attachments/assets/5aae01bc-506a-484f-99c9-7aaf20a66d90)
+
 
 ## 📚 Documentation
 
