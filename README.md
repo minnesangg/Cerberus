@@ -32,11 +32,11 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ Secure password backup via Gmail.
 
+✅ App customization options (language, security level).
+
 ## 🚀 Future Improvements
 
 🔹 Organizing passwords into categories (e.g., "Work", "Social Media"). 
-
-🔹 App customization options (language, theme, security level).
 
 ## 🔒 Security
 
@@ -124,12 +124,11 @@ Developed by Minnesang. Contributions are welcome!
 
 ✅ Безопасное резервное копирование паролей через Gmail 
 
+✅ Настройки приложения (язык, уровень безопасности).
 
 ## 🚀 Будущие улучшения
 
 🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
-
-🔹 Настройки приложения (язык, тема, уровень безопасности).
 
 ## 🔒 Безопасность
 
