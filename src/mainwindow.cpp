@@ -147,7 +147,6 @@ void MainWindow::allignCenter() {
     ui->restorePasswordLayout->setAlignment(Qt::AlignCenter);
     ui->settingsLabelLayout->setAlignment(Qt::AlignCenter);
     ui->manageLabelLayout->setAlignment(Qt::AlignCenter);
-    //ui->allLanguagesLayout->setAlignment(Qt::AlignCenter);
 }
 
 void MainWindow::changePage(int index) {
@@ -591,9 +590,9 @@ void MainWindow::on_languageButton_clicked()
 
     if (settings.setLanguage(selectedLang)) {
         if (settings.saveLanguage(selectedLang)) {
-            ui->statusbar->showMessage("New language succesfully saved!", 3000);
+            ui->statusbar->showMessage(tr("New language succesfully saved!"), 3000);
         } else {
-            ui->statusbar->showMessage("Error saving new language.", 3000);
+            ui->statusbar->showMessage(tr("Error saving new language."), 3000);
         }
         ui->retranslateUi(this);
         this->setWindowTitle("Cerberus");
@@ -604,3 +603,37 @@ void MainWindow::on_languageButton_clicked()
         ui->statusbar->showMessage(tr("Retranslating error!"), 3000);
     }
 }
+
+void MainWindow::on_inactivityButton_clicked()
+{
+    int timer = ui->timerBox->value();
+    QString timerStr = QString::number(timer*1000);
+
+    if(settings.setTimer(timerStr)){
+        if(settings.saveTimer(timerStr)){
+            ui->statusbar->showMessage(tr("New inactivity timer succesfully saved!"), 3000);
+        } else {
+            ui->statusbar->showMessage(tr("Error saving new inactivity timer."), 3000);
+        }
+    } else {
+        ui->statusbar->showMessage(tr("Error adding new timer!"), 3000);
+    }
+}
+
+
+void MainWindow::on_attemptsButton_clicked()
+{
+    int attempts = ui->attemptsBox->value();
+    QString attemptsStr = QString::number(attempts);
+
+    if(settings.setAttempts(attemptsStr)){
+        if(settings.saveAttempts(attemptsStr)){
+            ui->statusbar->showMessage(tr("New login attempts counter succesfully saved!"), 3000);
+        } else {
+            ui->statusbar->showMessage(tr("Error saving new login attempts counter."), 3000);
+        }
+    } else {
+        ui->statusbar->showMessage(tr("Error adding new login attempts counter!"), 3000);
+    }
+}
+

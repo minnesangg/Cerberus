@@ -43,6 +43,9 @@ DialogLogin::DialogLogin(QWidget *parent)
         masterPassStacked->setCurrentWidget(login);
     }
 
+    QString attempts = settingsHandler.getAttempts();
+    ui->attemptsCounterLabel->setText(attempts);
+
     updateStyles();
 }
 

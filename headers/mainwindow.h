@@ -300,6 +300,24 @@ QT_END_NAMESPACE
      */
      void on_languageButton_clicked();
 
+     /**
+     * @brief Slot triggered when the inactivity timer button is clicked.
+     *
+     * Reads the inactivity timeout value from the UI, converts it to milliseconds,
+     * sets the new inactivity timer in the settings, and saves it to persistent storage.
+     * Provides feedback via the status bar about success or failure.
+     */
+     void on_inactivityButton_clicked();
+
+     /**
+     * @brief Slot triggered when the login attempts limit button is clicked.
+     *
+     * Reads the maximum login attempts value from the UI,
+     * sets the new attempts limit in the settings, and saves it.
+     * Provides user feedback in the status bar about the operation result.
+     */
+     void on_attemptsButton_clicked();
+
  private:
 
      /**

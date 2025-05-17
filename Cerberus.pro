@@ -50,7 +50,8 @@ SOURCES += \
     src/mainwindow.cpp \
     src/masterpassword.cpp \
     src/password_generator.cpp \
-    src/pwnedapichecker.cpp
+    src/pwnedapichecker.cpp \
+    src/inactivitywatcher.cpp
 
 include ($$PWD/Qt-Secret/src/Qt-Secret.pri)
 
@@ -61,7 +62,8 @@ HEADERS += \
     headers/masterpassword.h \
     headers/password_generator.h \
     headers/pwnedapichecker.h \
-    headers/settings.h
+    headers/settings.h \
+    headers/inactivitywatcher.h
 
 FORMS += \
     forms/dialoglogin.ui \
