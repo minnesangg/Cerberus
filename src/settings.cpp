@@ -27,19 +27,22 @@ Settings::~Settings() {}
 
 void Settings::loadSettings() {
     QFile file("settings.json");
-    QString lang;
+    QString lang, timer, attempts;
     if(file.open(QIODevice::ReadOnly)) {
         QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
         QJsonObject obj = doc.object();
         lang = obj["app"].toObject()["language"].toString();
+        timer = obj["timerInactivity"].toObject()["timer"].toString();
+        attempts = obj["loginAttempts"].toObject()["attempts"].toString();
     }
     settings["language"] = lang;
+    settings["timerInactivity"] = timer;
+    settings["loginAttempts"] = attempts;
 }
 
 bool Settings::saveLanguage(QString selectedLang) {
     QFile file("settings.json");
     if (!file.open(QIODevice::ReadWrite)) {
-        qDebug() << "Failed to open settings.json for writing!";
         return false;
     }
 
@@ -58,8 +61,60 @@ bool Settings::saveLanguage(QString selectedLang) {
     return true;
 }
 
+bool Settings::saveTimer(const QString& timer){
+    QFile file("settings.json");
+    if(!file.open(QIODevice::ReadWrite)) {
+        return false;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    QJsonObject jsonObj = doc.object();
+
+    QJsonObject timerObj = jsonObj["timerInactivity"].toObject();
+    timerObj["timer"] = timer;
+    jsonObj["timerInactivity"] = timerObj;
+
+    file.resize(0);
+    file.seek(0);
+    file.write(QJsonDocument(jsonObj).toJson());
+
+    settings["timerInactivity"] = timer;
+
+    return true;
+}
+
+bool Settings::saveAttempts(const QString& attempts){
+    QFile file("settings.json");
+    if(!file.open(QIODevice::ReadWrite)) {
+        return false;
+    }
+
+    QJsonDocument doc = QJsonDocument::fromJson(file.readAll());
+    QJsonObject jsonObj = doc.object();
+
+    QJsonObject attemptsObj = jsonObj["loginAttempts"].toObject();
+    attemptsObj["attempts"] = attempts;
+    jsonObj["loginAttempts"] = attemptsObj;
+
+    file.resize(0);
+    file.seek(0);
+    file.write(QJsonDocument(jsonObj).toJson());
+
+    settings["loginAttempts"] = attempts;
+
+    return true;
+}
+
 QString Settings::getLanguage() {
     return settings["language"];
+}
+
+QString Settings::getTimer(){
+    return settings.value("timerInactivity", "30000");
+}
+
+QString Settings::getAttempts(){
+    return settings.value("loginAttempts", "3");
 }
 
 bool Settings::setLanguage(QString selectedLang) {
@@ -94,3 +149,30 @@ bool Settings::setLanguage(QString selectedLang) {
     }
 }
 
+bool Settings::setTimer(const QString& timer) {
+    bool ok = false;
+    int timerInactivity = timer.toInt(&ok);
+
+    if (!ok || timerInactivity <= 9999) {
+        return false;
+    }
+
+    if (!inactivityWatcher) {
+        inactivityWatcher = std::make_unique<InactivityWatcher>(nullptr, timerInactivity);
+        inactivityWatcher->startWatching();
+    } else {
+        inactivityWatcher->updateTimeout(timerInactivity);
+    }
+
+    return true;
+}
+
+bool Settings::setAttempts(const QString& attempts){
+    bool ok = false;
+    int attemptsCounter = attempts.toInt(&ok);
+
+    if(!ok || attemptsCounter <= 2){
+        return false;
+    }
+    return true;
+}

@@ -27,6 +27,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QFile>
+#include "headers/settings.h"
 
 namespace Ui {
 class DialogLogin;
@@ -84,6 +85,8 @@ private:
     QStackedWidget *masterPassStacked;  ///< Stack widget for switching between login and setup screens
         ///< based on whether a master password is set.
     MasterPassword master_pass;         ///< Object for handling master password authentication and management.
+
+    Settings settingsHandler; ///< Object handling settings for the login attempts counter.
 
     /**
      * @brief Updates the application style to a dark theme.

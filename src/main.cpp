@@ -35,9 +35,13 @@ int main(int argc, char *argv[]) {
     // Create a QApplication object, which is required for any Qt-based application
     QApplication app(argc, argv);
 
-    // Sets the programm localisation(that storaged at settings.json)
+    // Sets the programm localisation and inactivity timer(that storaged at settings.json)
     Settings settings;
+    settings.loadSettings();
+
     QString language = settings.getLanguage();
+    QString timer = settings.getTimer();
+    settings.setTimer(timer);
     settings.setLanguage(language);
 
     // Create the login dialog
