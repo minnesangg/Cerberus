@@ -2513,6 +2513,31 @@ QPushButton:pressed {
          </item>
         </layout>
        </widget>
+       <widget class="QLabel" name="changeMasterPassLabel">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>510</y>
+          <width>349</width>
+          <height>85</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Monospace</family>
+          <pointsize>18</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+        </property>
+        <property name="text">
+         <string>Change Master Password</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>
