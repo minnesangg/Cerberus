@@ -100,7 +100,7 @@ Developed by Minnesang. Contributions are welcome!
 
 В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, и многое другое.**
 
-![logotype](https://github.com/user-attachments/assets/2b8a32e7-3b2b-4b3c-84aa-b2e1f9947cf7)
+![logotype](https://github.com/user-attachments/assets/5aae01bc-506a-484f-99c9-7aaf20a66d90)
 
 ## 📚 Документация
 
