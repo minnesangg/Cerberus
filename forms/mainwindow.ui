@@ -2004,11 +2004,11 @@ QPushButton:pressed {
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="gmailLine_2">
+            <widget class="QLineEdit" name="chooseFileLine">
              <property name="font">
               <font>
                <family>Monospace</family>
-               <pointsize>14</pointsize>
+               <pointsize>12</pointsize>
               </font>
              </property>
              <property name="styleSheet">

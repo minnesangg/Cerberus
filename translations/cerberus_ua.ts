@@ -108,6 +108,54 @@
     </message>
 </context>
 <context>
+    <name>GmailSender</name>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="7"/>
+        <source>Line is empty!</source>
+        <translation>Поле пусте!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="11"/>
+        <source>Are you sure that&apos;s YOUR email: </source>
+        <translation>Ви впевнені що це ВАША почта: </translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="14"/>
+        <source>ACHTUNG!</source>
+        <translation>АХТУНГ!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="19"/>
+        <source>Password entry canceled!</source>
+        <translation>Перекидання паролю скасовано!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="37"/>
+        <source>Backup successfully sent!</source>
+        <translation>Резервна копія відправлена!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="39"/>
+        <source>Incorrect password. Please try again!</source>
+        <translation>Невірний пароль. Будь ласка спробуйте ще раз!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="42"/>
+        <source>Operation canceled!</source>
+        <translation>Операція скасована!</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="49"/>
+        <source>Confirm operation</source>
+        <translation>Підтвердіть операцію</translation>
+    </message>
+    <message>
+        <location filename="../src/gmailsender.cpp" line="50"/>
+        <source>Enter master password:</source>
+        <translation>Введіть мастер-пароль:</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <location filename="../forms/mainwindow.ui" line="26"/>
@@ -400,7 +448,6 @@
         <location filename="../src/mainwindow.cpp" line="275"/>
         <location filename="../src/mainwindow.cpp" line="279"/>
         <location filename="../src/mainwindow.cpp" line="384"/>
-        <location filename="../src/mainwindow.cpp" line="462"/>
         <source>Line is empty!</source>
         <translation>Поле пусте!</translation>
     </message>
@@ -487,8 +534,8 @@
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="448"/>
-        <location filename="../src/mainwindow.cpp" line="578"/>
-        <location filename="../src/mainwindow.cpp" line="583"/>
+        <location filename="../src/mainwindow.cpp" line="495"/>
+        <location filename="../src/mainwindow.cpp" line="500"/>
         <source>Info</source>
         <translation>Информація</translation>
     </message>
@@ -498,123 +545,116 @@
         <translation>Интегровано з Have I Been Pwned.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="466"/>
         <source>Are you sure that&apos;s YOUR email: </source>
-        <translation>Ви впевнені що це ВАША почта: </translation>
+        <translation type="vanished">Ви впевнені що це ВАША почта: </translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="469"/>
         <source>ACHTUNG!</source>
-        <translation>АХТУНГ!</translation>
+        <translation type="vanished">АХТУНГ!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="474"/>
-        <location filename="../src/mainwindow.cpp" line="648"/>
+        <location filename="../src/mainwindow.cpp" line="565"/>
         <source>Password entry canceled!</source>
         <translation>Перекидання паролю скасовано!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="493"/>
         <source>Backup successfully sent!</source>
-        <translation>Резервна копія відправлена!</translation>
+        <translation type="vanished">Резервна копія відправлена!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="495"/>
         <source>Incorrect password. Please try again!</source>
-        <translation>Невірний пароль. Будь ласка спробуйте ще раз!</translation>
+        <translation type="vanished">Невірний пароль. Будь ласка спробуйте ще раз!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="506"/>
         <source>Confirm operation</source>
-        <translation>Підтвердіть операцію</translation>
+        <translation type="vanished">Підтвердіть операцію</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="507"/>
         <source>Enter master password:</source>
-        <translation>Введіть мастер-пароль:</translation>
+        <translation type="vanished">Введіть мастер-пароль:</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="550"/>
+        <location filename="../src/mainwindow.cpp" line="467"/>
         <source>Choose Database</source>
         <translation>Виберіть базу даних</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="550"/>
+        <location filename="../src/mainwindow.cpp" line="467"/>
         <source>Databases (*.db);;All Files (*)</source>
         <translation>Бази даних (*.db);;Всі Файли(*)</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="565"/>
+        <location filename="../src/mainwindow.cpp" line="482"/>
         <source>Database successfully added!</source>
         <translation>База даних успішно додана!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="567"/>
+        <location filename="../src/mainwindow.cpp" line="484"/>
         <source>Error adding the database!</source>
         <translation>Помилка додаваняя бази даних!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="570"/>
+        <location filename="../src/mainwindow.cpp" line="487"/>
         <source>No file selected.</source>
         <translation>Не обрано файл.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="578"/>
+        <location filename="../src/mainwindow.cpp" line="495"/>
         <source>All passwords in the database are transmitted in an encrypted form.</source>
         <translation>Всі паролі в базі даних передаються у зашифрованому вигляді.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="583"/>
+        <location filename="../src/mainwindow.cpp" line="500"/>
         <source>All password are creating using strong cryptographic methods.</source>
         <translation>Всі пароли створюються з використанням надійних криптографічних засобів.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="593"/>
+        <location filename="../src/mainwindow.cpp" line="510"/>
         <source>New language succesfully saved!</source>
         <translation>Нова мова успішно збережена!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="595"/>
+        <location filename="../src/mainwindow.cpp" line="512"/>
         <source>Error saving new language.</source>
         <translation>Помилка збереження нової мови.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="615"/>
+        <location filename="../src/mainwindow.cpp" line="532"/>
         <source>New inactivity timer succesfully saved!</source>
         <translation>Новий таймер неактивності успішно збережено!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="617"/>
+        <location filename="../src/mainwindow.cpp" line="534"/>
         <source>Error saving new inactivity timer.</source>
         <translation>Помилка додавання нового таймеру неактивності.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="620"/>
+        <location filename="../src/mainwindow.cpp" line="537"/>
         <source>Error adding new timer!</source>
         <translation>Помилка додавання нового таймеру!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="632"/>
+        <location filename="../src/mainwindow.cpp" line="549"/>
         <source>New login attempts counter succesfully saved!</source>
         <translation>Новий ліміт спроб вхожу успішно збережено!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="634"/>
+        <location filename="../src/mainwindow.cpp" line="551"/>
         <source>Error saving new login attempts counter.</source>
         <translation>Помилка збереження нового ліміту спроб входу.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="637"/>
+        <location filename="../src/mainwindow.cpp" line="554"/>
         <source>Error adding new login attempts counter!</source>
         <translation>Помилка додавання нового ліміту спроб входу!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="653"/>
+        <location filename="../src/mainwindow.cpp" line="570"/>
         <source>New master password succesfully saved!</source>
         <translation>Новий мастер пароль успішно збережено!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="658"/>
+        <location filename="../src/mainwindow.cpp" line="575"/>
         <source>New master password line is empty!</source>
         <translation>Поле для вводу нового паролю порожнє!</translation>
     </message>
@@ -623,7 +663,7 @@
         <translation type="vanished">Вибрано невідому мову</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="604"/>
+        <location filename="../src/mainwindow.cpp" line="521"/>
         <source>Retranslating error!</source>
         <translation>Помилка перекладу!</translation>
     </message>
