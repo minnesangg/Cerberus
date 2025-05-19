@@ -87,55 +87,6 @@ QT_END_NAMESPACE
      ~MainWindow();
  
  private slots:
-
-     /**
-      * @brief Slot that handles the result of the password check.
-      *
-      * This method is called when the password check has completed. It evaluates
-      * whether the entered password has been found in any data breaches. Depending
-      * on the result, it updates the UI with a corresponding message:
-      * - If the password has been found in breaches, it shows a warning message
-      *   with the number of breaches and advises the user to change their password.
-      * - If the password is safe, it displays a confirmation message indicating
-      *   the password is not in any breaches.
-      *
-      * @param found Boolean value indicating whether the password was found in any breaches.
-      * @param count The number of breaches where the password was found.
-      */
-     void onPasswordChecked(bool found, int count);
-
-     /**
-      * @brief Handles the result of password breach checks for all passwords.
-      *
-      * This method is called when a password check completes, updating the table
-      * with the result of the breach check. If the password was found in breaches,
-      * the count of breaches is displayed. If the password is safe, a "Safe ✅" message
-      * is shown in the table. It also ensures proper cleanup by deleting the checker object.
-      *
-      * @param found Indicates whether the password was found in any breaches.
-      * @param count The number of breaches the password was found in, if any.
-      */
-     void onAllPasswordChecked(bool found, int count);
-
-     /**
-      * @brief Sets up the table for displaying passwords and breach counts.
-      *
-      * This method initializes the table widget by setting the column count to 2,
-      * configuring the column headers, and adjusting the header resizing modes.
-      * It also hides the vertical header, disables selection and editing features
-      * for the table cells.
-      */
-     void setupTable();
-
-     /**
-      * @brief Switches the displayed page in the UI.
-      * 
-      * This method is triggered when the user selects a different page in the navigation.
-      * It updates the content displayed in the main window based on the selected page.
-      * 
-      * @param index The index of the page to switch to.
-      */
-     void changePage(int index);
  
      /**
       * @brief Handles password generation when the button is clicked.
@@ -318,25 +269,21 @@ QT_END_NAMESPACE
      */
      void on_attemptsButton_clicked();
 
+     /**
+     * @brief Slot triggered when the "Change Master Password" button is clicked.
+     *
+     * This method initiates the process of changing the master password. It first
+     * prompts the user to confirm the current master password using confirmOperation().
+     * If the confirmation is successful, the method retrieves the new password from the
+     * UI input field and updates the stored master password using masterPasswordHandler.
+     * Appropriate status messages are displayed in the status bar based on the outcome.
+     *
+     * @note If the user cancels the confirmation dialog or enters an incorrect password,
+     *       the operation is aborted and a message is shown.
+     */
+     void on_changeMPButton_clicked();
+
  private:
-
-     /**
-     * @brief Total number of passwords that need to be checked.
-     *
-     * This variable holds the count of passwords that need to be checked against
-     * the "Have I Been Pwned" database. It is initialized before the checking
-     * process starts and is incremented during the check process.
-     */
-     int totalPasswordsToCheck;
-
-     /**
-     * @brief Number of passwords that have already been checked.
-     *
-     * This variable tracks the number of passwords that have already been checked
-     * against the "Have I Been Pwned" database. It is updated each time a password
-     * check is completed.
-     */
-     int passwordsChecked;
 
      /**
      * @brief A map that stores the row index for each PwnedApiChecker instance.
@@ -372,7 +319,7 @@ QT_END_NAMESPACE
       * @brief Handles settings connection.
       */
      Settings settings;
- 
+
      /**
       * @brief Applies additional visual settings to the list widget.
       */
@@ -392,6 +339,73 @@ QT_END_NAMESPACE
       * @brief Opens and applies a custom style file for UI appearance.
       */
      void openStyleFile();
+
+     /**
+      * @brief Slot that handles the result of the password check.
+      *
+      * This method is called when the password check has completed. It evaluates
+      * whether the entered password has been found in any data breaches. Depending
+      * on the result, it updates the UI with a corresponding message:
+      * - If the password has been found in breaches, it shows a warning message
+      *   with the number of breaches and advises the user to change their password.
+      * - If the password is safe, it displays a confirmation message indicating
+      *   the password is not in any breaches.
+      *
+      * @param found Boolean value indicating whether the password was found in any breaches.
+      * @param count The number of breaches where the password was found.
+      */
+     void onPasswordChecked(bool found, int count);
+
+     /**
+      * @brief Handles the result of password breach checks for all passwords.
+      *
+      * This method is called when a password check completes, updating the table
+      * with the result of the breach check. If the password was found in breaches,
+      * the count of breaches is displayed. If the password is safe, a "Safe ✅" message
+      * is shown in the table. It also ensures proper cleanup by deleting the checker object.
+      *
+      * @param found Indicates whether the password was found in any breaches.
+      * @param count The number of breaches the password was found in, if any.
+      */
+     void onAllPasswordChecked(bool found, int count);
+
+     /**
+      * @brief Sets up the table for displaying passwords and breach counts.
+      *
+      * This method initializes the table widget by setting the column count to 2,
+      * configuring the column headers, and adjusting the header resizing modes.
+      * It also hides the vertical header, disables selection and editing features
+      * for the table cells.
+      */
+     void setupTable();
+
+     /**
+      * @brief Switches the displayed page in the UI.
+      *
+      * This method is triggered when the user selects a different page in the navigation.
+      * It updates the content displayed in the main window based on the selected page.
+      *
+      * @param index The index of the page to switch to.
+      */
+     void changePage(int index);
+
+     /**
+     * @brief Total number of passwords that need to be checked.
+     *
+     * This variable holds the count of passwords that need to be checked against
+     * the "Have I Been Pwned" database. It is initialized before the checking
+     * process starts and is incremented during the check process.
+     */
+     int totalPasswordsToCheck;
+
+     /**
+     * @brief Number of passwords that have already been checked.
+     *
+     * This variable tracks the number of passwords that have already been checked
+     * against the "Have I Been Pwned" database. It is updated each time a password
+     * check is completed.
+     */
+     int passwordsChecked;
 
      /**
      * @brief Sets up the language selection combo box with available options.
@@ -415,7 +429,7 @@ QT_END_NAMESPACE
      void startProgramm();
 
      /**
-     * @brief Handles the click event of the "Send Gmail Backup" button.
+     * @brief Handles the click event of the "Send Gmail Backup" button or of the "Change Master Password" button.
      *
      * This method validates the entered Gmail address, shows a confirmation dialog asking the user
      * if the email address is correct, and then prompts the user to enter the master password.

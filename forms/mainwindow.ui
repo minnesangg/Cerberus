@@ -51,6 +51,69 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
+    <item row="0" column="0">
+     <widget class="QListWidget" name="listWidget">
+      <property name="font">
+       <font>
+        <pointsize>-1</pointsize>
+       </font>
+      </property>
+      <property name="cursor" stdset="0">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QListWidget {
+    background-color: #2b2b2b;  
+    border: none;
+    border-right: 2px solid #444d58;
+    font-size: 18px;
+}
+
+QListWidget::item {
+    background-color: #2b2b2b;  
+    color: #d1d1d1;              
+    border-bottom: 1px solid #444d58;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+QListWidget::item:selected {
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
+}
+
+QPushButton {
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;  
+    box-shadow: none;
+}
+
+QPushButton:disabled {
+    background-color: #3e6b4c;  
+    color: #6c6c6c;            
+}
+</string>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="1">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="font">
@@ -1432,7 +1495,7 @@ QPushButton:pressed {
          <rect>
           <x>180</x>
           <y>290</y>
-          <width>381</width>
+          <width>431</width>
           <height>51</height>
          </rect>
         </property>
@@ -2065,10 +2128,10 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_12">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>210</y>
+          <x>10</x>
+          <y>150</y>
           <width>711</width>
-          <height>281</height>
+          <height>351</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="allSettingsLayout">
@@ -2511,72 +2574,129 @@ QPushButton:pressed {
            </item>
           </layout>
          </item>
-        </layout>
-       </widget>
-      </widget>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QListWidget" name="listWidget">
-      <property name="font">
-       <font>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="cursor" stdset="0">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QListWidget {
-    background-color: #2b2b2b;  
-    border: none;
-    border-right: 2px solid #444d58;
-    font-size: 18px;
+         <item>
+          <layout class="QHBoxLayout" name="changeMPLayout">
+           <item>
+            <widget class="QLabel" name="changeMasterPassLabel">
+             <property name="font">
+              <font>
+               <family>Monospace</family>
+               <pointsize>18</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+             </property>
+             <property name="text">
+              <string>Change Master Password </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="changeMPLine">
+             <property name="font">
+              <font>
+               <family>Cantarell</family>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
 }
-
-QListWidget::item {
-    background-color: #2b2b2b;  
-    color: #d1d1d1;              
-    border-bottom: 1px solid #444d58;
-    padding: 10px;
-    font-weight: bold;
-    border-radius: 10px;
-    transition: background-color 0.3s;
-}
-
-QListWidget::item:selected {
-    background-color: #6fcf97;  
-    color: #1e1e1e;           
-}
-
-QPushButton {
-    background-color: #6fcf97;  
-    color: #1e1e1e;           
-    font-size: 18px;
+</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="echoMode">
+              <enum>QLineEdit::EchoMode::Password</enum>
+             </property>
+             <property name="placeholderText">
+              <string>Enter new  password</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="changeMPButton">
+             <property name="font">
+              <font>
+               <family>Cantarell</family>
+               <pointsize>14</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
     font-weight: bold;
     border: none;
     padding: 12px 24px;
-    border-radius: 25px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 QPushButton:hover {
-    background-color: #5bbd88; 
+    background-color: #5bbd88;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 QPushButton:pressed {
-    background-color: #4aa97a;  
+    background-color: #4aa97a;
     box-shadow: none;
 }
 
-QPushButton:disabled {
-    background-color: #3e6b4c;  
-    color: #6c6c6c;            
-}
 </string>
-      </property>
+             </property>
+             <property name="text">
+              <string>CHANGE</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="minnesangLabel">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>610</y>
+          <width>221</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Noto Sans Mono</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    color: #d1d1d1; 
+    margin-bottom: 10px; 
+}</string>
+        </property>
+        <property name="text">
+         <string>Developed by MINNESANG</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>
