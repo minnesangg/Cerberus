@@ -43,6 +43,7 @@ contains(QMAKE_HOST_OS, "Linux") {
 DEFINES += QT_NO_QRESOURCE_COMPRESSION
 
 SOURCES += \
+    src/gmailsender.cpp \
     src/settings.cpp \
     src/database.cpp \
     src/dialoglogin.cpp \
@@ -56,6 +57,7 @@ SOURCES += \
 include ($$PWD/Qt-Secret/src/Qt-Secret.pri)
 
 HEADERS += \
+    headers/gmailsender.h \
     headers/database.h \
     headers/dialoglogin.h \
     headers/mainwindow.h \
