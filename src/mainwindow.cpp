@@ -599,6 +599,7 @@ void MainWindow::on_languageButton_clicked()
         ui->listWidget->clear();
         listWidgetSettings();
         allignCenter();
+        setupTable();
     } else {
         ui->statusbar->showMessage(tr("Retranslating error!"), 3000);
     }
@@ -635,5 +636,27 @@ void MainWindow::on_attemptsButton_clicked()
     } else {
         ui->statusbar->showMessage(tr("Error adding new login attempts counter!"), 3000);
     }
+}
+
+
+void MainWindow::on_changeMPButton_clicked()
+{
+    QString newMasterPass = ui->changeMPLine->text();
+    if(!newMasterPass.isEmpty()){
+        QString password = confirmOperation();
+        if(password.isEmpty()){
+            ui->statusbar->showMessage(tr("Password entry canceled!"), 3000);
+            return;
+        }
+        if(masterPasswordHandler.checkMasterPass(password)){
+            masterPasswordHandler.masterPassword(newMasterPass);
+            ui->statusbar->showMessage(tr("New master password succesfully saved!"), 3000);
+            ui->changeMPLine->clear();
+        }
+
+    } else {
+        ui->statusbar->showMessage(tr("New master password line is empty!"), 3000);
+    }
+
 }
 

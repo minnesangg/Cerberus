@@ -115,86 +115,86 @@
         <translation></translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="94"/>
+        <location filename="../forms/mainwindow.ui" line="157"/>
         <source>PASSWORD GENERATION</source>
         <translation>ГЕНЕРАЦІЯ ПАРОЛІВ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="137"/>
+        <location filename="../forms/mainwindow.ui" line="200"/>
         <source>What is this password for?</source>
         <translation>Від чого цей пароль?</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="244"/>
+        <location filename="../forms/mainwindow.ui" line="307"/>
         <source>Delete password</source>
         <translation>Видалити пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="293"/>
+        <location filename="../forms/mainwindow.ui" line="356"/>
         <source>Save password</source>
         <translation>Зберегти пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="340"/>
+        <location filename="../forms/mainwindow.ui" line="403"/>
         <source>Choose length of password</source>
         <translation>Виберіть довжину пароля</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="469"/>
+        <location filename="../forms/mainwindow.ui" line="532"/>
         <source>Generate</source>
         <translation>Згенерувати</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1175"/>
+        <location filename="../forms/mainwindow.ui" line="1238"/>
         <source>MANAGE YOUR PASSWORDS</source>
         <translation>УПРАВЛІННЯ СВОЇМИ ПАРОЛЯМИ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="582"/>
+        <location filename="../forms/mainwindow.ui" line="645"/>
         <source>Find Password</source>
         <translation>Знайти Пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="625"/>
+        <location filename="../forms/mainwindow.ui" line="688"/>
         <source>Add Your Password</source>
         <translation>Додати свій пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="666"/>
+        <location filename="../forms/mainwindow.ui" line="729"/>
         <source>Delete Password</source>
         <translation>Видалити Пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="710"/>
-        <location filename="../forms/mainwindow.ui" line="802"/>
-        <location filename="../forms/mainwindow.ui" line="866"/>
+        <location filename="../forms/mainwindow.ui" line="773"/>
+        <location filename="../forms/mainwindow.ui" line="865"/>
+        <location filename="../forms/mainwindow.ui" line="929"/>
         <source>Password for what?</source>
         <translation>Пароль від чого?</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="832"/>
+        <location filename="../forms/mainwindow.ui" line="895"/>
         <location filename="../src/mainwindow.cpp" line="327"/>
         <location filename="../src/mainwindow.cpp" line="430"/>
         <source>Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="898"/>
+        <location filename="../forms/mainwindow.ui" line="961"/>
         <source>STORED PASSWORDS</source>
         <translation>ЗБЕРЕЖЕНІ ПАРОЛІ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="958"/>
+        <location filename="../forms/mainwindow.ui" line="1021"/>
         <source>Show Names</source>
         <translation>Показати імена</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1001"/>
+        <location filename="../forms/mainwindow.ui" line="1064"/>
         <source>Show Names and Password</source>
         <translation>Показати імена та паролі</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1040"/>
+        <location filename="../forms/mainwindow.ui" line="1103"/>
         <source>Clear</source>
         <translation>Очистити</translation>
     </message>
@@ -203,120 +203,140 @@
         <translation type="vanished">Перевірка Надійності Пароля</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1218"/>
+        <location filename="../forms/mainwindow.ui" line="1281"/>
         <source>PASSWORD SECURITY CHECK</source>
         <translation>ПЕРЕВІРКА НАДІЙНОСТІ ПАРОЛЯ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1266"/>
+        <location filename="../forms/mainwindow.ui" line="1329"/>
         <source>Enter the password </source>
         <translation>Введіть пароль </translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1291"/>
+        <location filename="../forms/mainwindow.ui" line="1354"/>
         <source>Enter the password you want to check</source>
         <translation>Введіть пароль для перевірки</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1334"/>
-        <location filename="../forms/mainwindow.ui" line="1612"/>
+        <location filename="../forms/mainwindow.ui" line="1397"/>
+        <location filename="../forms/mainwindow.ui" line="1675"/>
         <source>CHECK</source>
         <translation>ПЕРЕВІРИТИ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1427"/>
+        <location filename="../forms/mainwindow.ui" line="1490"/>
         <source>Check if your password has been exposed in data breaches</source>
         <translation>Перевір, чи не було твій пароль скомпрометовано</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1462"/>
+        <location filename="../forms/mainwindow.ui" line="1525"/>
         <source>Check all paswords in database</source>
         <translation>Перевірити всі паролі у базі даних</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1650"/>
+        <location filename="../forms/mainwindow.ui" line="1713"/>
         <source>CLEAR</source>
         <translation>ОЧИСТИТИ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1732"/>
+        <location filename="../forms/mainwindow.ui" line="1795"/>
         <source>BACKUP YOUR DATABASE</source>
         <translation>РЕЗЕРВНА КОПІЯ БАЗИ ДАНИХ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1768"/>
+        <location filename="../forms/mainwindow.ui" line="1831"/>
         <source>Send to Gmail</source>
         <translation>Відправити на Gmail</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1835"/>
+        <location filename="../forms/mainwindow.ui" line="1898"/>
         <source>SEND</source>
         <translation>ВІДПРАВИТИ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1856"/>
+        <location filename="../forms/mainwindow.ui" line="1919"/>
         <source>Please check your spam folder, the email containing the database might be there.</source>
         <translation>Будь ласка, перевір папку зі спамом — лист із базою даних міг потрапити туди.</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1892"/>
+        <location filename="../forms/mainwindow.ui" line="1955"/>
         <source>Restore Passwords</source>
         <translation>Відновити Паролі</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1939"/>
+        <location filename="../forms/mainwindow.ui" line="2002"/>
         <source>CHOOSE FILE</source>
         <translation>ВИБЕРІТЬ ФАЙЛ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1965"/>
+        <location filename="../forms/mainwindow.ui" line="2028"/>
         <source>Choosed file</source>
         <translation>Вибраний файл</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="1986"/>
+        <location filename="../forms/mainwindow.ui" line="2049"/>
         <source>Please select the installed .db file, your passwords will be there.</source>
         <translation>Будь ласка виберіть встановлений .db файл, ваші пароля будуть там.</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2059"/>
+        <location filename="../forms/mainwindow.ui" line="2122"/>
         <source>SETTINGS</source>
         <translation>НАЛАШТУВАННЯ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2103"/>
+        <location filename="../forms/mainwindow.ui" line="2166"/>
         <source>Choose Language</source>
         <translation>Виберіть Мову</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2214"/>
+        <location filename="../forms/mainwindow.ui" line="2277"/>
         <source>CHOOSE</source>
         <translation>ВИБРАТИ</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2241"/>
+        <location filename="../forms/mainwindow.ui" line="2304"/>
         <source>Set inactivity timeout</source>
         <translation>Таймер неактивності</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2305"/>
+        <location filename="../forms/mainwindow.ui" line="2368"/>
         <source> s.</source>
         <translation> с.</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2357"/>
+        <location filename="../forms/mainwindow.ui" line="2420"/>
         <source>SET TIMER</source>
         <translation>ВСТАНОВИТИ ТАЙМЕР</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2384"/>
+        <location filename="../forms/mainwindow.ui" line="2447"/>
         <source>Login Attempt Limit</source>
         <translation>Ліміт спроб входу</translation>
     </message>
     <message>
-        <location filename="../forms/mainwindow.ui" line="2506"/>
+        <location filename="../forms/mainwindow.ui" line="2569"/>
         <source>SET ATTEMPTS LIMIT</source>
         <translation>ВСТАНОВИТИ ЛІМІТ</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="2594"/>
+        <source>Change Master Password </source>
+        <translation>Змінити мастер пароль </translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="2623"/>
+        <source>Enter new  password</source>
+        <translation>Новий пароль</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="2666"/>
+        <source>CHANGE</source>
+        <translation>ЗМІНИТИ</translation>
+    </message>
+    <message>
+        <location filename="../forms/mainwindow.ui" line="2696"/>
+        <source>Developed by MINNESANG</source>
+        <translation>Розробник MINNESANG</translation>
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="67"/>
@@ -489,6 +509,7 @@
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="474"/>
+        <location filename="../src/mainwindow.cpp" line="648"/>
         <source>Password entry canceled!</source>
         <translation>Перекидання паролю скасовано!</translation>
     </message>
@@ -558,41 +579,51 @@
         <translation>Помилка збереження нової мови.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="614"/>
+        <location filename="../src/mainwindow.cpp" line="615"/>
         <source>New inactivity timer succesfully saved!</source>
         <translation>Новий таймер неактивності успішно збережено!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="616"/>
+        <location filename="../src/mainwindow.cpp" line="617"/>
         <source>Error saving new inactivity timer.</source>
         <translation>Помилка додавання нового таймеру неактивності.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="619"/>
+        <location filename="../src/mainwindow.cpp" line="620"/>
         <source>Error adding new timer!</source>
         <translation>Помилка додавання нового таймеру!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="631"/>
+        <location filename="../src/mainwindow.cpp" line="632"/>
         <source>New login attempts counter succesfully saved!</source>
         <translation>Новий ліміт спроб вхожу успішно збережено!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="633"/>
+        <location filename="../src/mainwindow.cpp" line="634"/>
         <source>Error saving new login attempts counter.</source>
         <translation>Помилка збереження нового ліміту спроб входу.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="636"/>
+        <location filename="../src/mainwindow.cpp" line="637"/>
         <source>Error adding new login attempts counter!</source>
         <translation>Помилка додавання нового ліміту спроб входу!</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="653"/>
+        <source>New master password succesfully saved!</source>
+        <translation>Новий мастер пароль успішно збережено!</translation>
+    </message>
+    <message>
+        <location filename="../src/mainwindow.cpp" line="658"/>
+        <source>New master password line is empty!</source>
+        <translation>Поле для вводу нового паролю порожнє!</translation>
     </message>
     <message>
         <source>Unknown language selected</source>
         <translation type="vanished">Вибрано невідому мову</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="603"/>
+        <location filename="../src/mainwindow.cpp" line="604"/>
         <source>Retranslating error!</source>
         <translation>Помилка перекладу!</translation>
     </message>
