@@ -417,7 +417,6 @@ void MainWindow::setupTablesHeaders(QTableWidget* table){
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
-
 void MainWindow::on_copyFindedButton_clicked() {
     QClipboard *clipboard = QApplication::clipboard();
     QString findedPassword = ui->findedLine->text();
