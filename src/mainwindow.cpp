@@ -278,7 +278,6 @@ void MainWindow::on_generateButton_clicked() {
 
     QString generated_password = password_generator.passGeneration(size);
     ui->generatedLine->setText(generated_password);
-
 }
 
 void MainWindow::on_deletePassButton_clicked() {
@@ -302,6 +301,7 @@ void MainWindow::on_savePassButton_clicked() {
 
     ui->generatedLine->clear();
     ui->passwordNameLabel->clear();
+    setupCategoriesComboBoxes();
 }
 
 void MainWindow::on_findButton_clicked() {
@@ -368,6 +368,7 @@ void MainWindow::on_addPassButton_clicked() {
 
     ui->ownPassName->clear();
     ui->ownPass->clear();
+    setupCategoriesComboBoxes();
 }
 
 void MainWindow::on_showButton_clicked() {
