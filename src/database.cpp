@@ -47,7 +47,21 @@ void DatabaseManager::initDatabase(){
     query.exec("CREATE TABLE IF NOT EXISTS passwords ("
                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
                "name TEXT UNIQUE, "
-               "password TEXT)");
+               "password TEXT, "
+               "category TEXT)");
+
+    query.exec("PRAGMA table_info(passwords);");
+    bool categoryExists = false;
+    while(query.next()) {
+        QString columnName = query.value("name").toString();
+        if(columnName == "category") {
+            categoryExists = true;
+            break;
+        }
+    }
+    if (!categoryExists) {
+        query.exec("ALTER TABLE passwords ADD COLUMN category TEXT;");
+    }
 }
 
 void DatabaseManager::loadPasswords() {
@@ -107,3 +121,75 @@ void DatabaseManager::savePassword(const QString &name, const QString &password)
     savedPasswords[name] = password;
 }
 
+void DatabaseManager::loadCategories(){
+    categories.clear();
+
+    QSqlQuery query("SELECT DISTINCT category FROM passwords WHERE category IS NOT NULL AND category != ''");
+    while (query.next()) {
+        QString category = query.value(0).toString();
+        categories.append(category);
+    }
+}
+
+QStringList DatabaseManager::getCategories() const {
+    return categories;
+}
+
+void DatabaseManager::addCategory(QString newCategory){
+    categories.append(newCategory);
+}
+
+bool DatabaseManager::bindCategoriesDB(QString password, QString category){
+    QSqlQuery query;
+    query.prepare("UPDATE passwords SET category = :category WHERE name = :name");
+    query.bindValue(":category", category);
+    query.bindValue(":name", password);
+
+    if (!query.exec()) { return false; }
+    return true;
+}
+
+QVector<QPair<QString, QString>> DatabaseManager::getPasswordsByCategory(const QString& category){
+    QVector<QPair<QString, QString>> result;
+
+    QSqlQuery query;
+    query.prepare("SELECT name, password FROM passwords WHERE category = :category");
+    query.bindValue(":category", category);
+
+    if (query.exec()) {
+        while (query.next()) {
+            QString name = query.value(0).toString();
+            QByteArray encryptedData = query.value(1).toByteArray();
+
+            QByteArray iv = encryptedData.left(16);
+            QByteArray encryptedPassword = encryptedData.mid(16);
+            QByteArray masterKey = master_password.getMasterPasswordHash();
+            QByteArray decryptedPassword = QAESEncryption::Decrypt(QAESEncryption::AES_256, QAESEncryption::CBC, encryptedPassword, masterKey, iv);
+
+            int endIndex = decryptedPassword.indexOf('\0');
+            if (endIndex != -1) {
+                decryptedPassword.truncate(endIndex);
+            }
+
+            QByteArray cleanedPassword;
+            for (char c : decryptedPassword) {
+                if (c >= 32 && c <= 126) {
+                    cleanedPassword.append(c);
+                }
+            }
+
+            QString password = QString::fromUtf8(cleanedPassword);
+            result.append(qMakePair(name, password));
+        }
+    }
+
+    return result;
+}
+
+bool DatabaseManager::removeCategory(const QString& category){
+    QSqlQuery query;
+    query.prepare("UPDATE passwords SET category = NULL WHERE category = :category");
+    query.bindValue(":category", category);
+    categories.removeOne(category);
+    return query.exec();
+}

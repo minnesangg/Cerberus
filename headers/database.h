@@ -80,6 +80,8 @@ public:
      */
     void loadPasswords();
 
+    void loadCategories();
+
     /**
      * @brief Saves a password to the database.
      *
@@ -109,10 +111,21 @@ public:
      */
     QMap<QString, QString> getSavedPasswords() const;
 
+    QStringList getCategories() const;
+
+    bool bindCategoriesDB(QString password, QString category);
+
+    QVector<QPair<QString, QString>> getPasswordsByCategory(const QString& category);
+
+    void addCategory(QString newCategory);
+
+    bool removeCategory(const QString& category);
+
 private:
     QMap<QString, QString> savedPasswords;  ///< Stores passwords as (name, password) pairs.
     MasterPassword master_password;         ///< Object for handling the master password.
     QString dbPath; ///< Database path.
+    QStringList categories; ///< Stores all categories for passwords.
 };
 
 #endif // DATABASE_H

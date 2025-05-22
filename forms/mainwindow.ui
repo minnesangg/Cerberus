@@ -964,9 +964,9 @@ QLineEdit:focus {
        <widget class="QWidget" name="verticalLayoutWidget_2">
         <property name="geometry">
          <rect>
-          <x>50</x>
+          <x>40</x>
           <y>320</y>
-          <width>651</width>
+          <width>671</width>
           <height>81</height>
          </rect>
         </property>
@@ -1241,9 +1241,519 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="managerInfoButton">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>0</y>
+          <width>51</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #424242; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+	selection-background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="categoriesPage">
-       <layout class="QGridLayout" name="gridLayout"/>
+       <widget class="QWidget" name="horizontalLayoutWidget_4">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>721</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="categBinderLayout">
+         <item>
+          <widget class="QComboBox" name="passNameCategBox">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 2px solid #555555;
+    border-radius: 6px;
+    font-size: 19px;
+    min-width: 150px;
+    max-width: 250px;
+    min-height: 40px; 
+    height: 40px; 
+    outline: none;
+ 	padding-left: 8px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: none;
+    selection-background-color: #3a3a3a;
+    selection-color: #ffffff;
+    outline: none;
+}
+
+QComboBox QAbstractItemView::item {
+    background-color: transparent;
+    padding: 6px 12px;
+}
+
+QComboBox::drop-down {
+    background-color: #3a3a3a;
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/downArrow.png);
+    width: 10px;
+    height: 10px;
+}
+
+QComboBox::drop-down:hover {
+    background-color: #505050;
+}
+</string>
+           </property>
+           <property name="placeholderText">
+            <string>Choose Password</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="passCategBox">
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: 2px solid #555555;
+    border-radius: 6px;
+    font-size: 19px;
+    min-width: 150px;
+    max-width: 250px;
+    min-height: 40px; 
+    height: 40px; 
+    outline: none;
+ 	padding-left: 8px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #2b2b2b;
+    color: #ffffff;
+    border: none;
+    selection-background-color: #3a3a3a;
+    selection-color: #ffffff;
+    outline: none;
+}
+
+QComboBox QAbstractItemView::item {
+    background-color: transparent;
+    padding: 6px 12px;
+}
+
+QComboBox::drop-down {
+    background-color: #3a3a3a;
+    border: none;
+    width: 20px;
+}
+
+QComboBox::down-arrow {
+    image: url(:/downArrow.png);
+    width: 10px;
+    height: 10px;
+}
+
+QComboBox::drop-down:hover {
+    background-color: #505050;
+}
+</string>
+           </property>
+           <property name="placeholderText">
+            <string>Choose Category</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="bindCategoryButton">
+           <property name="font">
+            <font>
+             <family>Cantarell</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>BIND CATEGORY</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="categoriesMainLabel">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>10</y>
+          <width>261</width>
+          <height>78</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <family>Monospace</family>
+          <pointsize>-1</pointsize>
+          <fontweight>DemiBold</fontweight>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLabel {
+    font-size: 28px;
+    font-weight: 600;
+    color: #00ff88;       
+    letter-spacing: 1px;   
+    padding: 10px 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #1a3a2a; 
+}
+</string>
+        </property>
+        <property name="text">
+         <string>CATEGORIES</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="passCategTable">
+        <property name="geometry">
+         <rect>
+          <x>250</x>
+          <y>300</y>
+          <width>481</width>
+          <height>339</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"> QTableWidget {
+        background-color: #121212;
+        color: #2ECC71;
+        gridline-color: #2ECC71;
+        border: 2px solid #2ECC71;
+    }
+    QHeaderView::section {
+        background-color: #1E1E1E;
+        color: #2ECC71;
+        padding: 4px;
+        border: 1px solid #2ECC71;
+    }
+    QTableWidget::item {
+        background-color: #121212;
+        color: #2ECC71;
+        padding: 4px;
+    }
+    QTableWidget::item:selected {
+        background-color: #2ECC71;
+        color: #121212;
+    }
+
+QScrollBar:vertical {
+    border: none;
+    background: #1E1E1E;
+    width: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #2ECC71;
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #27AE60; /* чуть темнее при наведении */
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* Горизонтальный скроллбар, если вдруг появится */
+QScrollBar:horizontal {
+    border: none;
+    background: #1E1E1E;
+    height: 10px;
+    margin: 0px 0px 0px 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: #2ECC71;
+    min-width: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: #27AE60;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    border: none;
+    background: none;
+}
+
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none;
+}</string>
+        </property>
+       </widget>
+       <widget class="QListWidget" name="categoriesList">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>300</y>
+          <width>231</width>
+          <height>339</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>-1</pointsize>
+         </font>
+        </property>
+        <property name="cursor" stdset="0">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QListWidget {
+    background-color: #2b2b2b;  
+    border: none;
+    border-right: 2px solid #444d58;
+    font-size: 18px;
+}
+
+QListWidget::item {
+    background-color: #2b2b2b;  
+    color: #d1d1d1;              
+    border-bottom: 1px solid #444d58;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+QListWidget::item:selected {
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
+}
+
+QPushButton {
+    background-color: #6fcf97;  
+    color: #1e1e1e;           
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;  
+    box-shadow: none;
+}
+
+QPushButton:disabled {
+    background-color: #3e6b4c;  
+    color: #6c6c6c;            
+}
+</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>411</width>
+          <height>80</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLineEdit" name="newCategLine">
+           <property name="font">
+            <font>
+             <family>Monospace</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background-color: #1E1E1E;
+    border: 1px solid #333;
+    padding: 8px;
+    border-radius: 5px;
+    color: #E0E0E0;
+}
+</string>
+           </property>
+           <property name="readOnly">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>New Category</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="newCategButton">
+           <property name="font">
+            <font>
+             <family>Cantarell</family>
+             <pointsize>14</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background-color: #2ECC71;
+    color: #1e1e1e; 
+    font-weight: bold;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 10px;
+    min-height: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+QPushButton:hover {
+    background-color: #5bbd88;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+QPushButton:pressed {
+    background-color: #4aa97a;
+    box-shadow: none;
+}
+
+</string>
+           </property>
+           <property name="text">
+            <string>ADD NEW</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QPushButton" name="categoriesInfoButton">
+        <property name="geometry">
+         <rect>
+          <x>690</x>
+          <y>10</y>
+          <width>41</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QLineEdit {
+    background-color: #424242; 
+    border: 1px solid #3c3c3c; 
+    color: #d1d1d1;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 10px;
+	selection-background-color: transparent;
+    transition: border-color 0.3s;
+}
+
+QLineEdit:focus {
+    border-color: #6fcf97; 
+    box-shadow: 0 0 5px rgba(111, 207, 151, 0.5);
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="checkPage">
        <widget class="QWidget" name="verticalLayoutWidget_3">
@@ -2674,9 +3184,9 @@ QPushButton:pressed {
        <widget class="QLabel" name="minnesangLabel">
         <property name="geometry">
          <rect>
-          <x>260</x>
+          <x>230</x>
           <y>610</y>
-          <width>221</width>
+          <width>311</width>
           <height>51</height>
          </rect>
         </property>
@@ -2693,7 +3203,7 @@ QPushButton:pressed {
 }</string>
         </property>
         <property name="text">
-         <string>Developed by MINNESANG</string>
+         <string>Developed by MINNESANG | SWAG</string>
         </property>
        </widget>
       </widget>

@@ -281,6 +281,16 @@ QT_END_NAMESPACE
      */
      void on_changeMPButton_clicked();
 
+     void on_bindCategoryButton_clicked();
+
+     void on_newCategButton_clicked();
+
+     void onCategoryListContextMenuRequested(const QPoint &pos);
+
+     void on_categoriesInfoButton_clicked();
+
+     void on_managerInfoButton_clicked();
+
  private:
 
      /**
@@ -382,6 +392,10 @@ QT_END_NAMESPACE
       */
      void setupTable();
 
+     void setupTablesHeaders(QTableWidget* table);
+
+     void displayPasswordsByCategory(const QString& category);
+
      /**
       * @brief Switches the displayed page in the UI.
       *
@@ -391,6 +405,8 @@ QT_END_NAMESPACE
       * @param index The index of the page to switch to.
       */
      void changePage(int index);
+
+     void changeCategoriesPage(int index);
 
      /**
      * @brief Total number of passwords that need to be checked.
@@ -430,6 +446,10 @@ QT_END_NAMESPACE
       * @brief Initializes application logic and state on startup.
       */
      void startProgramm();
+
+     void setupCategoriesComboBoxes();
+
+     void setupCategoriesList();
  };
  
 #endif //MAINWINDOW_H
