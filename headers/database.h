@@ -37,7 +37,7 @@
  * It handles all database interactions, including AES-256 encryption and decryption of passwords
  * and stores them in a SQLite database. The passwords are associated with a name or label (e.g., website name)
  * for easy retrieval. This class also handles the initialization of the database, loading all stored passwords,
- * saving new passwords with encryption, and deleting passwords.
+ * saving new passwords with encryption, and deleting passwords. Also password have optional field "category".
  *
  * @note Encryption is performed using AES-256 in CBC mode.
  */
@@ -80,6 +80,12 @@ public:
      */
     void loadPasswords();
 
+    /**
+     * @brief Loads distinct non-empty categories from the database into the local categories list.
+     *
+     * Queries the database for all unique categories assigned to passwords,
+     * excluding null or empty values, and stores them in the `categories` member.
+     */
     void loadCategories();
 
     /**
@@ -111,14 +117,53 @@ public:
      */
     QMap<QString, QString> getSavedPasswords() const;
 
+    /**
+     * @brief Returns the list of currently loaded categories.
+     *
+     * @return QStringList A list of category names as QStrings.
+     */
     QStringList getCategories() const;
 
+    /**
+     * @brief Assigns a category to a password record in the database.
+     *
+     * Updates the `category` field of the password entry identified by its name.
+     *
+     * @param password The name of the password entry to update.
+     * @param category The category to assign to the password.
+     * @return true if the database update was successful; false otherwise.
+     */
     bool bindCategoriesDB(QString password, QString category);
 
+    /**
+     * @brief Retrieves all passwords and their names for a given category.
+     *
+     * Decrypts the stored encrypted passwords using the master password hash,
+     * cleans non-printable characters, and returns a list of name-password pairs.
+     *
+     * @param category The category to filter passwords by.
+     * @return QVector<QPair<QString, QString>> Vector of pairs: password name and decrypted password string.
+     */
     QVector<QPair<QString, QString>> getPasswordsByCategory(const QString& category);
 
+    /**
+     * @brief Adds a new category to the local categories list.
+     *
+     * Note: This does not update the database; it only modifies the in-memory list.
+     *
+     * @param newCategory The name of the category to add.
+     */
     void addCategory(QString newCategory);
 
+    /**
+     * @brief Removes the association of a category from all passwords in the database.
+     *
+     * Sets the `category` field to NULL for all passwords assigned to the specified category.
+     * Also removes the category from the local categories list.
+     *
+     * @param category The category to remove.
+     * @return true if the database update was successful; false otherwise.
+     */
     bool removeCategory(const QString& category);
 
 private:

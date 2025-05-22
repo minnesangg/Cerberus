@@ -281,14 +281,47 @@ QT_END_NAMESPACE
      */
      void on_changeMPButton_clicked();
 
+     /**
+     * @brief Slot triggered when the "Bind Category" button is clicked.
+     *
+     * Attempts to bind the selected category to the selected password in the database.
+     * Shows error messages on the status bar if inputs are empty or the binding fails.
+     * Refreshes category combo boxes after successful binding.
+     */
      void on_bindCategoryButton_clicked();
 
+     /**
+     * @brief Slot triggered when the "New Category" button is clicked.
+     *
+     * Adds a new category from the input line to the categories list and database,
+     * refreshes the category combo boxes, and clears the input field.
+     */
      void on_newCategButton_clicked();
 
+     /**
+     * @brief Context menu event handler for the categories list widget.
+     *
+     * Displays a context menu with a "Remove category" option when right-clicking a category.
+     * If the user confirms, removes the selected category from the database and updates the UI.
+     *
+     * @param pos The position of the context menu request within the categories list widget.
+     */
      void onCategoryListContextMenuRequested(const QPoint &pos);
 
+     /**
+     * @brief Slot triggered when the "Categories Info" button is clicked.
+     *
+     * Displays an informational message box warning the user that unassigned categories
+     * will be automatically deleted upon application close.
+     */
      void on_categoriesInfoButton_clicked();
 
+     /**
+     * @brief Slot triggered when the "Manager Info" button is clicked.
+     *
+     * Shows an informational message box with licensing information about the project,
+     * emphasizing its open-source nature under GNU GPL v3.0.
+     */
      void on_managerInfoButton_clicked();
 
  private:
@@ -392,8 +425,24 @@ QT_END_NAMESPACE
       */
      void setupTable();
 
+     /**
+     * @brief Configures the headers and basic properties of a QTableWidget for displaying passwords.
+     *
+     * Sets up two columns labeled "Password's Name" and "Password", disables selection and editing,
+     * hides the vertical header, and stretches the horizontal headers to fit the table width.
+     *
+     * @param table Pointer to the QTableWidget to configure.
+     */
      void setupTablesHeaders(QTableWidget* table);
 
+     /**
+     * @brief Displays passwords filtered by a specific category in the password category table.
+     *
+     * Clears the table, sets the row and column count, sets header labels, and populates
+     * the table with password names and decrypted passwords retrieved from the database.
+     *
+     * @param category The category to filter passwords by.
+     */
      void displayPasswordsByCategory(const QString& category);
 
      /**
@@ -406,6 +455,14 @@ QT_END_NAMESPACE
       */
      void changePage(int index);
 
+     /**
+     * @brief Handles category selection change to update displayed passwords accordingly.
+     *
+     * Retrieves the currently selected category from the categories list and refreshes
+     * the password table to show passwords belonging to that category.
+     *
+     * @param index The new selected index in the categories list (unused).
+     */
      void changeCategoriesPage(int index);
 
      /**
@@ -447,8 +504,20 @@ QT_END_NAMESPACE
       */
      void startProgramm();
 
+     /**
+     * @brief Initializes combo boxes related to passwords and categories.
+     *
+     * Populates the password name combo box with saved password names from the database,
+     * and the category combo box with the list of categories.
+     */
      void setupCategoriesComboBoxes();
 
+     /**
+     * @brief Initializes the categories list widget with categories from the database.
+     *
+     * Clears the existing list, populates it with categories, sets up signal-slot connections
+     * for selection changes and context menu requests, and configures appearance properties.
+     */
      void setupCategoriesList();
  };
  
