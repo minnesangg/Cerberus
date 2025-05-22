@@ -3,9 +3,8 @@
 **Cerberus** is a secure password manager built with **Qt (C++)**.  
 It allows users to **generate, encrypt, and store passwords** in a local **SQLite** database.  
 All passwords are **stored only on your device and never sent anywhere**, ensuring complete privacy and security.
-Also, here is a Have I Been Pwned API integration for checking if passwords have been exposed in data breaches.
+Also, here is a Have I Been Pwned API integration for checking if passwords have been exposed in data breaches, password categories.
 
-Future updates will include **password categories, improved UI/UX, and more.**
 
 ![logotype](https://github.com/user-attachments/assets/5aae01bc-506a-484f-99c9-7aaf20a66d90)
 
@@ -34,9 +33,8 @@ For detailed documentation visit [Cerberus Documentation](https://minnesangg.git
 
 ✅ App customization options (language, security level).
 
-## 🚀 Future Improvements
+✅ Organizing passwords into categories (e.g., "Work", "Social Media"). 
 
-🔹 Organizing passwords into categories (e.g., "Work", "Social Media"). 
 
 ## 🔒 Security
 
@@ -96,9 +94,8 @@ Developed by Minnesang. Contributions are welcome!
 **Cerberus** — это безопасный менеджер паролей, разработанный на **Qt (C++)**.  
 Он позволяет пользователям **генерировать, шифровать и хранить пароли** в локальной базе данных **SQLite**.  
 Все пароли **хранятся только на вашем устройстве и не отправляются никуда**, обеспечивая полную конфиденциальность и безопасность.
-Также есть интеграция с Have I Been Pwned API для проверки того, был ли пароль замечен в утечках.
+Также есть интеграция с Have I Been Pwned API для проверки того, был ли пароль замечен в утечках, категории паролей.
 
-В будущих обновлениях появятся **категории паролей, улучшенный UI/UX, и многое другое.**
 
 ![logotype](https://github.com/user-attachments/assets/5aae01bc-506a-484f-99c9-7aaf20a66d90)
 
@@ -126,9 +123,8 @@ Developed by Minnesang. Contributions are welcome!
 
 ✅ Настройки приложения (язык, уровень безопасности).
 
-## 🚀 Будущие улучшения
+✅ Организация паролей по категориям (например, "Работа", "Социальные сети").
 
-🔹 Организация паролей по категориям (например, "Работа", "Социальные сети").
 
 ## 🔒 Безопасность
 
