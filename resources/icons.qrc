@@ -3,5 +3,6 @@
         <file>mainIcon.png</file>
         <file>bufferCopy.png</file>
         <file>addInfo.png</file>
+        <file>GNU.png</file>
     </qresource>
 </RCC>

@@ -40,6 +40,7 @@ void MainWindow::startProgramm() {
 
     database.initDatabase();
     database.loadPasswords();
+    database.loadCategories();
 
     ui->centralwidget->setStyleSheet("centralwidget { background-color: #121212; }");
 
@@ -56,6 +57,9 @@ void MainWindow::startProgramm() {
     setupComboBox();
 
     setupTable();
+    setupTablesHeaders(ui->passCategTable);
+    setupCategoriesComboBoxes();
+    setupCategoriesList();
 
     QString language = settings.getLanguage();
     settings.setLanguage(language);
@@ -128,6 +132,32 @@ void MainWindow::buttonsImages() {
     ui->generateInfoButton->setIconSize(QSize(32, 32));
     ui->generateInfoButton->setFlat(true);
     ui->generateInfoButton->setText("");
+
+    ui->categoriesInfoButton->setIcon(QIcon(":/addInfo.png"));
+    ui->categoriesInfoButton->setIconSize(QSize(32, 32));
+    ui->categoriesInfoButton->setFlat(true);
+    ui->categoriesInfoButton->setText("");
+
+    ui->managerInfoButton->setIcon(QIcon(":/GNU.png"));
+    ui->managerInfoButton->setIconSize(QSize(42, 42));
+    ui->managerInfoButton->setFlat(true);
+    ui->managerInfoButton->setText("");
+}
+
+void MainWindow::setupCategoriesList(){
+    ui->categoriesList->clear();
+
+    QStringList categories = database.getCategories();
+    ui->categoriesList->addItems(categories);
+
+    connect(ui->categoriesList, &QListWidget::currentRowChanged, this, &MainWindow::changeCategoriesPage);
+    ui->categoriesList->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->categoriesList, &QListWidget::customContextMenuRequested,
+            this, &MainWindow::onCategoryListContextMenuRequested);
+
+    ui->categoriesList->setAlternatingRowColors(false);
+    ui->categoriesList->setUniformItemSizes(true);
+    ui->categoriesList->setSpacing(2);
 }
 
 void MainWindow::allignCenter() {
@@ -147,6 +177,47 @@ void MainWindow::allignCenter() {
     ui->restorePasswordLayout->setAlignment(Qt::AlignCenter);
     ui->settingsLabelLayout->setAlignment(Qt::AlignCenter);
     ui->manageLabelLayout->setAlignment(Qt::AlignCenter);
+}
+
+void MainWindow::changeCategoriesPage(int index){
+    QListWidgetItem* currentItem = ui->categoriesList->currentItem();
+    if (currentItem) {
+        QString category = currentItem->text();
+        displayPasswordsByCategory(category);
+    }
+}
+
+void MainWindow::displayPasswordsByCategory(const QString& category){
+    QVector<QPair<QString, QString>> passwords = database.getPasswordsByCategory(category);
+
+    ui->passCategTable->clear();
+    ui->passCategTable->setRowCount(passwords.size());
+    ui->passCategTable->setColumnCount(2);
+    ui->passCategTable->setHorizontalHeaderLabels(QStringList() << tr("Password's Name") << tr("Password"));
+
+    for (int i = 0; i < passwords.size(); ++i) {
+        ui->passCategTable->setItem(i, 0, new QTableWidgetItem(passwords[i].first));
+        ui->passCategTable->setItem(i, 1, new QTableWidgetItem(passwords[i].second));
+    }
+}
+
+void MainWindow::onCategoryListContextMenuRequested(const QPoint &pos){
+    QListWidgetItem *item = ui->categoriesList->itemAt(pos);
+    if (!item) return;
+
+    QMenu contextMenu(this);
+    QAction *deleteAction = contextMenu.addAction(tr("Remove category"));
+
+    QAction *selectedAction = contextMenu.exec(ui->categoriesList->mapToGlobal(pos));
+    if (selectedAction == deleteAction) {
+        QString categoryToDelete = item->text();
+
+        if (QMessageBox::question(this, tr("Removing"), tr("Remove category '") + categoryToDelete + "'?") == QMessageBox::Yes) {
+            database.removeCategory(categoryToDelete);
+            setupCategoriesList();
+            setupCategoriesComboBoxes();
+        }
+    }
 }
 
 void MainWindow::changePage(int index) {
@@ -189,6 +260,18 @@ void MainWindow::setupComboBox(){
     }
 }
 
+void MainWindow::setupCategoriesComboBoxes(){
+    ui->passNameCategBox->clear();
+    QMap<QString, QString> savedPasswords = database.getSavedPasswords();
+    for(auto it = savedPasswords.begin(); it != savedPasswords.end(); it++){
+        ui->passNameCategBox->addItem(it.key());
+        ui->passNameCategBox->setItemData(ui->passNameCategBox->count()-1, it.key(), Qt::UserRole);
+    }
+
+    QStringList categories = database.getCategories();
+    ui->passCategBox->clear();
+    ui->passCategBox->addItems(categories);
+}
 
 void MainWindow::on_generateButton_clicked() {
     int size = ui->lengthBox->value();
@@ -296,15 +379,8 @@ void MainWindow::on_showButton_clicked() {
         return;
     }
 
-    ui->showPassTable->clear();
+    setupTablesHeaders(ui->showPassTable);
     ui->showPassTable->setRowCount(savedPasswords.size());
-    ui->showPassTable->setColumnCount(1);
-    ui->showPassTable->setHorizontalHeaderLabels({ tr("Password's Name") });
-    ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->showPassTable->verticalHeader()->setVisible(false);
-    ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->showPassTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
     int row = 0;
     for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it, ++row) {
         ui->showPassTable->setItem(row, 0, new QTableWidgetItem(it.key()));
@@ -321,20 +397,24 @@ void MainWindow::on_showAllButton_clicked() {
         return;
     }
 
-    ui->showPassTable->clear();
+    setupTablesHeaders(ui->showPassTable);
     ui->showPassTable->setRowCount(savedPasswords.size());
-    ui->showPassTable->setColumnCount(2);
-    ui->showPassTable->setHorizontalHeaderLabels({ tr("Password's Name"), tr("Password") });
-    ui->showPassTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-    ui->showPassTable->verticalHeader()->setVisible(false);
-    ui->showPassTable->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->showPassTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     int row = 0;
     for (auto it = savedPasswords.constBegin(); it != savedPasswords.constEnd(); ++it, ++row) {
         ui->showPassTable->setItem(row, 0, new QTableWidgetItem(it.key()));
         ui->showPassTable->setItem(row, 1, new QTableWidgetItem(it.value()));
     }
+}
+
+void MainWindow::setupTablesHeaders(QTableWidget* table){
+    table->clear();
+    table->setColumnCount(2);
+    table->setHorizontalHeaderLabels({ tr("Password's Name"), tr("Password") });
+    table->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    table->verticalHeader()->setVisible(false);
+    table->setSelectionMode(QAbstractItemView::NoSelection);
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 
@@ -440,7 +520,6 @@ void MainWindow::on_clearAllPassButton_clicked()
 {
     ui->passwordTable->clearContents();
     ui->passwordTable->setRowCount(0);
-
 }
 
 void MainWindow::on_additInfoButton_clicked()
@@ -556,7 +635,6 @@ void MainWindow::on_attemptsButton_clicked()
     }
 }
 
-
 void MainWindow::on_changeMPButton_clicked()
 {
     QString newMasterPass = ui->changeMPLine->text();
@@ -576,4 +654,48 @@ void MainWindow::on_changeMPButton_clicked()
         ui->statusbar->showMessage(tr("New master password line is empty!"), 3000);
     }
 
+}
+
+void MainWindow::on_bindCategoryButton_clicked()
+{
+    QString password = ui->passNameCategBox->currentText(), category = ui->passCategBox->currentText();
+    if(password.isEmpty() || category.isEmpty()){
+        ui->statusbar->showMessage(tr("Choosing error!"), 3000);
+    }
+
+    if(!database.bindCategoriesDB(password, category)){
+        ui->statusbar->showMessage(tr("Error adding category!"), 3000);
+        return;
+    }
+
+    ui->passNameCategBox->clear();
+    database.loadCategories();
+    setupCategoriesComboBoxes();
+}
+
+
+void MainWindow::on_newCategButton_clicked()
+{
+    QString newCategory = ui->newCategLine->text();
+
+    ui->categoriesList->addItem(newCategory);
+    database.addCategory(newCategory);
+    setupCategoriesComboBoxes();
+    ui->newCategLine->clear();
+}
+
+
+void MainWindow::on_categoriesInfoButton_clicked()
+{
+    QMessageBox::information(this,tr("Info") ,tr("Warning: If you create a category and close the application "
+                                                  "without assigning it to any password, it will be automatically deleted!"));
+}
+
+
+void MainWindow::on_managerInfoButton_clicked()
+{
+    QMessageBox::information(this, tr("Info"),
+                             tr("This project is licensed under the GNU General Public License v3.0.\n"
+                                "It’s open source, and you're free to use, modify, and share it under the same license.\n"
+                                "Source code is publicly available — transparency and freedom are at its core."));
 }
