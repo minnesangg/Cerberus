@@ -9,7 +9,6 @@
 *.dll
 *.dylib
 *.py
-*.png
 *.ico
 
 # Qt-es
@@ -31,7 +30,6 @@ ui_*.h
 *.jsc
 Makefile*
 *build-*
-*.qm
 *.prl
 *.spec
 
