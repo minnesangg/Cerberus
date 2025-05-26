@@ -98,6 +98,15 @@ private:
      * box appearances for a consistent dark theme throughout the interface.
      */
     void updateStyles();
+
+    /**
+     * @brief Returning the stylesheet for the custom dialog window.
+     *
+     * This method returning a string that contains QSS stylesheet for customization dialog windows. 
+     * It sets a green text (`#2ECC71`) and green button
+     * @return string with qss stylesheet.
+     */
+    QString getStyle() const;
 };
 
 #endif // DIALOGLOGIN_H
