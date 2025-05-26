@@ -54,19 +54,44 @@ DialogLogin::~DialogLogin() {
 }
 
 void DialogLogin::updateStyles(){
-    QString darkStyle = "QWidget { background-color: #2E2E2E; color: #2ECC71; }"
-                        "QPushButton { background-color: #2E2E2E; color: #121212; border: none; padding: 10px; }"
-                        "QMessageBox { background-color: #2E2E2E; color: #2ECC71; border: 2px solid #2ECC71; }"
-                        "QMessageBox QAbstractButton { "
-                        "background-color: #2ECC71; "
-                        "color: #121212; "
-                        "border: none; "
-                        "padding: 5px 15px; "
-                        "border-radius: 5px; "
-                        "} "
-                        "QMessageBox QLabel {"
-                        "color: #2ECC71; "
-                        "}";
+    QString darkStyle =  "QInputDialog {"
+        "    color: #2ECC71;"
+        "    border: 2px solid #2ECC71;"
+        "}"
+        "QLabel {"
+        "    color: #2ECC71;"
+        "}"
+        "QLineEdit {"
+        "    background-color: #1E1E1E;"
+        "    color: #2ECC71;"
+        "    border: 2px solid #2ECC71;"
+        "    border-radius: 5px;"
+        "    padding: 5px;"
+        "}"
+        "QPushButton {"
+        "    background-color: #2ECC71;"
+        "    color: #121212;"
+        "    border-radius: 5px;"
+        "    padding: 5px 10px;"
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #27AE60;"
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #1E7C49;"
+        "}"
+        "QDialogButtonBox QPushButton {"
+        "    background-color: #2ECC71;"
+        "    color: #121212;"
+        "    border-radius: 5px;"
+        "    padding: 5px 10px;"
+        "}"
+        "QDialogButtonBox QPushButton:hover {"
+        "    background-color: #27AE60;"
+        "}"
+        "QDialogButtonBox QPushButton:pressed {"
+        "    background-color: #1E7C49;"
+        "}";
     qApp->setStyleSheet(darkStyle);
 }
 
@@ -81,8 +106,15 @@ void DialogLogin::on_loginButton_clicked() {
             close();
         }
 
+        const QString style = getStyle();
         if(password.isEmpty()){
-            QMessageBox::critical(this, tr("Error"), tr("Empty password line. Please try again."));
+            QMessageBox box(this);
+            box.setIcon(QMessageBox::Critical);
+            box.setText(tr("Empty password line. Please try again."));
+            box.setWindowTitle(tr("Error"));
+            box.setStyleSheet(style);
+            box.exec();
+
             return;
         }
 
@@ -99,21 +131,65 @@ void DialogLogin::on_loginButton_clicked() {
     }
 }
 
+QString DialogLogin::getStyle() const{
+    QString style =             "QLabel {"
+        "    color: #2ECC71;"
+        "}"
+        "QPushButton {"
+        "    background-color: #2ECC71;"
+        "    color: #121212;"
+        "    border-radius: 5px;"
+        "    padding: 5px 10px;"
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #27AE60;"
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #1E7C49;"
+        "}"
+        "QMessageBox {"
+        "    background-color: #1E1E1E;"
+        "}";
+
+    return style;
+}
+
 void DialogLogin::on_newMasterPassButton_clicked() {
+
+    const QString style = getStyle();
+
     QString password = ui->newMasterPassLabel->text();
     QString repeatedPassword = ui->repeatPassLabel->text();
 
     if(password.isEmpty() || repeatedPassword.isEmpty()){
-        QMessageBox::critical(this, tr("Error"), tr("Empty password line. Please try again."));
+        QMessageBox box(this);
+        box.setIcon(QMessageBox::Critical);
+        box.setText(tr("Password line is empty. Try again."));
+        box.setWindowTitle(tr("Error"));
+        box.setStyleSheet(style);
+        box.exec();
+
         return;
     }
 
     if(password == repeatedPassword){
         master_pass.masterPassword(password);
-        QMessageBox::information(this, tr("Success"), tr("Master password has been set! Please log in."));
+        QMessageBox box(this);
+        box.setIcon(QMessageBox::Information);
+        box.setText(tr("Master password has been set! Please log in."));
+        box.setWindowTitle(tr("Success"));
+        box.setStyleSheet(style);
+        box.exec();
+
         masterPassStacked->setCurrentWidget(ui->login);
     } else {
-        QMessageBox::critical(this, tr("Warning"), tr("The repeated password does not match the original password."));
+        QMessageBox box(this);
+        box.setIcon(QMessageBox::Critical);
+        box.setText(tr("The repeated password does not match the original password."));
+        box.setWindowTitle(tr("Warning"));
+        box.setStyleSheet(style);
+        box.exec();
+
         ui->newMasterPassLabel->clear();
         ui->repeatPassLabel->clear();
     }

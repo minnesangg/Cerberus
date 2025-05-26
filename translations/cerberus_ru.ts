@@ -75,34 +75,38 @@
         <translation>Установить пароль</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="85"/>
-        <location filename="../src/dialoglogin.cpp" line="107"/>
+        <location filename="../src/dialoglogin.cpp" line="114"/>
+        <location filename="../src/dialoglogin.cpp" line="168"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="85"/>
-        <location filename="../src/dialoglogin.cpp" line="107"/>
+        <location filename="../src/dialoglogin.cpp" line="113"/>
         <source>Empty password line. Please try again.</source>
         <translation>Пустое поле пароль. Пожалуйста попробуйте еще раз.</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="113"/>
+        <location filename="../src/dialoglogin.cpp" line="167"/>
+        <source>Password line is empty. Try again.</source>
+        <translation>Поле для ввода пустое. Попробуйте еще раз.</translation>
+    </message>
+    <message>
+        <location filename="../src/dialoglogin.cpp" line="180"/>
         <source>Success</source>
         <translation>Готово</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="113"/>
+        <location filename="../src/dialoglogin.cpp" line="179"/>
         <source>Master password has been set! Please log in.</source>
         <translation>Мастер-пароль был успешно установлен! Пожалуйста войдите еще раз.</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="116"/>
+        <location filename="../src/dialoglogin.cpp" line="189"/>
         <source>Warning</source>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../src/dialoglogin.cpp" line="116"/>
+        <location filename="../src/dialoglogin.cpp" line="188"/>
         <source>The repeated password does not match the original password.</source>
         <translation>Повторённый пароль не совпадает с исходным паролем.</translation>
     </message>
@@ -222,7 +226,7 @@
     <message>
         <location filename="../forms/mainwindow.ui" line="895"/>
         <location filename="../src/mainwindow.cpp" line="196"/>
-        <location filename="../src/mainwindow.cpp" line="413"/>
+        <location filename="../src/mainwindow.cpp" line="414"/>
         <location filename="../src/mainwindow.cpp" line="510"/>
         <source>Password</source>
         <translation>Пароль</translation>
@@ -477,12 +481,12 @@
         <translation>Украинский</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="296"/>
+        <location filename="../src/mainwindow.cpp" line="295"/>
         <source>Line with password&apos;s name is empty!</source>
         <translation>Поле для имени пароля пусто!</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="301"/>
+        <location filename="../src/mainwindow.cpp" line="300"/>
         <location filename="../src/mainwindow.cpp" line="367"/>
         <source>Password saved!</source>
         <translation>Пароль сохранен!</translation>
@@ -523,8 +527,8 @@
         <translation>Ошибка при удалении пароля.</translation>
     </message>
     <message>
-        <location filename="../src/mainwindow.cpp" line="378"/>
-        <location filename="../src/mainwindow.cpp" line="396"/>
+        <location filename="../src/mainwindow.cpp" line="379"/>
+        <location filename="../src/mainwindow.cpp" line="397"/>
         <source>There&apos;s no passwords!</source>
         <translation>Отсутствуют пароли!</translation>
     </message>
@@ -554,7 +558,7 @@ Source code is publicly available — transparency and freedom are at its core.<
     </message>
     <message>
         <location filename="../src/mainwindow.cpp" line="196"/>
-        <location filename="../src/mainwindow.cpp" line="413"/>
+        <location filename="../src/mainwindow.cpp" line="414"/>
         <source>Password&apos;s Name</source>
         <translation>Имя Пароля</translation>
     </message>
