@@ -25,7 +25,7 @@ from email.message import EmailMessage
 import os
 
 """
-@file cerberus_backup.py
+@file send_email.py
 @brief A script to send a backup of the Cerberus password manager database via email.
 
 This script reads the configuration from a JSON file, retrieves the sender email and app password,
